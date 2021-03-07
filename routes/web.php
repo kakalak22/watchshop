@@ -14,4 +14,4 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/trang-chu','HomeController@getIndex');
+Route::get('/trang-chu', 'HomeController@getIndex');
