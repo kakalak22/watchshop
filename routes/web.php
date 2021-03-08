@@ -22,3 +22,5 @@ Route::get('/all-product-by-brand','BrandController@AllBrandProduct');
 Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
 //product
 Route::get('/product-details/{product_id}','ProductController@ProductDetail');
+//cart
+Route::get('/show-cart','CartController@ShowCart');

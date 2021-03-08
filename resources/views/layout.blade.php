@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="{{URL::to('/show-cart')}}">
 							 <div class="total">
 								<span class="simpleCart_total"></span></div>
 								<img src="{{asset('frontend/images/cart-1.png')}}" alt="" />
