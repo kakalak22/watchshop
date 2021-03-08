@@ -11,10 +11,18 @@ class Product extends Model
     protected $table = "product";
 
     public function category(){
-        return $this->belongsTo('App\Categories','category_id','id');
+        return $this->belongsTo('App\Models\Categories','category_id','id');
     }
 
-    public function bill_detail(){
-        return $this->hasMany('App\BillDetails','id_product','id');
+    public function order_items(){
+        return $this->hasMany('App\Models\Product','product_id','id');
+    }
+
+    public function product_image(){
+        return $this->belongsTo('App\Models\ProductImage','image_id','id');
+    }
+
+    public function brand(){
+        return $this->belongsTo('App\Models\Brand','brand_id','id');
     }
 }

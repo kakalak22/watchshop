@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bill extends Model
 {
     use HasFactory;
-    protected $table = "bills";
+    protected $table = "orders";
     
-    public function bills(){
-        return $this->hasMany('App\BillDetails','id_bill','id');
+    public function orders(){
+        return $this->hasMany('App\Models\OrderItems','order_id','id');
     }
 }
