@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\Categories;
+use App\Models\Brand;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        view()->composer('layout',function($view){
+            $product_type = Categories::all();
+            $product_brand = Brand::all();
+            $view->with('product_type',$product_type)->with('product_brand',$product_brand);
+        });
     }
 }
