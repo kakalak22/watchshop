@@ -17,3 +17,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/trang-chu', 'HomeController@getIndex');
 
 Route::get('/admin_home', 'HomeController@AdminHome');
+
+Route::frefix('categories')->group(function () {
+    Route::get('/create', [
+        'as' => 'categories.create',
+        'user' => 'CategoryController@Create'
+    ]);
+});
