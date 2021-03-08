@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class BillDetails extends Model
 {
     use HasFactory;
-    protected $table = "bill_details";
+    protected $table = "order_items";
 
-    public function bill(){
-        return $this->belongsTo('App\Bill','id_bill','id');
+    public function orders(){
+        return $this->belongsTo('App\Models\Orders','order_id','id');
     }
 
     public function product(){
-        return $this->belongsTo('App\Product','id_product','id');
+        return $this->belongsTo('App\Models\Product','product_id','id');
     }
 }
