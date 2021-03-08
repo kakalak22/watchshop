@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //home
 Route::get('/home','HomeController@getIndex');
 //category
@@ -22,3 +23,6 @@ Route::get('/all-product-by-brand','BrandController@AllBrandProduct');
 Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
 //product
 Route::get('/product-details/{product_id}','ProductController@ProductDetail');
+
+Route::get('/admin_home', 'HomeController@AdminHome');
+

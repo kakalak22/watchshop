@@ -11,5 +11,14 @@ class HomeController extends Controller
         $new_product = Product::where('new',1)->get();
         //dd($new_product);
         return view('pages.home',compact('new_product'));
+
+    public function getIndex()
+    {
+        return view('pages.home');
+
+    }
+    public function AdminHome()
+    {
+        return view('admin.admin_home');
     }
 }
