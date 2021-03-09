@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -51,4 +52,8 @@ Route::prefix('categories')->group(function () {
 
 
 //admin home
-Route::get('/admin_home', 'HomeController@AdminHome');
+Route::get('/admin_home', [AdminController::class, 'AdminHome']);
+
+Route::get('/', [AdminController::class, 'AdminLogin']);
+
+Route::post('/', [AdminController::class, 'postLoginAdmin']);
