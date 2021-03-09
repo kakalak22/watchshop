@@ -15,14 +15,13 @@ use App\Http\Controllers\HomeController;
 */
 
 //home
-Route::get('/home','HomeController@getIndex');
+Route::get('/home', 'HomeController@getIndex');
 //category
-Route::get('/product-by-cate/{category_id}','CategoryController@ProductByCategory');
+Route::get('/product-by-cate/{category_id}', 'CategoryController@ProductByCategory');
 //brand
-Route::get('/all-product-by-brand','BrandController@AllBrandProduct');
-Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
+Route::get('/all-product-by-brand', 'BrandController@AllBrandProduct');
+Route::get('/product-by-brand/{brand_id}', 'BrandController@ProductByBrand');
 //product
-Route::get('/product-details/{product_id}','ProductController@ProductDetail');
+Route::get('/product-details/{product_id}', 'ProductController@ProductDetail');
 
 Route::get('/admin_home', 'HomeController@AdminHome');
-
