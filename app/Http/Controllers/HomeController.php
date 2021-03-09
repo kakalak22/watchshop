@@ -15,8 +15,5 @@ class HomeController extends Controller
         return view('pages.home', compact('new_product'));
     }
 
-    public function AdminHome()
-    {
-        return view('admin.admin_home');
-    }
+
 }

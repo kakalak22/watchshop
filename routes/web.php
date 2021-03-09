@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -14,6 +13,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //CLIENT
 
 //home
@@ -49,6 +49,7 @@ Route::prefix('categories')->group(function () {
 
 
 
+Route::get('/admin_home', [AdminController::class, 'adminLogin']);
 
-//admin home
-Route::get('/admin_home', 'HomeController@AdminHome');
+
+Route::get('/admin_login', [AdminController::class, 'adminLogin']);
