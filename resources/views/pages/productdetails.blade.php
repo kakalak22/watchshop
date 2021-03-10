@@ -66,7 +66,11 @@
 							<div class="clearfix"> </div>
 							</div>
 							
+<<<<<<< HEAD
 							<h5 class="item_price">{{number_format($item->price)}} đ</h5>
+=======
+							<h5 class="item_price">{{$item->price}}</h5>
+>>>>>>> 6f8b340cc8af72c30dc0f5421d13ff41763480b5
 							<p>{{$item->content}}</p>
 							<div class="available">
 								<ul>
