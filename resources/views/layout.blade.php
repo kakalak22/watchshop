@@ -2,7 +2,9 @@
 <html>
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-<link href="{{asset('frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
@@ -16,12 +18,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
 <script src="https://kit.fontawesome.com/80ea8b739f.js" crossorigin="anonymous"></script>
-<script src="{{asset('frontend/js/simpleCart.min.js')}}"> </script>
+{{-- <script src="{{asset('frontend/js/simpleCart.min.js')}}"> </script> --}}
 <link href="{{asset('frontend/css/memenu.css')}}" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="{{asset('frontend/js/memenu.js')}}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>			
+<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>		
+<script>
+	simpleCart({
+    currency: "AUD" // set the currency to pounds sterling
+});	
+</script>	
 </head>
 <body> 
 	<!--top-header-->
@@ -164,4 +171,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--footer-end-->	
 </body>
+<script>
+	function addToCart(event){
+		event.preventDefault();
+		let urlCart = $(this).data('url');
+		$.ajax({
+			type: "GET",
+			url: urlCart,
+			datatype: 'json',
+			success: function (data){
+
+			},
+			error: function(){
+
+			}
+		});
+	}
+
+	$(function (){
+		$('.item_add').on('click',addToCart);
+	});
+</script>
 </html>

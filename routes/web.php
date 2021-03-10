@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -23,4 +24,6 @@ Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
 //product
 Route::get('/product-details/{product_id}','ProductController@ProductDetail');
 //cart
-Route::get('/show-cart','CartController@ShowCart');
+Route::get('/show-cart','CartController@showCart');
+Route::get('/add-to-cart/{id}','CartController@addToCart');
+Route::get('/delete-cart-item/{rowId}','CartController@deleteItem');

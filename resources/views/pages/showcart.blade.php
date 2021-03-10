@@ -15,80 +15,79 @@
 	<!--start-ckeckout-->
 	<div class="ckeckout">
 		<div class="container">
-			<div class="ckeck-top heading">
-				<h2>CHECKOUT</h2>
+			<div class="row">
+				<div class="col-sm-12 col-md-10 col-md-offset-1">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Quantity</th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Total</th>
+								<th> </th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (Cart::content() as $item)
+							<tr>
+								<td class="col-sm-8 col-md-6">
+								<div class="media">
+									<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{$item->options->image}}" style="width: 72px; height: 72px;"> </a>
+									<div class="media-body">
+										<h4 class="media-heading"><a href="#">{{$item->name}}</a></h4>
+										<h5 class="media-heading"> by <a href="#">{{$item->options->brand}}</a></h5>
+									</div>
+								</div></td>
+								<td class="col-sm-1 col-md-1" style="text-align: center">
+								<input type="qty" class="form-control" id="exampleInputEmail1" value="{{$item->qty}}">
+								</td>
+								<td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($item->price)}} VND</strong></td>
+								<td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($item->price * $item->qty)}} VND</strong></td>
+								<td class="col-sm-1 col-md-1">
+								<a type="button" class="btn btn-danger" href="{{URL::to('/delete-cart-item/'.$item->rowId)}}">
+									<span class="glyphicon glyphicon-remove"></span> Remove
+								</a></td>
+							</tr>
+							@endforeach
+							<tr>
+								<td>   </td>
+								<td>   </td>
+								<td>   </td>
+								<td><h5>Subtotal</h5></td>
+								<td class="text-right"><h5><strong>{{Cart::subtotal()}}</strong></h5></td>
+							</tr>
+							<tr>
+								<td>   </td>
+								<td>   </td>
+								<td>   </td>
+								<td><h5>Estimated shipping</h5></td>
+								<td class="text-right"><h5><strong>Freeship</strong></h5></td>
+							</tr>
+							<tr>
+								<td>   </td>
+								<td>   </td>
+								<td>   </td>
+								<td><h3>Total</h3></td>
+								<td class="text-right"><h3><strong>{{Cart::total()}}</strong></h3></td>
+							</tr>
+							<tr>
+								<td>   </td>
+								<td>   </td>
+								<td>   </td>
+								<td>
+								<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+								</button></td>
+								<td>
+								<button type="button" class="btn btn-success">
+									Checkout <span class="glyphicon glyphicon-play"></span>
+								</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div class="ckeckout-top">
-			<div class="cart-items">
-			 <h3>My Shopping Bag (3)</h3>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			<script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-						$('.cart-header1').fadeOut('slow', function(c){
-							$('.cart-header1').remove();
-						});
-						});	  
-					});
-			   </script>
-			   <script>$(document).ready(function(c) {
-					$('.close3').on('click', function(c){
-						$('.cart-header2').fadeOut('slow', function(c){
-							$('.cart-header2').remove();
-						});
-						});	  
-					});
-			   </script>
-				
-			<div class="in-check" >
-				<ul class="unit">
-					<li><span>Item</span></li>
-					<li><span>Product Name</span></li>		
-					<li><span>Unit Price</span></li>
-					<li><span>Delivery Details</span></li>
-					<li> </li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header">
-					<div class="close1"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-1.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 290.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class=" cart-header1">
-					<div class="close2"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-2.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 300.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header2">
-					<div class="close3"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-3.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 360.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-			</div>
-			</div>  
-		 </div>
 		</div>
 	</div>
-	<!--end-ckeckout-->
+	<!--end-ckeckout--> 
 @endsection
