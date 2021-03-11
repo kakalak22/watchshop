@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <!--start-breadcrumbs-->	
+    <!--start-breadcrumbs-->
     @foreach ($pro as $item)
 	<div class="breadcrumbs">
 		<div class="container">
@@ -19,7 +19,7 @@
 			<div class="single-main">
 				<div class="col-md-9 single-main-left">
 				<div class="sngl-top">
-					<div class="col-md-5 single-top-left">	
+					<div class="col-md-5 single-top-left">
 						<div class="flexslider">
 							  <ul class="slides">
 								<li data-thumb="{{URL::to($item->product_image->image)}}">
@@ -30,7 +30,7 @@
 								</li>
 								<li data-thumb="{{URL::to($item->product_image->image3)}}">
 								   <div class="thumb-image"> <img src="{{URL::to($item->product_image->image3)}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-								</li> 
+								</li>
 							  </ul>
 						</div>
 						<!-- FlexSlider -->
@@ -61,7 +61,7 @@
 									</ul>
 								<div class="review">
 									<a href="#"> 1 customer review </a>
-									
+
 								</div>
 							<div class="clearfix"> </div>
 							</div>
@@ -94,7 +94,7 @@
 								<span class="women1">: {{$item->Brand->name}}</span></li>
 							</ul>
 								<a href="#" class="add-cart item_add">ADD TO CART</a>
-							
+
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -139,7 +139,7 @@
                 @endforeach
 				<div class="latestproducts">
 					<div class="product-one">
-						<div class="col-md-4 product-left p-left"> 
+						<div class="col-md-4 product-left p-left">
 							<div class="product-main simpleCart_shelfItem">
 								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
 								<div class="product-bottom">
@@ -152,7 +152,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-left p-left"> 
+						<div class="col-md-4 product-left p-left">
 							<div class="product-main simpleCart_shelfItem">
 								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
 								<div class="product-bottom">
@@ -165,7 +165,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-left p-left"> 
+						<div class="col-md-4 product-left p-left">
 							<div class="product-main simpleCart_shelfItem">
 								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-3.png" alt="" /></a>
 								<div class="product-bottom">
@@ -190,10 +190,10 @@
 								<div class="col col-4">
 									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
 								</div>
-								<div class="col col-4">								
+								<div class="col col-4">
 									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
 									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>			
+									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
 								</div>
 							</div>
 						</section>
@@ -215,7 +215,7 @@
 									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
 									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
 									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>			
+									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>
 								</div>
 							</div>
 						</section>
@@ -257,7 +257,7 @@
 									<label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
 									<label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
 								</div>
-							</div>						
+							</div>
 						</section>
 					</div>
 				</div>
