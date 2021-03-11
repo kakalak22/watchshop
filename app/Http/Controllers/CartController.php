@@ -6,6 +6,8 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Orders;
+use Illuminate\Support\Facades\Session;
 
 session_start();
 class CartController extends Controller
@@ -32,5 +34,30 @@ class CartController extends Controller
     public function deleteItem($rowId){
         Cart::remove($rowId);
         return Redirect::to('/show-cart');
+    }
+    //Checkout
+    public function checkout(){
+        return view('pages.checkout');
+    }
+
+    public function saveShipDetail(Request $request){
+        $data = $request->all();
+        $order = new Orders();
+        $total = Cart::total();
+        $order->customer_name = $data['name'];
+        $order->customer_email = $data['email'];
+        $order->customer_address = $data['address'];
+        $order->customer_phone = $data['phone'];
+        $order->customer_city = $data['city'];
+        $order->customer_district = $data['district'];
+        $order->total = (double)$total;
+        $order->save();
+        Session::put('order',$order);
+        Cart::destroy();
+        return Redirect::to('/success');
+    }
+
+    public function success(){
+        return view('pages.success');
     }
 }

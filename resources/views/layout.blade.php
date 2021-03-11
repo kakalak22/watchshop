@@ -18,7 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
 <script src="https://kit.fontawesome.com/80ea8b739f.js" crossorigin="anonymous"></script>
-{{-- <script src="{{asset('frontend/js/simpleCart.min.js')}}"> </script> --}}
+<script src="{{asset('frontend/js/simpleCart.min.js')}}"> </script>
 <link href="{{asset('frontend/css/memenu.css')}}" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="{{asset('frontend/js/memenu.js')}}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>		
 <script>
 	simpleCart({
-    currency: "AUD" // set the currency to pounds sterling
+    currency: "BTC" // set the currency to pounds sterling
 });	
 </script>	
 </head>
@@ -69,12 +69,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="{{URL::to('/home')}}">Home</a></li>
+					<ul class="memenu skyblue"><li class="{{ Nav::isRoute('home') }}"><a href="{{URL::to('/home')}}">Home</a></li>
 						@foreach ($product_type as $item)
-						<li class="grid"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
+						<li class="grid {{ Nav::isResource($item->id, 'product-by-cate', NULL, FALSE) }}"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
 						</li>
 						@endforeach
-						<li class="grid"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
+						<li class="grid {{ Nav::isRoute('brand-product') }}"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
 							
 							<div class="mepanel">
 								<div class="row">

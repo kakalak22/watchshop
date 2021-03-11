@@ -38,7 +38,7 @@ return [
 
     'database' => [
 
-        'connection' => null,
+        'connection' => 'db_watch',
 
         'table' => 'shoppingcart',
 
@@ -70,9 +70,9 @@ return [
 
         'decimals' => 0,
 
-        'decimal_point' => '.',
+        'decimal_point' => '',
 
-        'thousand_separator' => ',',
+        'thousand_separator' => '',
 
     ],
 

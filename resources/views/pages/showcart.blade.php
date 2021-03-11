@@ -54,7 +54,7 @@
 								<td>   </td>
 								<td>   </td>
 								<td><h5>Subtotal</h5></td>
-								<td class="text-right"><h5><strong>{{Cart::subtotal()}}</strong></h5></td>
+								<td class="text-right"><h5><strong>{{number_format(Cart::subtotal())}} VND</strong></h5></td>
 							</tr>
 							<tr>
 								<td>   </td>
@@ -68,7 +68,7 @@
 								<td>   </td>
 								<td>   </td>
 								<td><h3>Total</h3></td>
-								<td class="text-right"><h3><strong>{{Cart::total()}}</strong></h3></td>
+								<td class="text-right"><h3><strong>{{number_format(Cart::total())}} VND</strong></h3></td>
 							</tr>
 							<tr>
 								<td>   </td>
@@ -79,9 +79,9 @@
 									<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
 								</button></td>
 								<td>
-								<button type="button" class="btn btn-success">
+								<a type="button" class="btn btn-success" href = "{{URL::to('/checkout')}}">
 									Checkout <span class="glyphicon glyphicon-play"></span>
-								</button></td>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>
