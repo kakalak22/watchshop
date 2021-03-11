@@ -28,7 +28,27 @@
             <a href="{{ route('categories.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Product Portfolio
+                Categories Portfolio
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
+           <li class="nav-item">
+            <a href="{{URL::to('/admin/brands')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Brands Portfolio
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{URL::to('/admin/products')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Products Portfolio
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
