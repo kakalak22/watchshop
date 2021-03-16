@@ -46,10 +46,10 @@
 *::after {
   box-sizing: border-box;
 }
-
-.select2-selection__rendered{
+/* 
+.form-unit .select2-container, .form-unit .select2-selection {
     width: 100% !important;
-}
+} */
 
 html {
   font-family: sans-serif;
