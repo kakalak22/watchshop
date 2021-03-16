@@ -38,25 +38,31 @@
 
                                     <div class="form-group">
                                         <label>Price:</label>
-                                        <input type="text" name="price" class="form-control" placeholder="Enter Price"
+                                        <input type="text" name="price" class="form-control"  placeholder="Enter Price"
                                             value="{{$product->price}}">
+                                            {{-- @error('price')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror --}}
                                     </div>
 
 
                                     <div class="mt-2">
                                         <label>Category:</label>
-                                        <select class="form-control " name="category">
+                                        <select class="form-control" name="category" >
                                             <option>{{$product->category->name}}</option>
                                             @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}
                                             </option>
                                             @endforeach
                                         </select>
+                                        {{-- @error('category_id')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror --}}
                                     </div>
 
                                     <div class="mt-2">
                                         <label>Brand:</label>
-                                        <select class="form-control" name="brand">
+                                        <select class="form-control"  name="brand">
                                             <label>Brand:</label>
                                             <option>{{$product->brand->name}}</option>
                                             @foreach($brands as $brand)
@@ -64,6 +70,9 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                         {{-- @error('brand_id')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror --}}
                                     </div>
 
                                     <div class="form-group" class="mt-2">
@@ -97,14 +106,10 @@
                                         <label>Quantity:</label>
                                         <input type="number" name="quantity" class="form-control"
                                             placeholder="Enter Quantity" value="{{$product->quantity}}">
+                                             {{-- @error('quantity')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror --}}
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>New:</label>
-                                        <input type="text" name="new" class="form-control" placeholder="Enter New"
-                                            value="{{$product->new}}">
-                                    </div>
-
                                 </div>
 
                                 <div class="col-md-12">
@@ -113,6 +118,9 @@
                                         <textarea type="text" name="descriptions"
                                             class="form-control tinymce_editor_init"
                                             placeholder="Enter Descriptions">{{$product->content}}</textarea>
+                                            {{-- @error('descriptions')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror --}}
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
