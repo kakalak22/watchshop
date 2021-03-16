@@ -9,20 +9,25 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = "product";
+    protected $guarded = [];
 
-    public function category(){
-        return $this->belongsTo('App\Models\Categories','category_id','id');
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Categories', 'category_id', 'id');
     }
 
-    public function order_items(){
-        return $this->hasMany('App\Models\Product','product_id','id');
+    public function order_items()
+    {
+        return $this->hasMany('App\Models\Product', 'product_id', 'id');
     }
 
-    public function product_image(){
-        return $this->belongsTo('App\Models\ProductImage','image_id','id');
+    public function product_image()
+    {
+        return $this->hasMany('App\Models\ProductImage', 'product_id', 'id');
     }
 
-    public function brand(){
-        return $this->belongsTo('App\Models\Brand','brand_id','id');
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
 }

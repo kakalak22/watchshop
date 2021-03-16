@@ -35,6 +35,10 @@ Route::get('/product-details/{product_id}', 'ProductController@ProductDetail');
 //admin home
 
 Route::get('/admin_home', 'HomeController@AdminHome');
+Route::get('/admin_login', 'HomeController@AdminLogin');
+Route::get('/user', 'HomeController@user');
+Route::get('/admin', 'HomeController@admin');
+Route::get('/order', 'HomeController@order');
 
 // category
 Route::prefix('admin')->group(function () {
@@ -70,11 +74,29 @@ Route::prefix('admin')->group(function () {
 
         route::get('/delete/{id}', [BrandController::class, 'delete'])->name("brands.delete");
     });
+
     //product
     Route::prefix('products')->group(function () {
 
-        Route::get('/', 'AdminProductController@index');
+        Route::get('/', 'AdminProductController@index')->name('product.index');
 
         Route::get('/create', [AdminProductController::class, 'create'])->name('product.create');
+
+        Route::post('/store', [AdminProductController::class, 'store'])->name('product.store');
+
+        Route::get('/edit/{id}', [AdminProductController::class, 'edit'])->name('product.edit');
+
+        Route::post('/update/{id}', [AdminProductController::class, 'update'])->name('product.update');
+
+        Route::get('/delete/{id}', [AdminProductController::class, 'delete'])->name('product.delete');
     });
 });
+
+
+
+
+
+
+// Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
+//     '\vendor\uniSharp\LaravelFilemanager\Lfm::routes()';
+// });

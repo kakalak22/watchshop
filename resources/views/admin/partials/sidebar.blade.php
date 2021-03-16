@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
       <img src=" {{asset('adminlte/dist/img/AdminLTELogo.png')}} " alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Logout</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
           <img src=" {{asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Hong Luan</a>
         </div>
       </div>
 
@@ -28,8 +28,26 @@
             <a href="{{ route('categories.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Categories Portfolio
-                <span class="right badge badge-danger">New</span>
+                Admins
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{{ route('categories.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+
+               <li class="nav-item">
+            <a href="{{ route('categories.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Categories
               </p>
             </a>
           </li>
@@ -38,8 +56,7 @@
             <a href="{{URL::to('/admin/brands')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Brands Portfolio
-                <span class="right badge badge-danger">New</span>
+                Brands
               </p>
             </a>
           </li>
@@ -48,11 +65,20 @@
             <a href="{{URL::to('/admin/products')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Products Portfolio
-                <span class="right badge badge-danger">New</span>
+                Products
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{URL::to('/admin/products')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Orders
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

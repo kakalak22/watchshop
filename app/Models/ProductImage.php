@@ -9,7 +9,9 @@ class ProductImage extends Model
 {
     use HasFactory;
     protected $table = "product_image";
-    public function product(){
-        return $this->hasMany('App\Models\Product','image_id','id');
+    protected $guarded = [];
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
     }
 }
