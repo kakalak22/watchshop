@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductAddRequest;
 use App\Models\Brand;
 use App\Models\Categories;
 use App\Models\Product;
@@ -40,7 +41,7 @@ class AdminProductController extends Controller
         return \view('admin.product.add', compact('categories', 'brands'));
     }
 
-    public function store(Request $request)
+    public function store(ProductAddRequest $request)
     {
 
         try {
@@ -98,9 +99,7 @@ class AdminProductController extends Controller
                 'content' => $request->descriptions,
                 'category_id' => $request->category,
                 'quantity' => $request->quantity,
-                'brand_id' => $request->brand,
-                'new' => $request->new
-
+                'brand_id' => $request->brand
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image', 'product');
             if (!empty($dataUploadFeatureImage)) {
@@ -133,6 +132,8 @@ class AdminProductController extends Controller
     {
         try {
             $this->product->find($id)->delete();
+            // echo '<pre>';
+            // print_r($this->product->find($id));
             return response()->json([
                 'code' => 200,
                 'message' => 'success'

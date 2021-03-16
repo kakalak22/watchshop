@@ -1,7 +1,7 @@
 function actionDelete(event) {
     event.preventDefault();
     let urlRequest = $(this).data('url');
-    let that = $(this)
+    let that = $(this);
 
     Swal.fire({
         title: 'Are you sure?',
@@ -25,11 +25,11 @@ function actionDelete(event) {
 
                 }
             });
-            // Swal.fire(
-            //     'Deleted!',
-            //     'Your file has been deleted.',
-            //     'success'
-            // )
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
         }
     })
 }
