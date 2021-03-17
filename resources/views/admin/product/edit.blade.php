@@ -51,7 +51,10 @@
                                         <select class="form-control" name="category" >
                                             <option>{{$product->category->name}}</option>
                                             @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}
+                                            <option value="{{ $category->id }}"
+                                                >
+                                                 {{-- {{ $rolesOfUser->contains('id', $role->id) ? 'selected' : ''}} --}}
+                                                {{ $category->name }}
                                             </option>
                                             @endforeach
                                         </select>
@@ -66,7 +69,8 @@
                                             <label>Brand:</label>
                                             <option>{{$product->brand->name}}</option>
                                             @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}"> {{ $brand->name }}
+                                            <option value="{{ $brand->id }}">
+                                                {{ $brand->name }}
                                             </option>
                                             @endforeach
                                         </select>

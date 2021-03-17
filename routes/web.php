@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,22 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', [AdminProductController::class, 'update'])->name('product.update');
 
         Route::get('/delete/{id}', [AdminProductController::class, 'delete'])->name('product.delete');
+    });
+
+    //product
+    Route::prefix('users')->group(function () {
+
+        Route::get('/', 'AdminUserController@index')->name('users.index');
+
+        Route::get('/create', [AdminUserController::class, 'create'])->name('users.create');
+
+        Route::post('/store', [AdminUserController::class, 'store'])->name('users.store');
+
+        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('users.edit');
+
+        Route::post('/update/{id}', [AdminUserController::class, 'update'])->name('users.update');
+
+        Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('users.delete');
     });
 });
 

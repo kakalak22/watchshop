@@ -9,8 +9,14 @@ class Bill extends Model
 {
     use HasFactory;
     protected $table = "orders";
-    
-    public function orders(){
-        return $this->hasMany('App\Models\OrderItems','order_id','id');
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\OrderItems', 'order_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\Users', 'user_id', 'id');
     }
 }
