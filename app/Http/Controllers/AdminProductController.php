@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Categories;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class AdminProductController extends Controller
 {
 
     use StorageImageTrait;
+    use DeleteModelTrait;
     private $category;
     private $product;
 
@@ -36,8 +38,8 @@ class AdminProductController extends Controller
 
     public function create()
     {
-        $categories = $this->category->latest()->simplePaginate(0);
-        $brands = $this->brand->latest()->simplePaginate(0);
+        $categories = $this->category->all();
+        $brands = $this->brand->all();
         return \view('admin.product.add', compact('categories', 'brands'));
     }
 
@@ -84,8 +86,8 @@ class AdminProductController extends Controller
     public function edit($id)
     {
         $product = $this->product->find($id);
-        $categories = $this->category->latest()->simplePaginate(0);
-        $brands = $this->brand->latest()->simplePaginate(0);
+        $categories = $this->category->all();
+        $brands = $this->brand->all();
         return \view('admin.product.edit', compact('categories', 'brands', 'product'));
     }
 
@@ -130,20 +132,6 @@ class AdminProductController extends Controller
 
     public function delete($id)
     {
-        try {
-            $this->product->find($id)->delete();
-            // echo '<pre>';
-            // print_r($this->product->find($id));
-            return response()->json([
-                'code' => 200,
-                'message' => 'success'
-            ], 200);
-        } catch (Exception $ex) {
-            Log::error('Message: ' . $ex->getMessage() . 'Line: ' . $ex->getLine());
-            return response()->json([
-                'code' => 500,
-                'message' => 'fail'
-            ], 500);
-        }
+        return $this->deleteModelTrait($id, $this->product);
     }
 }

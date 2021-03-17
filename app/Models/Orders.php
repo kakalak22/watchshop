@@ -15,5 +15,6 @@ class Orders extends Model
     protected $primaryKey = 'id';
     public function orders(){
         return $this->hasMany('App\Models\OrderItems','order_id','id');
+
     }
 }

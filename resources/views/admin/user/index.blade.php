@@ -4,6 +4,11 @@
 <title>Add Product</title>
 @endsection
 
+@section('js')
+    <script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/product/index/list.js')}}"></script>
+@endsection
+
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -13,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{route('product.create')}}" class="btn btn-success float-right m-2">Add</a>
+                    <a href="{{route('users.create')}}" class="btn btn-success float-right m-2">Add</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped mt-4">
@@ -23,27 +28,25 @@
                                 <th scope="col">Username</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Role</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($categories as $cate) --}}
+                            @foreach($users as $user)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>hongluan98</td>
-                                <td>Gia LAi</td>
-                                <td>truong998@gmail.com</td>
-                                <td>User</td>
-                                <td>Active</td>
-                                <td><a href=""
+                                <th scope="row">{{$user->id}}</th>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->address}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->status}}</td>
+                                <td><a href="{{ route('users.edit', ['id' => $user->id]) }}"
                                         class="btn btn-default">Edit</a>
-
+                                        <a data-url="{{ route('users.delete', ['id' => $user->id])}}" href="" class="btn btn-danger action_delete">Delete</a>
                                 </td>
                             </tr>
 
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

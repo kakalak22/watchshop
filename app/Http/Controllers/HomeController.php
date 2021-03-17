@@ -24,18 +24,4 @@ class HomeController extends Controller
         return view('admin.demoHtml.admin_login');
     }
 
-    public function user()
-    {
-        return \view('admin.demoHtml.user');
-    }
-
-    public function admin()
-    {
-        return \view('admin.demoHtml.admin');
-    }
-
-    public function order()
-    {
-        return \view('admin.demoHtml.order');
-    }
 }
