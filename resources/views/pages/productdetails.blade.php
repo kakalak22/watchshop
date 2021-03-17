@@ -22,15 +22,11 @@
 					<div class="col-md-5 single-top-left">
 						<div class="flexslider">
 							  <ul class="slides">
-								<li data-thumb="{{URL::to($item->product_image->image)}}">
-									<div class="thumb-image"> <img src="{{URL::to($item->product_image->image)}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								@foreach ($image as $img)
+								<li data-thumb="{{URL::to($img->image)}}">
+									<div class="thumb-image"> <img src="{{URL::to($img->image)}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li>
-								<li data-thumb="{{URL::to($item->product_image->image2)}}">
-									 <div class="thumb-image"> <img src="{{URL::to($item->product_image->image2)}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-								</li>
-								<li data-thumb="{{URL::to($item->product_image->image3)}}">
-								   <div class="thumb-image"> <img src="{{URL::to($item->product_image->image3)}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-								</li>
+								@endforeach
 							  </ul>
 						</div>
 						<!-- FlexSlider -->

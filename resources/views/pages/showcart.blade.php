@@ -39,7 +39,19 @@
 									</div>
 								</div></td>
 								<td class="col-sm-1 col-md-1" style="text-align: center">
-								<input type="qty" class="form-control" id="exampleInputEmail1" value="{{$item->qty}}">
+									{{-- <a href="#" style="font-size: 20px;" >+</a>	
+									<input type="qty" class="form-control" name="qty" value="{{$item->qty}}">
+									<a href="#" style="font-size: 20px;" >-</a>	 --}}
+									<form action="{{ route('update-quantity') }}" method="post" id="myform">
+										@csrf
+										<input type="hidden" id="sID" name="pid" value="{{ $item->rowId }}">
+										<div class="quantity-input">
+											{{-- <input type="number" class="form-control" name="product-quantity" value="{{$item->qty}}">
+											<a class="btn btn-increase" href="#">+</a>
+											<a class="btn btn-reduce" href="#">-</a> 	 --}}
+												<input type="number" id="product-quantity" name="product-quantity" value="{{$item->qty}}" max="100" />
+										</div>
+									</form>
 								</td>
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($item->price)}} VND</strong></td>
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($item->price * $item->qty)}} VND</strong></td>

@@ -3,7 +3,6 @@
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
@@ -29,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     currency: "BTC" // set the currency to pounds sterling
 });	
 </script>	
+<script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
 </head>
 <body> 
 	<!--top-header-->
@@ -180,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			url: urlCart,
 			datatype: 'json',
 			success: function (data){
-
+				swal("Added to your cart!", "Your cart has been updated!", "success");
 			},
 			error: function(){
 
@@ -190,6 +190,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	$(function (){
 		$('.item_add').on('click',addToCart);
+	});
+</script>
+
+<script>
+	var text = $("#product-quantity");
+	var form = $("#myform");
+	console.log(text);
+	text.bind("change keyup", function() {
+		if( $(this).val() > 1 )
+		$("#myform").submit();
 	});
 </script>
 </html>

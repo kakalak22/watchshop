@@ -32,6 +32,7 @@ Route::get('/product-details/{product_id}','ProductController@ProductDetail');
 Route::get('/show-cart','CartController@showCart');
 Route::get('/add-to-cart/{id}','CartController@addToCart');
 Route::get('/delete-cart-item/{rowId}','CartController@deleteItem');
+Route::post('/update-quantity', 'CartController@updateQuantity')->name('update-quantity');
 //checkout
 Route::get('/checkout','CartController@checkout');
 Route::post('/store-shipping-information','CartController@saveShipDetail');

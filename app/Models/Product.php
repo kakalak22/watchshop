@@ -19,7 +19,7 @@ class Product extends Model
     }
 
     public function product_image(){
-        return $this->belongsTo('App\Models\ProductImage','image_id','id');
+        return $this->hasMany('App\Models\ProductImage','product_id','id');
     }
 
     public function brand(){
