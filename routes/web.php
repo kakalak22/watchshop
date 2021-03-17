@@ -31,10 +31,9 @@ Route::get('/product-details/{product_id}','ProductController@ProductDetail');
 //cart
 Route::get('/show-cart','CartController@showCart');
 Route::get('/add-to-cart/{id}','CartController@addToCart');
-<<<<<<< HEAD
-=======
 Route::get('/delete-cart-item/{rowId}','CartController@deleteItem');
 Route::post('/update-quantity', 'CartController@updateQuantity')->name('update-quantity');
+Route::post('/update-quantity-product', 'CartController@updateQuantityProduct')->name('update-quantity-product');
 //checkout
 Route::get('/checkout','CartController@checkout');
 Route::post('/store-shipping-information','CartController@saveShipDetail');
@@ -106,4 +105,3 @@ Route::prefix('admin')->group(function () {
 // Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
 //     '\vendor\uniSharp\LaravelFilemanager\Lfm::routes()';
 // });
->>>>>>> b8395b845a2e041aabacd10de730695c363ca12d

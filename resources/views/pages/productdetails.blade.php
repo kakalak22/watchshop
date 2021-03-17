@@ -83,14 +83,24 @@
 								<div class="clearfix"> </div>
 							</ul>
 						</div>
+						<form action="{{ route('update-quantity-product') }}" method="post" class="frm-quantity">
 							<ul class="tag-men">
 								<li><span>TAG</span>
-								<span class="women1">: {{$item->Category->name}}</span></li>
+								<span>: {{$item->Category->name}}</span></li>
 								<li><span>BRAND</span>
-								<span class="women1">: {{$item->Brand->name}}</span></li>
+								<span>: {{$item->Brand->name}}</span></li>
+								<li><span>STOCK</span>
+								<span>: {{$item->quantity}}</span></li>
+								<li>
+									
+										@csrf
+										<input type="hidden" name="id" value="{{ $item->id }}">
+										<input type="text" class="qty" name="qty" data-max="120" pattern="[0-9]*" >
+									
+								</li>
+								<button type="submit" class="add-cart">ADD TO CART</button>
 							</ul>
-								<a href="#" class="add-cart item_add">ADD TO CART</a>
-
+						</form>
 						</div>
 					</div>
 					<div class="clearfix"> </div>

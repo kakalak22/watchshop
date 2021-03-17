@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <!--start-breadcrumbs-->
+	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
 		<div class="container">
 			<div class="breadcrumbs-main">
@@ -13,6 +13,10 @@
 	</div>
 	<!--end-breadcrumbs-->
 	<!--start-ckeckout-->
+	<?php
+	$count = Cart::count();
+	if($count > 0){
+		?>
 	<div class="ckeckout">
 		<div class="container">
 			<div class="row">
@@ -85,10 +89,12 @@
 								<td>   </td>
 								<td>   </td>
 								<td>   </td>
-								<td>
-								<button type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-								</button></td>
+								<td><a href="{{URL::to('/all-product-by-brand')}}">
+									<button type="button" class="btn btn-default" >
+										<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+									</button>
+								</a>
+								</td>
 								<td>
 								<a type="button" class="btn btn-success" href = "{{URL::to('/checkout')}}">
 									Checkout <span class="glyphicon glyphicon-play"></span>
@@ -100,5 +106,23 @@
 			</div>
 		</div>
 	</div>
+	<?php
+	} 
+	else{
+	?>
+	<div class="ckeckout">
+		<div class="container">
+			<h4>There is no item in your cart!</h4>
+			<a href="{{URL::to('/all-product-by-brand')}}">
+				<button type="button" class="btn btn-default" >
+					<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+				</button>
+			</a>
+		</div>
+	</div>
+	<?php
+	}
+	?>
+	
 	<!--end-ckeckout--> 
 @endsection

@@ -25,11 +25,7 @@ class ComposerAutoloaderInitb385a1dcd2e0feb1f1e0acf36066967e
         require __DIR__ . '/platform_check.php';
 
         spl_autoload_register(array('ComposerAutoloaderInitb385a1dcd2e0feb1f1e0acf36066967e', 'loadClassLoader'), true, true);
-<<<<<<< HEAD
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
-=======
-        self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(\dirname(__FILE__)));
->>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
         spl_autoload_unregister(array('ComposerAutoloaderInitb385a1dcd2e0feb1f1e0acf36066967e', 'loadClassLoader'));
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION') && (!function_exists('zend_loader_file_encoded') || !zend_loader_file_encoded());

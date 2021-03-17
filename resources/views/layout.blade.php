@@ -184,7 +184,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				title: "Added to cart!",
 				text: "Your cart has been updated!",
 				icon: "success",
-  				Button: false,
 				timer: 1000
 });
 			},
@@ -212,6 +211,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}else {
 				if (parseInt(_current_value, 10) < parseInt(_max_value, 10)) _input.val(parseInt(_current_value, 10) + 1);
 			}
+			var form = $(_this.closest('form'));
+			form.submit();
+		});
+	}
+</script>
+
+<script>
+	if($(".frm-quantity").length > 0){
+		$(".frm-quantity").on('click', 'add-cart', function(event) {
+			event.preventDefault();
 			var form = $(_this.closest('form'));
 			form.submit();
 		});

@@ -1674,7 +1674,7 @@ ul.tag-men li {
 ul.tag-men li span.women1 {
     margin-left: 9em;
 }
-a.add-cart {
+button.add-cart {
     text-decoration: none;
     color: #fff;
     background: #000;
@@ -1684,7 +1684,7 @@ a.add-cart {
     margin-top: 2em;
     display: inline-block;
 }
-a.add-cart:hover {
+button.add-cart:hover {
 	background: #73b6e1;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;

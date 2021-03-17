@@ -7,8 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
-<<<<<<< HEAD
-=======
     'DevMarketer\\EasyNav' => array($vendorDir . '/devmarketer/easynav/src'),
->>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
 );

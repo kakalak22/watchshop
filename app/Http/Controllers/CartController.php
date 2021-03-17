@@ -46,13 +46,30 @@ class CartController extends Controller
         $id = $request->pid;
         $quantity = $request->input('product-quantity');
         //dd($id,$quantity);
-            Cart::update($id,$quantity);
+        Cart::update($id,$quantity);
         return back();
         // return view('view-cart');
     }
 
-    public function saveCartDetail(Request $request){
-
+    public function updateQuantityProduct(Request $request)
+    {
+        $id = $request->id;
+        $dataP = $request->all();
+        $product = Product::find($id);
+        $brand_id = $product->brand_id;
+        $brand = Brand::find($brand_id);
+        $data['id'] = $product->id;
+        $data['name'] = $product->name;
+        $data['qty'] = $dataP['qty'];
+        $data['price'] = $product->price;
+        $data['weight'] = 0;
+        $data['options']['image'] = $product->feature_image;
+        $data['options']['brand'] = $brand->name;
+        Cart::add($data);
+        //dd($data);
+        //Cart::update($id,$quantity);
+        return back();
+        // return view('view-cart');
     }
     public function saveShipDetail(Request $request){
         $data = $request->all();
