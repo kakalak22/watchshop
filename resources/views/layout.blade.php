@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-<link href="{{asset('frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
@@ -21,7 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="{{asset('frontend/js/memenu.js')}}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>			
+<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>		
+<script>
+	simpleCart({
+    currency: "BTC" // set the currency to pounds sterling
+});	
+</script>	
+<script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
 </head>
 <body> 
 	<!--top-header-->
@@ -62,12 +69,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="{{URL::to('/home')}}">Home</a></li>
+					<ul class="memenu skyblue"><li class="{{ Nav::isRoute('home') }}"><a href="{{URL::to('/home')}}">Home</a></li>
 						@foreach ($product_type as $item)
-						<li class="grid"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
+						<li class="grid {{ Nav::isResource($item->id, 'product-by-cate', NULL, FALSE) }}"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
 						</li>
 						@endforeach
-						<li class="grid"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
+						<li class="grid {{ Nav::isRoute('brand-product') }}"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
 							
 							<div class="mepanel">
 								<div class="row">
@@ -164,4 +171,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--footer-end-->	
 </body>
+<script>
+	function addToCart(event){
+		event.preventDefault();
+		let urlCart = $(this).data('url');
+		$.ajax({
+			type: "GET",
+			url: urlCart,
+			datatype: 'json',
+			success: function (data){
+				swal({
+				title: "Added to cart!",
+				text: "Your cart has been updated!",
+				icon: "success",
+  				Button: false,
+				timer: 1000
+});
+			},
+			error: function(){
+
+			}
+		});
+	}
+
+	$(function (){
+		$('.item_add').on('click',addToCart);
+	});
+</script>
+
+<script>
+	if($(".frm-update-quantity .quantity-input").length > 0){
+		$(".frm-update-quantity .quantity-input").on('click', '.btn', function(event) {
+			event.preventDefault();
+			var _this = $(this),
+				_input = _this.siblings('input[name=product-quantity]'),
+				_current_value = _this.siblings('input[name=product-quantity]').val(),
+				_max_value = _this.siblings('input[name=product-quantity]').attr('data-max');
+			if(_this.hasClass('btn-reduce')){
+				if (parseInt(_current_value, 10) > 0) _input.val(parseInt(_current_value, 10) - 1);
+			}else {
+				if (parseInt(_current_value, 10) < parseInt(_max_value, 10)) _input.val(parseInt(_current_value, 10) + 1);
+			}
+			var form = $(_this.closest('form'));
+			form.submit();
+		});
+	}
+</script>
 </html>

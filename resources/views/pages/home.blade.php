@@ -91,8 +91,13 @@
 							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$item->feature_image}}" alt="" /></a>
 							<div class="product-bottom">
 								<h3>{{$item->name}}</h3>
+<<<<<<< HEAD
 								<p>Explore Now</p>
 								<h4><a class="item_add" href="#"
+=======
+								<a href="{{URL::to('/product-details/'.$item->id)}}"><p>Explore Now</p></a>
+								<h4><a class="item_add" href="#" 
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
 									data-url="{{URL::to('/add-to-cart/'.$item->id)}}";
 									><i></i></a> <span class=" item_price">{{number_format($item->price)}} đ</span></h4>
 							</div>

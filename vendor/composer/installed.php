@@ -1,12 +1,21 @@
 <?php return array (
   'root' => 
   array (
+<<<<<<< HEAD
     'pretty_version' => 'v8.5.12',
     'version' => '8.5.12.0',
     'aliases' => 
     array (
     ),
     'reference' => NULL,
+=======
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
+    'aliases' => 
+    array (
+    ),
+    'reference' => '7b86c0ee6091a4448f88a8821393a3f4c8e560cb',
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -29,6 +38,18 @@
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
     ),
+<<<<<<< HEAD
+=======
+    'bumbummen99/shoppingcart' => 
+    array (
+      'pretty_version' => '4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f2c763e311b0fc58b2dfdfa2c41c6318a7c884e1',
+    ),
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     'cordoval/hamcrest-php' => 
     array (
       'replaced' => 
@@ -43,6 +64,18 @@
         0 => '*',
       ),
     ),
+<<<<<<< HEAD
+=======
+    'devmarketer/easynav' => 
+    array (
+      'pretty_version' => 'v1.0.4',
+      'version' => '1.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '517a7d5a35f443574c0ce883d458849cae7b3330',
+    ),
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     'dnoegel/php-xdg-base-dir' => 
     array (
       'pretty_version' => 'v0.1.1',
@@ -422,6 +455,18 @@
         0 => 'v8.30.0',
       ),
     ),
+<<<<<<< HEAD
+=======
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'abbf18d5ab8367f96b3205ca3c89fb2fa598c69e',
+    ),
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -438,6 +483,7 @@
       ),
       'reference' => '81ef9850cc388f2f92b868fb35ffb76f0c9a0f46',
     ),
+<<<<<<< HEAD
     'laravel/laravel' => 
     array (
       'pretty_version' => 'v8.5.12',
@@ -446,6 +492,25 @@
       array (
       ),
       'reference' => NULL,
+=======
+    'laravel/helpers' => 
+    array (
+      'pretty_version' => 'v1.4.1',
+      'version' => '1.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'febb10d8daaf86123825de2cb87f789a3371f0ac',
+    ),
+    'laravel/laravel' => 
+    array (
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7b86c0ee6091a4448f88a8821393a3f4c8e560cb',
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     ),
     'laravel/sail' => 
     array (
@@ -760,8 +825,13 @@
     array (
       'provided' => 
       array (
+<<<<<<< HEAD
         0 => '1.0',
         1 => '1.0.0',
+=======
+        0 => '1.0.0',
+        1 => '1.0',
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
       ),
     ),
     'psr/simple-cache' => 
@@ -1244,6 +1314,18 @@
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
     ),
+<<<<<<< HEAD
+=======
+    'unisharp/laravel-filemanager' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '34202590a88ecfc598c6dc70dae8b306710d4df2',
+    ),
+>>>>>>> b8395b845a2e041aabacd10de730695c363ca12d
     'vlucas/phpdotenv' => 
     array (
       'pretty_version' => 'v5.3.0',
