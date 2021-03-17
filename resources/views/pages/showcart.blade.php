@@ -90,5 +90,5 @@
 		 </div>
 		</div>
 	</div>
-	<!--end-ckeckout-->
+	<!--end-ckeckout--> 
 @endsection
