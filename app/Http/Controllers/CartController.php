@@ -46,7 +46,7 @@ class CartController extends Controller
         $id = $request->pid;
         $quantity = $request->input('product-quantity');
         //dd($id,$quantity);
-        Cart::update($id,$quantity);
+            Cart::update($id,$quantity);
         return back();
         // return view('view-cart');
     }

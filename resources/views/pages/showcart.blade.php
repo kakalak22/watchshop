@@ -42,14 +42,13 @@
 									{{-- <a href="#" style="font-size: 20px;" >+</a>	
 									<input type="qty" class="form-control" name="qty" value="{{$item->qty}}">
 									<a href="#" style="font-size: 20px;" >-</a>	 --}}
-									<form action="{{ route('update-quantity') }}" method="post" id="myform">
+									<form action="{{ route('update-quantity') }}" method="post" class="frm-update-quantity">
 										@csrf
-										<input type="hidden" id="sID" name="pid" value="{{ $item->rowId }}">
+										<input type="hidden" name="pid" value="{{ $item->rowId }}">
 										<div class="quantity-input">
-											{{-- <input type="number" class="form-control" name="product-quantity" value="{{$item->qty}}">
-											<a class="btn btn-increase" href="#">+</a>
-											<a class="btn btn-reduce" href="#">-</a> 	 --}}
-												<input type="number" id="product-quantity" name="product-quantity" value="{{$item->qty}}" max="100" />
+											<a class="btn btn-primary btn-increase" href="#">+</a>
+											<input type="text" class="quantity-input" name="product-quantity" value="{{ $item->qty }}" data-max="120" pattern="[0-9]*" >									
+											<a class="btn btn-primary btn-reduce" href="#">-</a>
 										</div>
 									</form>
 								</td>

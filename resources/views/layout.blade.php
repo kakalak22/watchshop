@@ -180,7 +180,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			url: urlCart,
 			datatype: 'json',
 			success: function (data){
-				swal("Added to your cart!", "Your cart has been updated!", "success");
+				swal({
+				title: "Added to cart!",
+				text: "Your cart has been updated!",
+				icon: "success",
+  				Button: false,
+				timer: 1000
+});
 			},
 			error: function(){
 
@@ -194,12 +200,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 <script>
-	var text = $("#product-quantity");
-	var form = $("#myform");
-	console.log(text);
-	text.bind("change keyup", function() {
-		if( $(this).val() > 1 )
-		$("#myform").submit();
-	});
+	if($(".frm-update-quantity .quantity-input").length > 0){
+		$(".frm-update-quantity .quantity-input").on('click', '.btn', function(event) {
+			event.preventDefault();
+			var _this = $(this),
+				_input = _this.siblings('input[name=product-quantity]'),
+				_current_value = _this.siblings('input[name=product-quantity]').val(),
+				_max_value = _this.siblings('input[name=product-quantity]').attr('data-max');
+			if(_this.hasClass('btn-reduce')){
+				if (parseInt(_current_value, 10) > 0) _input.val(parseInt(_current_value, 10) - 1);
+			}else {
+				if (parseInt(_current_value, 10) < parseInt(_max_value, 10)) _input.val(parseInt(_current_value, 10) + 1);
+			}
+			var form = $(_this.closest('form'));
+			form.submit();
+		});
+	}
 </script>
 </html>
