@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-<link href="{{asset('frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
@@ -21,7 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="{{asset('frontend/js/memenu.js')}}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>			
+<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>		
+<script>
+	simpleCart({
+    currency: "BTC" // set the currency to pounds sterling
+});	
+</script>	
+<script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
 </head>
 <body> 
 	<!--top-header-->
@@ -36,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="{{URL::to('/show-cart')}}">
 							 <div class="total">
 								<span class="simpleCart_total"></span></div>
 								<img src="{{asset('frontend/images/cart-1.png')}}" alt="" />
@@ -62,12 +69,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="{{URL::to('/home')}}">Home</a></li>
+					<ul class="memenu skyblue"><li class="{{ Nav::isRoute('home') }}"><a href="{{URL::to('/home')}}">Home</a></li>
 						@foreach ($product_type as $item)
-						<li class="grid"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
+						<li class="grid {{ Nav::isResource($item->id, 'product-by-cate', NULL, FALSE) }}"><a href="{{URL::to('/product-by-cate/'.$item->id)}}">{{$item->name}}</a>
 						</li>
 						@endforeach
-						<li class="grid"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
+						<li class="grid {{ Nav::isRoute('brand-product') }}"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
 							
 							<div class="mepanel">
 								<div class="row">
@@ -164,4 +171,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--footer-end-->	
 </body>
+<script>
+	function addToCart(event){
+		event.preventDefault();
+		let urlCart = $(this).data('url');
+		$.ajax({
+			type: "GET",
+			url: urlCart,
+			datatype: 'json',
+			success: function (data){
+				swal("Added to your cart!", "Your cart has been updated!", "success");
+			},
+			error: function(){
+
+			}
+		});
+	}
+
+	$(function (){
+		$('.item_add').on('click',addToCart);
+	});
+</script>
+
+<script>
+	var text = $("#product-quantity");
+	var form = $("#myform");
+	console.log(text);
+	text.bind("change keyup", function() {
+		if( $(this).val() > 1 )
+		$("#myform").submit();
+	});
+</script>
 </html>

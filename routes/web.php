@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BrandController;
@@ -20,21 +21,24 @@ use App\Http\Controllers\HomeController;
 //CLIENT
 
 //home
-Route::get('/home', 'HomeController@getIndex');
+Route::get('/home','HomeController@getIndex')->name('home');
 //category
-Route::get('/product-by-cate/{category_id}', 'CategoryController@ProductByCategory');
+Route::get('/product-by-cate/{category_id}','CategoryController@ProductByCategory')->name('cate-product');
 //brand
-Route::get('/all-product-by-brand', 'BrandController@AllBrandProduct');
-Route::get('/product-by-brand/{brand_id}', 'BrandController@ProductByBrand');
+Route::get('/all-product-by-brand','BrandController@AllBrandProduct')->name('brand-product');
+Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
 //product
-Route::get('/product-details/{product_id}', 'ProductController@ProductDetail');
-
-
-
-// ADMIN
-
-//admin home
-
+Route::get('/product-details/{product_id}','ProductController@ProductDetail');
+//cart
+Route::get('/show-cart','CartController@showCart');
+Route::get('/add-to-cart/{id}','CartController@addToCart');
+Route::get('/delete-cart-item/{rowId}','CartController@deleteItem');
+Route::post('/update-quantity', 'CartController@updateQuantity')->name('update-quantity');
+//checkout
+Route::get('/checkout','CartController@checkout');
+Route::post('/store-shipping-information','CartController@saveShipDetail');
+Route::get('/success','CartController@success');
+//admin
 Route::get('/admin_home', 'HomeController@AdminHome');
 Route::get('/admin_login', 'HomeController@AdminLogin');
 Route::get('/user', 'HomeController@user');

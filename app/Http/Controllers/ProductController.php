@@ -12,8 +12,10 @@ class ProductController extends Controller
 {
     public function ProductDetail($product_id)
     {
-        $pro = Product::where('id', $product_id)->with('category')->with('brand')->with('product_image')->get();
+        $pro = Product::where('id', $product_id)->with('category')->with('brand')->get();
         //dd($pro);
-        return view('pages.productdetails', compact('pro'));
+        $image = ProductImage::where('product_id',$product_id)->get();
+        //dd($image);
+        return view('pages.productdetails', compact('pro'), compact('image'));
     }
 }
