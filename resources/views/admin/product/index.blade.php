@@ -4,6 +4,15 @@
 <title>Add Product</title>
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('admins/product/index/list.css')}}">
+@endsection
+
+@section('js')
+    <script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/product/index/list.js')}}"></script>
+@endsection
+
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -23,7 +32,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Feature Image</th>
-                                <th scope="col">Description</th>
+                                {{-- <th scope="col">Description</th> --}}
                                 <th scope="col">Category</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Brand</th>
@@ -31,29 +40,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($categories as $cate) --}}
+                            @foreach($products as $product)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Coat</td>
-                                <td>500000</td>
-                                <td><img src="" alt=""></td>
-                                <td>abc</td>
-                                <td>Khoat Nam</td>
-                                <td>5</td>
-                                <td>Lu Is Vi Ton</td>
-                                <td><a href=""
-                                        class="btn btn-default">Edit</a>
-                                    <a href=""
-                                        class="btn btn-danger">Delete</a>
+                                <th scope="row">{{$product->id}}</th>
+                                <td>{{$product->name}}</td>
+                                <td>{{ number_format($product->price)}}</td>
+                                <td><img class="product_image_150_100" src="{{URL::to($product->feature_image) }}" alt=""></td>
+                                {{-- <td>{{$product->content}}</td> --}}
+                                <td>{{ optional($product->category)->name}}</td>
+                                <td>{{$product->quantity}}</td>
+                                <td>{{$product->brand->name}}</td>
+                                <td><a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-default">Edit</a>
+                                    <a href="" data-url="{{route('product.delete', ['id' => $product->id])}}" class="btn btn-danger action_delete">Delete</a>
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-md-12">
-                {{-- {{ $categories->links() }} --}}
+                {{ $products->links() }}
             </div>
         </div>
     </div>

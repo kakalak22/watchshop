@@ -19,51 +19,37 @@
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
-        @include('admin.partials.content-header', ['name' => 'Product', 'key' => 'Add'])
-        <div class="col-md-12">
-            {{-- @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif --}}
-        </div>
+        @include('admin.partials.content-header', ['name' => 'Product', 'key' => 'Edit'])
     </div>
     <div class="container">
-        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md">
+                        <div class="col-md -6">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Product Name:</label>
-                                        <input type="text" name="name" class="form-control" @error('name') is-invalid
-                                            @enderror placeholder="Enter Product Name" value="{{old('name')}}">
-                                        @error('name')
-                                        <p class="pt-1" style="color: red">{{ $message }}</p>
-                                        @enderror
+                                        <input type="text" name="name" class="form-control"
+                                            placeholder="Enter Product Name" value="{{$product->name}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Price:</label>
-                                        <input type="text" name="price" class="form-control" @error('price') is-invalid
-                                            @enderror placeholder="Enter Price" value="{{old('price')}}">
-                                        @error('price')
+                                        <input type="text" name="price" class="form-control"  placeholder="Enter Price"
+                                            value="{{$product->price}}">
+                                            {{-- @error('price')
                                         <p class="pt-1" style="color: red">{{ $message }}</p>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
 
-                                    <div>
+
+                                    <div class="mt-2">
                                         <label>Category:</label>
-                                        <select class="form-control"
-                                            name="category ">
-                                            <option disabled selected>Select Category</option>
+                                        <select class="form-control" name="category" >
+                                            <option>{{$product->category->name}}</option>
                                             @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}
                                             </option>
@@ -73,51 +59,68 @@
                                         <p class="pt-1" style="color: red">{{ $message }}</p>
                                         @enderror --}}
                                     </div>
+
                                     <div class="mt-2">
                                         <label>Brand:</label>
-                                        <select class="form-control" name="brand">
+                                        <select class="form-control"  name="brand">
                                             <label>Brand:</label>
-                                            <option disabled selected>Select Brand</option>
+                                            <option>{{$product->brand->name}}</option>
                                             @foreach($brands as $brand)
                                             <option value="{{ $brand->id }}"> {{ $brand->name }}
                                             </option>
                                             @endforeach
                                         </select>
-                                        {{-- @error('brand_id')
+                                         {{-- @error('brand_id')
                                         <p class="pt-1" style="color: red">{{ $message }}</p>
                                         @enderror --}}
                                     </div>
 
-                                    <div class="form-group mt-2">
+                                    <div class="form-group" class="mt-2">
                                         <label>Feature Image:</label>
                                         <input type="file" name="feature_image" class="form-control-file"
                                             style="width:100%;">
+                                        <div class="col-md-12 container_image_detail">
+                                            <div class="row">
+                                                <img class="image_feature_product"
+                                                    src="{{URL::to($product->feature_image) }}" alt="">
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Detailed Images:</label>
                                         <input type="file" multiple name="image_path[]" class="form-control-file">
+                                        <div class="col-md-12 container_image_detail">
+                                            <div class="row">
+                                                @foreach($product->product_image as $productImageItem)
+                                                <div class="col-md-3">
+                                                    <img class="image_detail_product"
+                                                        src="{{URL::to($productImageItem->image_path) }}" alt="">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Quantity:</label>
-                                        <input type="number" name="quantity" class="form-control" @error('quantity')
-                                            is-invalid @enderror placeholder="Enter Quantity" value="{{old('quantity')}}">
-                                        @error('quantity')
+                                        <input type="number" name="quantity" class="form-control"
+                                            placeholder="Enter Quantity" value="{{$product->quantity}}">
+                                             {{-- @error('quantity')
                                         <p class="pt-1" style="color: red">{{ $message }}</p>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Descriptions:</label>
-                                        <textarea type="text" name="descriptions" @error('descriptions') is-invalid
-                                            @enderror class="form-control tinymce_editor_init"
-                                            placeholder="Enter Descriptions" value="{{old('descriptions')}}"></textarea>
-                                        @error('descriptions')
+                                        <textarea type="text" name="descriptions"
+                                            class="form-control tinymce_editor_init"
+                                            placeholder="Enter Descriptions">{{$product->content}}</textarea>
+                                            {{-- @error('descriptions')
                                         <p class="pt-1" style="color: red">{{ $message }}</p>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
