@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Categories;
+use App\Traits\DeleteModelTrait;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
 
     private $category;
+    use DeleteModelTrait;
 
     public function __construct(Categories $category)
     {
@@ -62,7 +64,6 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $this->category->find($id)->delete();
-        return \redirect()->route('categories.index');
+        return $this->deleteModelTrait($id, $this->category);
     }
 }

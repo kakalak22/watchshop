@@ -7,12 +7,12 @@
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
-<!--theme-style-->	
-<link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />	
+<!--theme-style-->
+<link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
@@ -20,17 +20,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('frontend/js/simpleCart.min.js')}}"> </script>
 <link href="{{asset('frontend/css/memenu.css')}}" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="{{asset('frontend/js/memenu.js')}}"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
-<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>		
+<script src="{{asset('frontend/js/jquery.easydropdown.js')}}"></script>
 <script>
 	simpleCart({
     currency: "BTC" // set the currency to pounds sterling
-});	
-</script>	
+});
+</script>
 <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
 </head>
-<body> 
+<body>
 	<!--top-header-->
 	<div class="top-header">
 		<div class="container">
@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
-						
+
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 						@endforeach
 						<li class="grid {{ Nav::isRoute('brand-product') }}"><a href="{{URL::to('/all-product-by-brand')}}">Brands</a>
-							
+
 							<div class="mepanel">
 								<div class="row">
 									<div class="col1 me-one">
@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											@foreach ($product_brand as $key)
 											<li><a href="{{URL::to('/product-by-brand/'.$key->id)}}">{{$key->name}}</a></li>
 											@endforeach
-										</ul>		
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<div class="col-md-3 header-right"> 
+			<div class="col-md-3 header-right">
 				<div class="search-bar">
 					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 					<input type="submit" value="">
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h4>The company name,
 						<span>Lorem ipsum dolor,</span>
 						Glasglow Dr 40 Fe 72.</h4>
-					<h5>+955 123 4567</h5>	
+					<h5>+955 123 4567</h5>
 					<p><a href="mailto:example@email.com">contact@example.com</a></p>
 				</div>
 				<div class="clearfix"></div>
@@ -162,14 +162,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="submit" value="Subscribe">
 					</form>
 				</div>
-				<div class="col-md-6 footer-right">					
+				<div class="col-md-6 footer-right">
 					<p>© 2015 Luxury Watches. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
-	<!--footer-end-->	
+	<!--footer-end-->
 </body>
 <script>
 	function addToCart(event){

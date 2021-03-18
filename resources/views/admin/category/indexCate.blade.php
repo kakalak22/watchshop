@@ -1,7 +1,12 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Main Admin</title>
+<title>List Category</title>
+@endsection
+
+@section('js')
+    <script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/product/index/list.js')}}"></script>
 @endsection
 
 @section('content')
@@ -31,8 +36,7 @@
                                 <td>{{$cate->name}}</td>
                                 <td><a href="{{ route('categories.edit', ['id' => $cate->id]) }}"
                                         class="btn btn-default">Edit</a>
-                                    <a href="{{ route('categories.delete', ['id' => $cate->id]) }}"
-                                        class="btn btn-danger">Delete</a>
+                                     <a href="" data-url="{{route('categories.delete', ['id' => $cate->id])}}" class="btn btn-danger action_delete">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

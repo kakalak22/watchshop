@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -21,23 +22,23 @@ use App\Http\Controllers\HomeController;
 //CLIENT
 
 //home
-Route::get('/home','HomeController@getIndex')->name('home');
+Route::get('/home', 'HomeController@getIndex')->name('home');
 //category
-Route::get('/product-by-cate/{category_id}','CategoryController@ProductByCategory')->name('cate-product');
+Route::get('/product-by-cate/{category_id}', 'CategoryController@ProductByCategory')->name('cate-product');
 //brand
-Route::get('/all-product-by-brand','BrandController@AllBrandProduct')->name('brand-product');
-Route::get('/product-by-brand/{brand_id}','BrandController@ProductByBrand');
+Route::get('/all-product-by-brand', 'BrandController@AllBrandProduct')->name('brand-product');
+Route::get('/product-by-brand/{brand_id}', 'BrandController@ProductByBrand');
 //product
-Route::get('/product-details/{product_id}','ProductController@ProductDetail');
+Route::get('/product-details/{product_id}', 'ProductController@ProductDetail');
 //cart
-Route::get('/show-cart','CartController@showCart');
-Route::get('/add-to-cart/{id}','CartController@addToCart');
-Route::get('/delete-cart-item/{rowId}','CartController@deleteItem');
+Route::get('/show-cart', 'CartController@showCart');
+Route::get('/add-to-cart/{id}', 'CartController@addToCart');
+Route::get('/delete-cart-item/{rowId}', 'CartController@deleteItem');
 Route::post('/update-quantity', 'CartController@updateQuantity')->name('update-quantity');
 //checkout
-Route::get('/checkout','CartController@checkout');
-Route::post('/store-shipping-information','CartController@saveShipDetail');
-Route::get('/success','CartController@success');
+Route::get('/checkout', 'CartController@checkout');
+Route::post('/store-shipping-information', 'CartController@saveShipDetail');
+Route::get('/success', 'CartController@success');
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome');
 Route::get('/admin_login', 'HomeController@AdminLogin');
@@ -96,7 +97,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [AdminProductController::class, 'delete'])->name('product.delete');
     });
 
-    //product
+    //user
     Route::prefix('users')->group(function () {
 
         Route::get('/', 'AdminUserController@index')->name('users.index');
@@ -111,13 +112,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('users.delete');
     });
+
+    //roles
+    Route::prefix('roles')->group(function () {
+
+        Route::get('/', 'AdminRoleController@index')->name('roles.index');
+
+        Route::get('/create', [AdminRoleController::class, 'create'])->name('roles.create');
+    });
 });
-
-
-
-
-
-
-// Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
-//     '\vendor\uniSharp\LaravelFilemanager\Lfm::routes()';
-// });

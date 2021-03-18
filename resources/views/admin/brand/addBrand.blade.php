@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Main Admin</title>
+<title>Add Brand</title>
 @endsection
 
 @section('content')
