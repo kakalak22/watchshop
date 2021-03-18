@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Brand;
+use App\Traits\DeleteModelTrait;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
 
+    use DeleteModelTrait;
     private $brand;
 
     public function __construct(Brand $brand)
@@ -68,7 +70,6 @@ class BrandController extends Controller
 
     public function delete($id)
     {
-        $this->brand->find($id)->delete();
-        return \redirect()->route('brands.index');
+        return $this->deleteModelTrait($id, $this->brand);
     }
 }

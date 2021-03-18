@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Main Admin</title>
+<title>Edit Category</title>
 @endsection
 
 @section('content')
