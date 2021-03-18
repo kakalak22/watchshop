@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 //CLIENT
-
+// Search
+Route::get("search",[ProductController::class,'search']);
 //home
 Route::get('/home', 'HomeController@getIndex')->name('home');
 //category
