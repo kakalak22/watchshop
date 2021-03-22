@@ -12,7 +12,9 @@
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
+        @can('brand-add')
         @include('admin.partials.content-header', ['name' => 'Brand', 'key' => 'List'])
+        @endcan
     </div>
     <div class="content">
         <div class="container-fluid">
@@ -34,9 +36,14 @@
                             <tr>
                                 <th scope="row">{{$br->id}}</th>
                                 <td>{{$br->name}}</td>
-                                <td><a href="{{ route('brands.edit', ['id' => $br->id]) }}"
+                                <td>
+                                @can('brand-edit')
+                                    <a href="{{ route('brands.edit', ['id' => $br->id]) }}"
                                         class="btn btn-default">Edit</a>
+                                @endcan
+                                @can('brand-delete')
                                   <a href="" data-url="{{route('brands.delete', ['id' => $br->id])}}" class="btn btn-danger action_delete">Delete</a>
+                                @endcan
                                 </td>
                             </tr>
                             @endforeach

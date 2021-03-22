@@ -69,6 +69,9 @@
 
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
+                                          <a class="btn btn-danger" href="{{route('users.index')}}">
+                                        Cancel
+                                          </a>
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,9 @@
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
+        @can('role-add')
         @include('admin.partials.content-header', ['name' => 'Role', 'key' => 'List'])
+        @endcan
     </div>
     <div class="content">
         <div class="container-fluid">
@@ -36,9 +38,15 @@
                                 <th scope="row">{{$role->id}}</th>
                                 <td>{{$role->name}}</td>
                                 <td>{{$role->display_name}}</td>
-                                <td><a href=""
+                                <td>
+                                    @can('role-edit')
+                                    <a href="{{ route('roles.edit', ['id' => $role->id])}}"
                                         class="btn btn-default">Edit</a>
-                                        <a data-url="" href="" class="btn btn-danger action_delete">Delete</a>
+                                    @endcan
+
+                                    @can('role-delete')
+                                    <a href="" data-url="{{route('roles.delete', ['id' => $role->id])}}" class="btn btn-danger action_delete">Delete</a>
+                                    @endcan
                                 </td>
                             </tr>
 
@@ -48,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                {{-- {{ $categories->links() }} --}}
+                {{ $roles->links() }}
             </div>
         </div>
     </div>

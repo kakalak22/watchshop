@@ -38,8 +38,8 @@ class AdminProductController extends Controller
 
     public function create()
     {
-        $categories = $this->category->all();
-        $brands = $this->brand->all();
+        $categories = $this->category->latest()->simplePaginate(0);
+        $brands = $this->brand->latest()->simplePaginate(0);
         return \view('admin.product.add', compact('categories', 'brands'));
     }
 
@@ -54,8 +54,7 @@ class AdminProductController extends Controller
                 'content' => $request->descriptions,
                 'category_id' => $request->category,
                 'quantity' => $request->quantity,
-                'brand_id' => $request->brand,
-                'new' => $request->new
+                'brand_id' => $request->brand
 
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image', 'product');
@@ -65,11 +64,13 @@ class AdminProductController extends Controller
             }
             $product = $this->product->create($dataProductCreate);
 
+
             // insert data product_image
             if ($request->hasFile('image_path')) {
+
                 foreach ($request->image_path as $fileItem) {
                     $dataProductImageDetails = $this->storageTraitUploadMultiple($fileItem, 'product');
-                    $product->product_image()->create([
+                    $product->productImages()->create([
                         'image_path' => $dataProductImageDetails['file_path'],
                         'image_name' => $dataProductImageDetails['file_name']
                     ]);
@@ -116,7 +117,7 @@ class AdminProductController extends Controller
                 $this->productImage->where('product_id', $id)->delete();
                 foreach ($request->image_path as $fileItem) {
                     $dataProductImageDetails = $this->storageTraitUploadMultiple($fileItem, 'product');
-                    $product->product_image()->create([
+                    $product->productImages() > create([
                         'image_path' => $dataProductImageDetails['file_path'],
                         'image_name' => $dataProductImageDetails['file_name']
                     ]);

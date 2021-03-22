@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
@@ -41,85 +42,106 @@ Route::post('/update-quantity', 'CartController@updateQuantity')->name('update-q
 Route::get('/checkout', 'CartController@checkout');
 Route::post('/store-shipping-information', 'CartController@saveShipDetail');
 Route::get('/success', 'CartController@success');
+
+
+
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome');
-Route::get('/admin_login', 'HomeController@AdminLogin');
-Route::get('/user', 'HomeController@user');
-Route::get('/admin', 'HomeController@admin');
-Route::get('/order', 'HomeController@order');
+Route::get('/login', 'HomeController@getLoginAdmin');
+Route::post('/login', 'HomeController@postLoginAdmin')->name('admin.login');
+Route::get('/logout', 'HomeController@logout')->name('admin.logout');
+
 
 // category
 Route::prefix('admin')->group(function () {
+
+
+
     //create category by admin
-    // Route::post('/store', 'CategoryController@store');
     Route::prefix('categories')->group(function () {
 
-        Route::get('/', [CategoryController::class, 'adminIndexCate'])->name('categories.index');
+        Route::get('/', [CategoryController::class, 'adminIndexCate'])->name('categories.index')->middleware('can:category-list');
 
-        Route::get('/adminCreateCate', [CategoryController::class, 'adminCreateCate'])->name('categories.create');
+        Route::get('/adminCreateCate', [CategoryController::class, 'adminCreateCate'])->name('categories.create')->middleware('can:category-add');
 
         route::post('/store', [CategoryController::class, 'store'])->name('categories.store');
 
-        route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+        route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit')->middleware('can:category-edit');
 
         route::post('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
-        route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
+        route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('categories.delete')->middleware('can:category-delete');
     });
 
     //brand
     Route::prefix('brands')->group(function () {
 
-        Route::get('/', 'BrandController@index')->name('brands.index');
+        Route::get('/', 'BrandController@index')->name('brands.index')->middleware('can:brand-list');
 
-        Route::get('/addBrand', [BrandController::class, 'addBrand'])->name('brands.create');
+        Route::get('/addBrand', [BrandController::class, 'addBrand'])->name('brands.create')->middleware('can:brand-add');
 
         route::post('/store', [BrandController::class, 'store'])->name("brands.store");
 
-        route::get('/edit/{id}', [BrandController::class, 'edit'])->name("brands.edit");
+        route::get('/edit/{id}', [BrandController::class, 'edit'])->name("brands.edit")->middleware('can:brand-edit');
 
         route::post('/update/{id}', [BrandController::class, 'update'])->name("brands.update");
 
-        route::get('/delete/{id}', [BrandController::class, 'delete'])->name("brands.delete");
+        route::get('/delete/{id}', [BrandController::class, 'delete'])->name("brands.delete")->middleware('can:brand-delete');
     });
 
     //product
     Route::prefix('products')->group(function () {
 
-        Route::get('/', 'AdminProductController@index')->name('product.index');
+        Route::get('/', 'AdminProductController@index')->name('product.index')->middleware('can:product-list');
 
-        Route::get('/create', [AdminProductController::class, 'create'])->name('product.create');
+        Route::get('/create', [AdminProductController::class, 'create'])->name('product.create')->middleware('can:product-add');
 
         Route::post('/store', [AdminProductController::class, 'store'])->name('product.store');
 
-        Route::get('/edit/{id}', [AdminProductController::class, 'edit'])->name('product.edit');
+        Route::get('/edit/{id}', [AdminProductController::class, 'edit'])->name('product.edit')->middleware('can:product-edit');
 
         Route::post('/update/{id}', [AdminProductController::class, 'update'])->name('product.update');
 
-        Route::get('/delete/{id}', [AdminProductController::class, 'delete'])->name('product.delete');
+        Route::get('/delete/{id}', [AdminProductController::class, 'delete'])->name('product.delete')->middleware('can:product-delete');
     });
 
     //user
     Route::prefix('users')->group(function () {
 
-        Route::get('/', 'AdminUserController@index')->name('users.index');
+        Route::get('/', 'AdminUserController@index')->name('users.index')->middleware('can:user-list');
 
-        Route::get('/create', [AdminUserController::class, 'create'])->name('users.create');
+        Route::get('/create', [AdminUserController::class, 'create'])->name('users.create')->middleware('can:user-add');
 
         Route::post('/store', [AdminUserController::class, 'store'])->name('users.store');
 
-        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('users.edit');
+        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('users.edit')->middleware('can:user-edit');
 
         Route::post('/update/{id}', [AdminUserController::class, 'update'])->name('users.update');
 
-        Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('users.delete');
+        Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('users.delete')->middleware('can:user-delete');
     });
 
     //roles
     Route::prefix('roles')->group(function () {
 
-        Route::get('/', 'AdminRoleController@index')->name('roles.index');
+        Route::get('/', 'AdminRoleController@index')->name('roles.index')->middleware('can:role-list');
 
-        Route::get('/create', [AdminRoleController::class, 'create'])->name('roles.create');
+        Route::get('/create', [AdminRoleController::class, 'create'])->name('roles.create')->middleware('can:role-add');
+
+        Route::post('/store', [AdminRoleController::class, 'store'])->name('roles.store');
+
+        Route::get('/edit/{id}', [AdminRoleController::class, 'edit'])->name('roles.edit')->middleware('can:role-edit');
+
+        Route::post('/update/{id}', [AdminRoleController::class, 'update'])->name('roles.update');
+
+        Route::get('/delete/{id}', [AdminRoleController::class, 'delete'])->name('roles.delete')->middleware('can:role-delete');
+    });
+
+    //permission
+    Route::prefix('permission')->group(function () {
+
+        Route::get('/create', [AdminPermissionController::class, 'createPermission'])->name('permissions.create')->middleware('can:permission-list');
+
+        Route::post('/store', [AdminPermissionController::class, 'store'])->name('permissions.store');
     });
 });

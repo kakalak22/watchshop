@@ -96,7 +96,7 @@
                                         <input type="file" multiple name="image_path[]" class="form-control-file">
                                         <div class="col-md-12 container_image_detail">
                                             <div class="row">
-                                                @foreach($product->product_image as $productImageItem)
+                                                @foreach($product->productImages as $productImageItem)
                                                 <div class="col-md-3">
                                                     <img class="image_detail_product"
                                                         src="{{URL::to($productImageItem->image_path) }}" alt="">
@@ -128,6 +128,9 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
+                                        <a class="btn btn-danger" href="{{route('product.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
 

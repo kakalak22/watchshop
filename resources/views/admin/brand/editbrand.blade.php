@@ -25,6 +25,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a class="btn btn-danger" href="{{route('brands.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
                         </div>
