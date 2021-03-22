@@ -17,13 +17,16 @@
                     <form action="{{route('brands.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label>Category Name:</label>
+                            <label>Brand Name:</label>
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="text" name="name" class="form-control" placeholder="Enter Brand">
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a class="btn btn-danger" href="{{route('brands.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
                         </div>

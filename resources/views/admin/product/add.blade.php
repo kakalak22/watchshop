@@ -61,12 +61,10 @@
 
                                     <div>
                                         <label>Category:</label>
-                                        <select class="form-control"
-                                            name="category ">
+                                        <select class="form-control" name="category">
                                             <option disabled selected>Select Category</option>
                                             @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}
-                                            </option>
+                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                         {{-- @error('category_id')
@@ -79,8 +77,7 @@
                                             <label>Brand:</label>
                                             <option disabled selected>Select Brand</option>
                                             @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}"> {{ $brand->name }}
-                                            </option>
+                                            <option value="{{ $brand->id }}"> {{ $brand->name }}</option>
                                             @endforeach
                                         </select>
                                         {{-- @error('brand_id')
@@ -121,6 +118,9 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
+                                        <a class="btn btn-danger" href="{{route('product.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
 

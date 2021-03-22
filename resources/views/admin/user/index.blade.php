@@ -12,7 +12,9 @@
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
+        @can('user-add')
         @include('admin.partials.content-header', ['name' => 'User', 'key' => 'List'])
+        @endcan
     </div>
     <div class="content">
         <div class="container-fluid">
@@ -40,9 +42,14 @@
                                 <td>{{$user->address}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->status}}</td>
-                                <td><a href="{{ route('users.edit', ['id' => $user->id]) }}"
+                                <td>
+                                    @can('user-edit')
+                                    <a href="{{ route('users.edit', ['id' => $user->id]) }}"
                                         class="btn btn-default">Edit</a>
-                                        <a data-url="{{ route('users.delete', ['id' => $user->id])}}" href="" class="btn btn-danger action_delete">Delete</a>
+                                    @endcan
+                                    @can('user-delete')
+                                    <a data-url="{{ route('users.delete', ['id' => $user->id])}}" href="" class="btn btn-danger action_delete">Delete</a>
+                                    @endcan
                                 </td>
                             </tr>
 

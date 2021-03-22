@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-use App\Models\Users;
+use App\Models\User;
 use App\Traits\DeleteModelTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +17,7 @@ class AdminUserController extends Controller
     use DeleteModelTrait;
     private $user;
 
-    public function __construct(Users $user, Role $role)
+    public function __construct(User $user, Role $role)
     {
         $this->user = $user;
         $this->role = $role;
