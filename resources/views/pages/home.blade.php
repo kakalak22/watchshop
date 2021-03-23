@@ -17,7 +17,7 @@
 		</div>
 		<div class="clearfix"> </div>
 	</div>
-	<!--banner-ends--> 
+	<!--banner-ends-->
 	<!--Slider-Starts-Here-->
 				<script src="{{asset('frontend/js/responsiveslides.min.js')}}"></script>
 			 <script>
@@ -37,12 +37,12 @@
 			          $('.events').append("<li>after event fired.</li>");
 			        }
 			      });
-			
+
 			    });
 			  </script>
 			<!--End-slider-script-->
 	<!--about-starts-->
-	<div class="about"> 
+	<div class="about">
 		<div class="container">
 			<div class="about-top grid-1">
 				<div class="col-md-4 about-left">
@@ -50,8 +50,8 @@
 						<img class="img-responsive" src="{{asset('frontend/images/abt-1.jpg')}}" alt=""/>
 						<figcaption>
 							<h2>Nulla maximus nunc</h2>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
+							<p>In sit amet sapien eros Integer dolore magna aliqua</p>
+						</figcaption>
 					</figure>
 				</div>
 				<div class="col-md-4 about-left">
@@ -59,8 +59,8 @@
 						<img class="img-responsive" src="{{asset('frontend/images/abt-2.jpg')}}" alt=""/>
 						<figcaption>
 							<h4>Mauris erat augue</h4>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
+							<p>In sit amet sapien eros Integer dolore magna aliqua</p>
+						</figcaption>
 					</figure>
 				</div>
 				<div class="col-md-4 about-left">
@@ -68,8 +68,8 @@
 						<img class="img-responsive" src="{{asset('frontend/images/abt-3.jpg')}}" alt=""/>
 						<figcaption>
 							<h4>Cras elit mauris</h4>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
+							<p>In sit amet sapien eros Integer dolore magna aliqua</p>
+						</figcaption>
 					</figure>
 				</div>
 				<div class="clearfix"></div>
@@ -78,7 +78,7 @@
 	</div>
 	<!--about-end-->
 	<!--product-starts-->
-	<div class="product"> 
+	<div class="product">
 		<div class="container">
 			<div class="product-top">
 				<div class="logo">
@@ -88,11 +88,11 @@
 					@foreach ($new_product as $item)
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$item->feature_image}}" alt="" /></a>
+							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{URL::to($item->feature_image)}}" style="width: 200px; height: 200px;" alt="" /></a>
 							<div class="product-bottom">
 								<h3>{{$item->name}}</h3>
 								<a href="{{URL::to('/product-details/'.$item->id)}}"><p>Explore Now</p></a>
-								<h4><a class="item_add" href="#" 
+								<h4><a class="item_add" href="#"
 									data-url="{{URL::to('/add-to-cart/'.$item->id)}}";
 									><i></i></a> <span class=" item_price">{{number_format($item->price)}} đ</span></h4>
 							</div>
@@ -102,11 +102,11 @@
 						</div>
 					</div>
 					@endforeach
-				</div>					
+				</div>
 			</div>
 		</div>
 	</div>
 	<!--product-end-->
 	<!--information-starts-->
-    
+
 @endsection

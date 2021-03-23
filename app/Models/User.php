@@ -42,7 +42,7 @@ class User extends Authenticatable
 
 
 
-    public function users()
+    public function user()
     {
         return $this->hasMany('App\Models\Orders', 'user_id', 'id');
     }

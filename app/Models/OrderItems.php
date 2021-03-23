@@ -9,12 +9,15 @@ class OrderItems extends Model
 {
     use HasFactory;
     protected $table = "order_items";
+    protected $guarded = [];
 
-    public function orders(){
-        return $this->belongsTo('App\Models\Orders','order_id','id');
+    public function orders()
+    {
+        return $this->belongsTo('App\Models\Orders', 'order_id', 'id');
     }
 
-    public function product(){
-        return $this->belongsTo('App\Models\Product','product_id','id');
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
     }
 }
