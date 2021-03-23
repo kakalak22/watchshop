@@ -5,9 +5,9 @@
 <<<<<<< HEAD
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
-<script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
 <!--Custom-Theme-files-->
 <!--theme-style-->	
 <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />	
@@ -66,9 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="{{URL::to('/show-cart')}}">
 							 <div class="total">
-								<span>@php
-									echo Cart::count();
-								@endphp</span></div>
+								<span class="simpleCart_total"></span></div>
 								<img src="{{asset('frontend/images/cart-1.png')}}" alt="" />
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
@@ -131,7 +129,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--bottom-header-->
 	@yield('content')
 	<!--information-starts-->
-	<br>
 	<div class="information">
 		<div class="container">
 			<div class="infor-top">
@@ -408,22 +405,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	}
 </script>
-{{-- <script>
-	
-	function myFunction() {
-		var x, text;
 
-		// Get the value of the input field with id="numb"
-		x = document.getElementById("qty").value;
-
-		// If x is Not a Number or less than one or greater than 10
-		if (isNaN(qty) || qty < 1 || qty > 10) {
-			text = "Input not valid";
-		} else {
-			text = "Input OK";
-		}
-		document.getElementById("demo").innerHTML = text;
+<script>
+	if($(".frm-quantity").length > 0){
+		$(".frm-quantity").on('click', 'add-cart', function(event) {
+			event.preventDefault();
+			var form = $(_this.closest('form'));
+			form.submit();
+		});
 	}
+<<<<<<< HEAD
 </script> --}}
 </html>
 =======
@@ -438,3 +429,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </html>
 >>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
+=======
+</script>
+</html>
+>>>>>>> parent of dbf7de7 (ok)

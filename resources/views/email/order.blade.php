@@ -77,7 +77,7 @@
                 <tr>
                     <td>{{$key->product->name}}</td>
                     <td>{{$key->quantity}}</td>
-                    <td>{{number_format($key->product->price)}}</td>
+                    <td>{{number_format($key->price)}}</td>
                 </tr>
                 @endforeach
       

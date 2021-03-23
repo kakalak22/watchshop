@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Orders;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-use Exception;
 session_start();
 class CartController extends Controller
 {
@@ -28,7 +27,6 @@ class CartController extends Controller
         $data['weight'] = 0;
         $data['options']['image'] = $product->feature_image;
         $data['options']['brand'] = $brand->name;
-        $data['options']['stock'] = $product->quantity;
         Cart::add($data);
         echo '<pre>';
         print_r(Cart::content());
@@ -48,11 +46,7 @@ class CartController extends Controller
         $id = $request->pid;
         $quantity = $request->input('product-quantity');
         //dd($id,$quantity);
-        try{
         Cart::update($id,$quantity);
-        }catch(Exception $e){
-            return view('pages.showcart');
-        }
         return back();
         // return view('view-cart');
     }
@@ -71,7 +65,6 @@ class CartController extends Controller
         $data['weight'] = 0;
         $data['options']['image'] = $product->feature_image;
         $data['options']['brand'] = $brand->name;
-        $data['options']['stock'] = $product->quantity;
         Cart::add($data);
         //dd($data);
         //Cart::update($id,$quantity);
@@ -82,6 +75,7 @@ class CartController extends Controller
         $data = $request->all();
         $order = new Orders();
         $total = Cart::total();
+
         $order->customer_name = $data['name'];
         $order->customer_email = $data['email'];
         $order->customer_address = $data['address'];
@@ -96,12 +90,9 @@ class CartController extends Controller
             $orderItem = new OrderItems();
             $orderItem->order_id = $order->id;
             $orderItem->product_id = $item->id;
+            $orderItem->price = $item->price;
             $orderItem->quantity = $item->qty;
             $orderItem->save();
-            $product = Product::find($item->id);
-            $product->quantity = $product->quantity - intval($item->qty);
-            //dd($product->quantity);
-            $product->save();
         }
         //dd($orderItem);
         Session::put('order',$order);

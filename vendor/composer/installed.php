@@ -6,12 +6,7 @@
     'aliases' => 
     array (
     ),
-<<<<<<< HEAD
-    'reference' => 'eb1e5d56b740ed3ddbc5d8895243faebdba11f38',
-=======
-    'reference' => '9f6ba69cf53a419729a363578173842b3f5f51f4',
-
->>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
+    'reference' => '399190f46878fe40f739c6f0af42b2b0f8d55de3',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -212,12 +207,12 @@
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.7.0',
-      'version' => '1.7.0.0',
+      'pretty_version' => '1.8.1',
+      'version' => '1.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
+      'reference' => '35ea11d335fd638b5882ff1725228b3d35496ab1',
     ),
     'hamcrest/hamcrest-php' => 
     array (
@@ -486,12 +481,7 @@
       'aliases' => 
       array (
       ),
-<<<<<<< HEAD
-      'reference' => 'eb1e5d56b740ed3ddbc5d8895243faebdba11f38',
-=======
-
-      'reference' => '9f6ba69cf53a419729a363578173842b3f5f51f4',
->>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
+      'reference' => '399190f46878fe40f739c6f0af42b2b0f8d55de3',
     ),
     'laravel/sail' => 
     array (

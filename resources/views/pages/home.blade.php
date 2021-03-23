@@ -88,26 +88,13 @@
 					@foreach ($new_product as $item)
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$item->feature_image}}" alt="" />
+							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$item->feature_image}}" alt="" /></a>
 							<div class="product-bottom">
 								<h3>{{$item->name}}</h3>
-							</a>
-								<!--<a class="item_add" href="#" 
+								<a href="{{URL::to('/product-details/'.$item->id)}}"><p>Explore Now</p></a>
+								<h4><a class="item_add" href="#" 
 									data-url="{{URL::to('/add-to-cart/'.$item->id)}}";
-									><i></i></a> -->
-								<h5>
-									<span>
-									<?php
-									if($item->quantity > 0){
-										echo 'IN STOCK';
-									}else{
-										echo 'OUT OF STOCK';
-									}
-										
-									?>
-								</span>
-								</h5>
-									<h4><span class=" item_price">{{number_format($item->price)}} đ</span></h4>
+									><i></i></a> <span class=" item_price">{{number_format($item->price)}} đ</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
