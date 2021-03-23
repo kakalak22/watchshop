@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <!--start-breadcrumbs-->
+	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
 		<div class="container">
 			<div class="breadcrumbs-main">
@@ -13,6 +13,10 @@
 	</div>
 	<!--end-breadcrumbs-->
 	<!--start-ckeckout-->
+	<?php
+	$count = Cart::count();
+	if($count > 0){
+	?>
 	<div class="ckeckout">
 		<div class="container">
 			<div class="row">
@@ -42,14 +46,19 @@
 									{{-- <a href="#" style="font-size: 20px;" >+</a>	
 									<input type="qty" class="form-control" name="qty" value="{{$item->qty}}">
 									<a href="#" style="font-size: 20px;" >-</a>	 --}}
-									<form action="{{ route('update-quantity') }}" method="post" id="myform">
+									<form action="{{ route('update-quantity') }}" method="post" class="frm-update-quantity" >
 										@csrf
-										<input type="hidden" id="sID" name="pid" value="{{ $item->rowId }}">
+										<input type="hidden" name="pid" value="{{ $item->rowId }}">
 										<div class="quantity-input">
-											{{-- <input type="number" class="form-control" name="product-quantity" value="{{$item->qty}}">
-											<a class="btn btn-increase" href="#">+</a>
-											<a class="btn btn-reduce" href="#">-</a> 	 --}}
-												<input type="number" id="product-quantity" name="product-quantity" value="{{$item->qty}}" max="100" />
+											<a class="btn btn-primary btn-increase" href="#">+</a>
+											<input type="text" class="quantity-input" id="qty" name="product-quantity" 
+											<?php if(intval($item->qty) > intval($item->options->stock)){?>
+												value = "{{$item->options->stock}}"
+											<?php	}else{?>
+												value = "{{$item->qty}}"
+											<?php	}
+											 ?> data-max="{{$item->options->stock}}" pattern="[0-9]*" >									
+											<a class="btn btn-primary btn-reduce" href="#">-</a>
 										</div>
 									</form>
 								</td>
@@ -86,10 +95,12 @@
 								<td>   </td>
 								<td>   </td>
 								<td>   </td>
-								<td>
-								<button type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-								</button></td>
+								<td><a href="{{URL::to('/all-product-by-brand')}}">
+									<button type="button" class="btn btn-default" >
+										<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+									</button>
+								</a>
+								</td>
 								<td>
 								<a type="button" class="btn btn-success" href = "{{URL::to('/checkout')}}">
 									Checkout <span class="glyphicon glyphicon-play"></span>
@@ -101,5 +112,23 @@
 			</div>
 		</div>
 	</div>
+	<?php
+	} 
+	else{
+	?>
+	<div class="ckeckout">
+		<div class="container">
+			<h4>There is no item in your cart!</h4>
+			<a href="{{URL::to('/all-product-by-brand')}}">
+				<button type="button" class="btn btn-default" >
+					<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+				</button>
+			</a>
+		</div>
+	</div>
+	<?php
+	}
+	?>
+	
 	<!--end-ckeckout--> 
 @endsection

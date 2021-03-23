@@ -36,5 +36,9 @@ return array(
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     '46441ce319666e68ac0d753056faa9f4' => $vendorDir . '/devmarketer/easynav/src/DevMarketer/EasyNav/functions.php',
     '17d016dc52a631c1e74d2eb8fdd57342' => $vendorDir . '/laravel/helpers/src/helpers.php',
+<<<<<<< HEAD
+    'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
+=======
     'ed962a97bd972bc82007176b647d4e36' => $vendorDir . '/facade/ignition/src/helpers.php',
+>>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
 );
