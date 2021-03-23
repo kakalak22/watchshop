@@ -16,7 +16,7 @@
 	<?php
 	$count = Cart::count();
 	if($count > 0){
-		?>
+	?>
 	<div class="ckeckout">
 		<div class="container">
 			<div class="row">
@@ -46,12 +46,18 @@
 									{{-- <a href="#" style="font-size: 20px;" >+</a>	
 									<input type="qty" class="form-control" name="qty" value="{{$item->qty}}">
 									<a href="#" style="font-size: 20px;" >-</a>	 --}}
-									<form action="{{ route('update-quantity') }}" method="post" class="frm-update-quantity">
+									<form action="{{ route('update-quantity') }}" method="post" class="frm-update-quantity" >
 										@csrf
 										<input type="hidden" name="pid" value="{{ $item->rowId }}">
 										<div class="quantity-input">
 											<a class="btn btn-primary btn-increase" href="#">+</a>
-											<input type="text" class="quantity-input" name="product-quantity" value="{{ $item->qty }}" data-max="120" pattern="[0-9]*" >									
+											<input type="text" class="quantity-input" id="qty" name="product-quantity" 
+											<?php if(intval($item->qty) > intval($item->options->stock)){?>
+												value = "{{$item->options->stock}}"
+											<?php	}else{?>
+												value = "{{$item->qty}}"
+											<?php	}
+											 ?> data-max="{{$item->options->stock}}" pattern="[0-9]*" >									
 											<a class="btn btn-primary btn-reduce" href="#">-</a>
 										</div>
 									</form>
