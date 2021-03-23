@@ -21,6 +21,8 @@ class AdminProductController extends Controller
     use DeleteModelTrait;
     private $category;
     private $product;
+    private $brand;
+
 
     public function __construct(Categories $category, Brand $brand, Product $product, ProductImage $productImage)
     {
