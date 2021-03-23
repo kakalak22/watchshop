@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Categories;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class AdminProductController extends Controller
 {
 
     use StorageImageTrait;
+    use DeleteModelTrait;
     private $category;
     private $product;
 
@@ -52,8 +54,7 @@ class AdminProductController extends Controller
                 'content' => $request->descriptions,
                 'category_id' => $request->category,
                 'quantity' => $request->quantity,
-                'brand_id' => $request->brand,
-                'new' => $request->new
+                'brand_id' => $request->brand
 
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image', 'product');
@@ -63,11 +64,13 @@ class AdminProductController extends Controller
             }
             $product = $this->product->create($dataProductCreate);
 
+
             // insert data product_image
             if ($request->hasFile('image_path')) {
+
                 foreach ($request->image_path as $fileItem) {
                     $dataProductImageDetails = $this->storageTraitUploadMultiple($fileItem, 'product');
-                    $product->product_image()->create([
+                    $product->productImages()->create([
                         'image_path' => $dataProductImageDetails['file_path'],
                         'image_name' => $dataProductImageDetails['file_name']
                     ]);
@@ -84,8 +87,8 @@ class AdminProductController extends Controller
     public function edit($id)
     {
         $product = $this->product->find($id);
-        $categories = $this->category->latest()->simplePaginate(0);
-        $brands = $this->brand->latest()->simplePaginate(0);
+        $categories = $this->category->all();
+        $brands = $this->brand->all();
         return \view('admin.product.edit', compact('categories', 'brands', 'product'));
     }
 
@@ -114,7 +117,7 @@ class AdminProductController extends Controller
                 $this->productImage->where('product_id', $id)->delete();
                 foreach ($request->image_path as $fileItem) {
                     $dataProductImageDetails = $this->storageTraitUploadMultiple($fileItem, 'product');
-                    $product->product_image()->create([
+                    $product->productImages() > create([
                         'image_path' => $dataProductImageDetails['file_path'],
                         'image_name' => $dataProductImageDetails['file_name']
                     ]);
@@ -130,20 +133,7 @@ class AdminProductController extends Controller
 
     public function delete($id)
     {
-        try {
-            $this->product->find($id)->delete();
-            // echo '<pre>';
-            // print_r($this->product->find($id));
-            return response()->json([
-                'code' => 200,
-                'message' => 'success'
-            ], 200);
-        } catch (Exception $ex) {
-            Log::error('Message: ' . $ex->getMessage() . 'Line: ' . $ex->getLine());
-            return response()->json([
-                'code' => 500,
-                'message' => 'fail'
-            ], 500);
-        }
+        return $this->deleteModelTrait($id, $this->product);
+        return \redirect()->route('product.index');
     }
 }

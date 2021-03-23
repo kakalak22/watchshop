@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Add Product</title>
+<title>Edit Product</title>
 @endsection
 
 @section('css')
@@ -51,7 +51,10 @@
                                         <select class="form-control" name="category" >
                                             <option>{{$product->category->name}}</option>
                                             @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}
+                                            <option value="{{ $category->id }}"
+                                                >
+                                                 {{-- {{ $rolesOfUser->contains('id', $role->id) ? 'selected' : ''}} --}}
+                                                {{ $category->name }}
                                             </option>
                                             @endforeach
                                         </select>
@@ -66,7 +69,8 @@
                                             <label>Brand:</label>
                                             <option>{{$product->brand->name}}</option>
                                             @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}"> {{ $brand->name }}
+                                            <option value="{{ $brand->id }}">
+                                                {{ $brand->name }}
                                             </option>
                                             @endforeach
                                         </select>
@@ -92,7 +96,7 @@
                                         <input type="file" multiple name="image_path[]" class="form-control-file">
                                         <div class="col-md-12 container_image_detail">
                                             <div class="row">
-                                                @foreach($product->product_image as $productImageItem)
+                                                @foreach($product->productImages as $productImageItem)
                                                 <div class="col-md-3">
                                                     <img class="image_detail_product"
                                                         src="{{URL::to($productImageItem->image_path) }}" alt="">
@@ -124,6 +128,9 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right"
                                         style="margin-bottom: 20px;">Submit</button>
+                                        <a class="btn btn-danger" href="{{route('product.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
 

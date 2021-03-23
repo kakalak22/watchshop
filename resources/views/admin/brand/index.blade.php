@@ -1,13 +1,20 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Brand</title>
+<title>List Brand</title>
+@endsection
+
+@section('js')
+    <script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/product/index/list.js')}}"></script>
 @endsection
 
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
+        @can('brand-add')
         @include('admin.partials.content-header', ['name' => 'Brand', 'key' => 'List'])
+        @endcan
     </div>
     <div class="content">
         <div class="container-fluid">
@@ -29,10 +36,14 @@
                             <tr>
                                 <th scope="row">{{$br->id}}</th>
                                 <td>{{$br->name}}</td>
-                                <td><a href="{{ route('brands.edit', ['id' => $br->id]) }}"
+                                <td>
+                                @can('brand-edit')
+                                    <a href="{{ route('brands.edit', ['id' => $br->id]) }}"
                                         class="btn btn-default">Edit</a>
-                                    <a href="{{ route('brands.delete', ['id' => $br->id]) }}"
-                                        class="btn btn-danger">Delete</a>
+                                @endcan
+                                @can('brand-delete')
+                                  <a href="" data-url="{{route('brands.delete', ['id' => $br->id])}}" class="btn btn-danger action_delete">Delete</a>
+                                @endcan
                                 </td>
                             </tr>
                             @endforeach

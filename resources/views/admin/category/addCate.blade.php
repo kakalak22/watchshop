@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 
 @section('title')
-<title>Main Admin</title>
+<title>Add Category</title>
 @endsection
 
 @section('content')
@@ -24,6 +24,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a class="btn btn-danger" href="{{route('categories.index')}}">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
                         </div>

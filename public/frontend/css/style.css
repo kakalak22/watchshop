@@ -1,4 +1,4 @@
-/*--A Design by W3layouts 
+/*--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -51,7 +51,7 @@ body a{
 /*--end-logo--*/
 /*--starts-top-header--*/
 .top-header {
-    background: #000;
+    background: #101010;
     padding: 10px 0px;
 }
 .search-bar input[type="text"] {
@@ -111,7 +111,7 @@ body a{
 	color: #fff;
 	border:none;
     cursor: pointer;
-}	
+}
 .grid_1 img{
 	margin-bottom:1em;
 }
@@ -137,7 +137,7 @@ span.simpleCart_total {
 }
 .box_1 p {
 	margin: 0px 0 0px 8px;
-}	
+}
 .total {
 	display: inline-block;
 	vertical-align: middle;
@@ -270,7 +270,7 @@ span.simpleCart_total {
 	height: 100%;
 	opacity: 0;
 }
-/* SELECTED FEEDBACK ITEM */ 
+/* SELECTED FEEDBACK ITEM */
 .dropdown .selected, .dropdown li {
     color: #000;
 }
@@ -476,7 +476,7 @@ span.simpleCart_total {
 ul.callbacks_tabs.callbacks2_tabs {
 	display: block;
 }
-/*--Slider-Part-Ends-Here--*/	
+/*--Slider-Part-Ends-Here--*/
 /*--banner-Part-Ends-Here --*/
 /*--about-starts--*/
 .about {
@@ -533,7 +533,7 @@ figure.effect-bubba figcaption::after {
 	left: 30px;
 	content: '';
 	opacity: 0;
-	-webkit-transition: opacity 0.35s,-webkit-transform 0.35s;	
+	-webkit-transition: opacity 0.35s,-webkit-transform 0.35s;
 	-moz-transition: opacity 0.35s, -moz-transform 0.35s;
 	-o-transition: opacity 0.35s, -o-transform 0.35s;
 	-ms-transition: opacity 0.35s, -ms-transform 0.35s;
@@ -543,7 +543,7 @@ figure.effect-bubba figcaption::before {
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #fff;
 	-webkit-transform: scale(0,1);
-	-moz-transform: scale(0,1); 
+	-moz-transform: scale(0,1);
 	-o-transform: scale(0,1);
 	-ms-transform: scale(0,1);
 	transform: scale(0,1);
@@ -828,63 +828,7 @@ a.mask {
     padding-bottom: 3em;
 }
 /*--information-end--*/
-/*--footer-starts--*/
-.footer-left p{
-	color:#000;
-	font-size:15px;
-}
-.footer-left p a{
-	color:#000;
-}
-.footer-left input[type="text"] {
-    width: 47%;
-    margin-right: 10px;
-    color: #000;
-    font-size: 11px;
-    background: none;
-    padding: 8px 10px;
-    outline: none;
-    border: none;
-    border: 1px solid #000;
-}
-.footer-left input[type=submit] {
-    color: #000;
-    padding: 6px 20px;
-    font-size: 13px;
-    cursor: pointer;
-    border: 1px solid #000;
-    background: none;
-    outline: none;
-}
-.footer-left input[type=submit]:hover{
-    background: #73B6E1;
-	color:#fff;
-	border: 1px solid #73B6E1;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-ms-transition: 0.5s all;
-}
-.footer{
-	padding:3em 0px;
-}
-.footer-right {
-    text-align: right;
-}
-.footer-right p {
-    margin: 8px 0 0 0;
-    font-size: 13px;
-    color: #000;
-}
-.footer-right p a{
-	color: #000;
-}
-.footer-right p a:hover{
-	color: #73B6E1;
-	text-decoration:none;
-}
-/*--footer-end--*/
+
 /*--product-page-starts--*/
 .prdt{
 	padding:6em 0px;
@@ -1152,7 +1096,7 @@ a.mask {
 	-webkit-transition: border-color 0.3s;
 }
 .sky-form .toggle i:before {
-	background-color: #2da5da;	
+	background-color: #2da5da;
 }
 /* hover state */
 .sky-form .input:hover input,
@@ -1177,7 +1121,7 @@ a.mask {
 }
 /* checked state */
 .sky-form .radio input + i:after {
-	background-color: #73B6E1;	
+	background-color: #73B6E1;
 }
 .sky-form .checkbox input + i:after {
 	color: #73B6E1;
@@ -1185,7 +1129,7 @@ a.mask {
 .sky-form .radio input:checked + i,
 .sky-form .checkbox input:checked + i,
 .sky-form .toggle input:checked + i {
-	border-color: #73B6E1;	
+	border-color: #73B6E1;
 }
 /* error state */
 .sky-form .state-error input,
@@ -1736,7 +1680,7 @@ ul {
     text-transform: uppercase;
     font-size: 14px;
 	text-decoration:none;
-} 
+}
 .menu_drop ul li a {
 	background: #fff;
 	width: 100%;
@@ -1817,7 +1761,7 @@ h3.ghj {
 .heading h2{
 	font-size: 2.2em;
 	margin: 0 0 0 0;
-    color: #000;  
+    color: #000;
     font-family: 'BreeSerif-Regular';
 }
 .typo-top{
@@ -1878,7 +1822,7 @@ h3.ghj {
 @media (max-width:1440px){
 .banner,.banner1,.banner2{
 	min-height:570px;
-}	
+}
 }
 @media (max-width:1366px){
 .banner, .banner1, .banner2 {
@@ -2219,19 +2163,7 @@ figure.effect-bubba p {
 .infor-top {
     padding-bottom: 2em;
 }
-.footer-left {
-    text-align: center;
-}
-.footer-right {
-    margin-top: 22px;
-	text-align:center;
-}
-.footer-right p {
-    margin: 0px 0 0 0;
-}
-.footer {
-    padding: 2em 0px;
-}
+
 .single-top-right {
     margin-top: 4%;
     width: 100%;
@@ -2593,7 +2525,7 @@ h3.ghj {
 }
 .single-para h5 {
     font-size: 1.7em;
-	padding: 10px 0 6px 0;	
+	padding: 10px 0 6px 0;
 }
 .dropdown {
     width: 60px;
@@ -2624,7 +2556,7 @@ a.simpleCart_empty {
     font-size: 18px;
 }
 .memenu>li.showhide span.title {
-    margin: 11px 0 0 20px !important; 
+    margin: 11px 0 0 20px !important;
     font-size: 14px !important;
 }
 .memenu>li.showhide span.icon1:after {
@@ -2709,17 +2641,7 @@ figure.effect-bubba p {
 .infor-left h3 {
     font-size: 1.3em;
 }
-.footer-right {
-    margin-top: 10px;
-}
-.footer-left input[type="text"] {
-    width: 55%;
-    margin-right: 5px;
-    padding: 7px 10px;
-}
-.footer {
-    padding: 1.5em 0px;
-}
+
 .dropdown div {
     left: 0px;
     top: 27px;
@@ -2874,22 +2796,7 @@ figure.effect-bubba p {
 .infor-top {
     padding-bottom: 1.2em;
 }
-.footer-left input[type="text"] {
-    width: 68%;
-    margin-right: 3px;
-    padding: 6px 10px;
-    font-size: 9px;
-}
-.footer-left input[type=submit] {
-    padding: 3px 10px 6px 10px;
-    font-size: 11px;
-}
-.footer-right p {
-    font-size: 12px;
-}
-.footer {
-    padding: 1.2em 0px;
-}
+
 .p-left {
     width: 100% !important;
 	margin-top:15px !important;
@@ -3079,33 +2986,33 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     float: left;
     width: 20%;
   }
-  
+
   .product-details {
     float: left;
     width: 37%;
   }
-  
+
   .product-price {
     float: left;
     width: 12%;
   }
-  
+
   .product-quantity {
     float: left;
     width: 10%;
   }
-  
+
   .product-removal {
     float: left;
     width: 9%;
   }
-  
+
   .product-line-price {
     float: left;
     width: 12%;
     text-align: right;
   }
-  
+
   /* This is used as the traditional .clearfix class */
   .group:before, .shopping-cart:before,
   .column-labels:before,
@@ -3119,21 +3026,21 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     content: "";
     display: table;
   }
-  
+
   .group:after, .shopping-cart:after,
   .column-labels:after,
   .product:after,
   .totals-item:after {
     clear: both;
   }
-  
+
   .group, .shopping-cart,
   .column-labels,
   .product,
   .totals-item {
     zoom: 1;
   }
-  
+
   /* Apply clearfix in a few places */
   /* Apply dollar signs */
   .product .product-price:before,
@@ -3141,26 +3048,26 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .totals-value:before {
     content: "$";
   }
-  
+
   /* Body/Header stuff */
   body {
     padding: 0px 30px 30px 20px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 100;
   }
-  
+
   h1 {
     font-weight: 100;
   }
-  
+
   label {
     color: #aaa;
   }
-  
+
   .shopping-cart {
     margin-top: -45px;
   }
-  
+
   /* Column headers */
   .column-labels label {
     padding-bottom: 15px;
@@ -3172,7 +3079,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .column-labels .product-removal {
     text-indent: -9999px;
   }
-  
+
   /* Product entries */
   .product {
     margin-bottom: 20px;
@@ -3208,7 +3115,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .product .remove-product:hover {
     background-color: #a44;
   }
-  
+
   /* Totals section */
   .totals .totals-item {
     float: right;
@@ -3230,7 +3137,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .totals .totals-item-total {
     font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
   }
-  
+
   .checkout {
     float: right;
     border: 0;
@@ -3241,11 +3148,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     font-size: 25px;
     border-radius: 3px;
   }
-  
+
   .checkout:hover {
     background-color: #494;
   }
-  
+
   /* Make adjustments for tablet */
   @media screen and (max-width: 650px) {
     .shopping-cart {
@@ -3253,11 +3160,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
       padding-top: 20px;
       border-top: 1px solid #eee;
     }
-  
+
     .column-labels {
       display: none;
     }
-  
+
     .product-image {
       float: right;
       width: auto;
@@ -3265,33 +3172,33 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     .product-image img {
       margin: 0 0 10px 10px;
     }
-  
+
     .product-details {
       float: none;
       margin-bottom: 10px;
       width: auto;
     }
-  
+
     .product-price {
       clear: both;
       width: 70px;
     }
-  
+
     .product-quantity {
       width: 100px;
     }
     .product-quantity input {
       margin-left: 20px;
     }
-  
+
     .product-quantity:before {
       content: "x";
     }
-  
+
     .product-removal {
       width: auto;
     }
-  
+
     .product-line-price {
       float: right;
       width: 70px;
@@ -3302,18 +3209,18 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     .product-removal {
       float: right;
     }
-  
+
     .product-line-price {
       float: right;
       clear: left;
       width: auto;
       margin-top: 10px;
     }
-  
+
     .product .product-line-price:before {
       content: "Item Total: $";
     }
-  
+
     .totals .totals-item label {
       width: 60%;
     }
@@ -3329,10 +3236,180 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 }
 
 /*cart*/
+<<<<<<< HEAD
 input.quantity-input {
     text-align: center;
     width: 40px;
     height: 34px;
 }
+=======
 
-  
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+
+	padding: 55px 50px;
+	margin-top: 80px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+>>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
