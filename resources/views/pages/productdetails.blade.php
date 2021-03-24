@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+<<<<<<< HEAD
     <!--start-breadcrumbs-->
     @foreach ($pro as $item)
 	<div class="breadcrumbs">
@@ -35,30 +36,72 @@
 						<script src="{{asset('frontend/js/imagezoom.js')}}"></script>
 						<script defer src="{{asset('frontend/js/jquery.flexslider.js')}}"></script>
 						<link rel="stylesheet" href="{{asset('frontend/css/flexslider.css')}}" type="text/css" media="screen" />
+=======
+<!--start-breadcrumbs-->
+@foreach ($pro as $item)
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">{{$item->name}}</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--start-single-->
+<div class="single contact">
+    <div class="container">
+        <div class="single-main">
+            <div class="col-md-9 single-main-left">
+                <div class="sngl-top">
+                    <div class="col-md-5 single-top-left">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                @foreach ($image as $img)
+                                <li data-thumb="{{URL::to($img->image_path)}}">
+                                    <div class="thumb-image"> <img style="
+                                    width: 400px;
+                                    height: 400px;" src="{{URL::to($img->image_path)}}" data-imagezoom="true"
+                                            class="img-responsive" alt="" /> </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- FlexSlider -->
+                        <script src="{{asset('frontend/js/imagezoom.js')}}"></script>
+                        <script defer src="{{asset('frontend/js/jquery.flexslider.js')}}"></script>
+                        <link rel="stylesheet" href="{{asset('frontend/css/flexslider.css')}}" type="text/css"
+                            media="screen" />
+>>>>>>> c424b30b8cb1979c2477c323ca6927f915ddfe26
 
-						<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							controlNav: "thumbnails"
-						  });
-						});
-						</script>
-					</div>
-					<div class="col-md-7 single-top-right">
-						<div class="single-para simpleCart_shelfItem">
-						<h2>{{$item->name}}</h2>
-							<div class="star-on">
-								<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-								<div class="review">
-									<a href="#"> 1 customer review </a>
+                        <script>
+                            // Can also be used with $(document).ready()
+                            $(window).load(function () {
+                                $('.flexslider').flexslider({
+                                    animation: "slide",
+                                    controlNav: "thumbnails"
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="col-md-7 single-top-right">
+                        <div class="single-para simpleCart_shelfItem">
+                            <h2>{{$item->name}}</h2>
+                            <div class="star-on">
+                                <ul class="star-footer">
+                                    <li><a href="#"><i> </i></a></li>
+                                    <li><a href="#"><i> </i></a></li>
+                                    <li><a href="#"><i> </i></a></li>
+                                    <li><a href="#"><i> </i></a></li>
+                                    <li><a href="#"><i> </i></a></li>
+                                </ul>
+                                <div class="review">
+                                    <a href="#"> 1 customer review </a>
+
+                               
+<!--end-single-->
 
 								</div>
 							<div class="clearfix"> </div>
@@ -158,5 +201,5 @@
 	</div>
 	<br>
 	br
-	<!--end-single-->
+
 @endsection

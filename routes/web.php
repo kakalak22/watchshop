@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminOrdersController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminProductController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\ProductController;
 */
 //CLIENT
 // Search
-Route::get("search",[ProductController::class,'search']);
+Route::get("search", [ProductController::class, 'search']);
 //home
 Route::get('/home', 'HomeController@getIndex')->name('home');
 //category
@@ -137,6 +138,25 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/delete/{id}', [AdminRoleController::class, 'delete'])->name('roles.delete')->middleware('can:role-delete');
     });
+
+    //orders
+    Route::prefix('orders')->group(function () {
+
+        Route::get('/', 'AdminOrdersController@index')->name('orders.index')->middleware('can:order-list');
+
+        Route::get('/edit/{id}', 'AdminOrdersController@edit')->name('orders.edit')->middleware('can:order-edit');
+
+        Route::post('/update/{id}', [AdminOrdersController::class, 'update'])->name('orders.update');
+
+        Route::get('/orderItemIndex/{id}', [AdminOrdersController::class, 'orderItemIndex'])->name('orders.indexOrderItem');
+
+        Route::get('/editOrderItem/{id}', [AdminOrdersController::class, 'editOrderItem'])->name('orders.editOrderItem');
+
+        Route::post('/updateOrderItem/{id}', [AdminOrdersController::class, 'updateOrderItem'])->name('orders.updateOrderItem');
+    });
+
+
+
 
     //permission
     Route::prefix('permission')->group(function () {
