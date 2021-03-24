@@ -32,6 +32,25 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php 
+							$text = Session::pull('data');
+							$text2 = Session::pull('noti');
+							if($text){
+							?>
+							<div class="alert alert-danger" style="text-align: center" role="alert">
+								{{$text}}
+							</div>
+							<?php
+							}else{
+								if($text2){
+							?>
+							<div class="alert alert-success" role="alert">
+								{{$text2}}
+							  </div>
+							<?php
+								}
+							}
+							?>
 							@foreach (Cart::content() as $item)
 							<tr>
 								<td class="col-sm-8 col-md-6">
@@ -52,12 +71,8 @@
 										<div class="quantity-input">
 											<a class="btn btn-primary btn-increase" href="#">+</a>
 											<input type="text" class="quantity-input" id="qty" name="product-quantity" 
-											<?php if(intval($item->qty) > intval($item->options->stock)){?>
-												value = "{{$item->options->stock}}"
-											<?php	}else{?>
-												value = "{{$item->qty}}"
-											<?php	}
-											 ?> data-max="{{$item->options->stock}}" pattern="[0-9]*" >									
+											value = "{{$item->qty}}"
+											 data-max="500" pattern="[0-9]*" >									
 											<a class="btn btn-primary btn-reduce" href="#">-</a>
 										</div>
 									</form>

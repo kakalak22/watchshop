@@ -29,6 +29,7 @@ class CartController extends Controller
         $data['options']['image'] = $product->feature_image;
         $data['options']['brand'] = $brand->name;
         $data['options']['stock'] = $product->quantity;
+        Session::put($data);
         Cart::add($data);
         echo '<pre>';
         print_r(Cart::content());
@@ -40,6 +41,12 @@ class CartController extends Controller
     }
     //Checkout
     public function checkout(){
+        foreach(Cart::content() as $data){
+            if(intval($data->qty) > intval($data->options->stock)){
+                Session::flash('data','Your quantity is invalid. We only have '.$data->options->stock.' item of ' .$data->name. ' left in stock!');
+                return Redirect::to('/show-cart');
+            }
+        }
         return view('pages.checkout');
     }
 
@@ -50,6 +57,7 @@ class CartController extends Controller
         //dd($id,$quantity);
         try{
         Cart::update($id,$quantity);
+        Session::flash('noti','Quantity successfully updated!');
         }catch(Exception $e){
             return view('pages.showcart');
         }
@@ -72,7 +80,11 @@ class CartController extends Controller
         $data['options']['image'] = $product->feature_image;
         $data['options']['brand'] = $brand->name;
         $data['options']['stock'] = $product->quantity;
+        Session::put($data);
         Cart::add($data);
+        // if($data['qty']>$data['options']['stock']){
+        //     Session::flash('data','Invalid quantity');
+        // }
         //dd($data);
         //Cart::update($id,$quantity);
         return back();

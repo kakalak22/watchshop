@@ -49,7 +49,7 @@
                                     <div class="mt-2">
                                         <label>Category:</label>
                                         <select class="form-control" name="category" >
-                                            <option>{{$product->category->name}}</option>
+                                            <option value="{{$product->category_id}}">{{$product->category->name}}</option>
                                             @foreach($categories as $category)
                                             <option value="{{ $category->id }}"
                                                 >
@@ -67,7 +67,7 @@
                                         <label>Brand:</label>
                                         <select class="form-control"  name="brand">
                                             <label>Brand:</label>
-                                            <option>{{$product->brand->name}}</option>
+                                            <option value = "{{$product->brand_id}}">{{$product->brand->name}}</option>
                                             @foreach($brands as $brand)
                                             <option value="{{ $brand->id }}">
                                                 {{ $brand->name }}

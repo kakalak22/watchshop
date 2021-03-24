@@ -36,7 +36,7 @@
                 @foreach (Cart::content() as $item)
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">{{$item->name}}</h6>
+                        <h6 class="my-0"><span style="font-size:17px;">{{$item->name}}</span> x {{$item->qty}}</h6>
                         <small class="text-muted">{{$item->options->content}}</small>
                     </div>
                     <span class="text-muted">{{number_format($item->price)}} VND</span>
@@ -44,7 +44,7 @@
                 @endforeach
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (VND)</span>
-                    <strong>{{Cart::total()}} VND</strong>
+                    <strong>{{number_format(Cart::total())}} VND</strong>
                 </li>
             </ul>
         </div>
