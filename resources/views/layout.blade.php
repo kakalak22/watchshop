@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Luxury Watches | Home :: w3layouts</title>
+    @yield('title')    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->

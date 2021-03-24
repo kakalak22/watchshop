@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+<title>List of product</title>
+@endsection
 @section('content')
     <!--start-breadcrumbs-->
 	<div class="breadcrumbs">

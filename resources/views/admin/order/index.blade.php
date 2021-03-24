@@ -46,7 +46,22 @@
                             @foreach($orders as $order)
                             <tr>
                                 <th scope="row">{{$order->id}}</th>
+                                <?php
+                                try{
+                                    $test = $order->user->username;
+                                }catch(Exception $e){
+                                    $test = 0;
+                                }
+                                if($test){
+                                ?>
                                 <td>{{$order->user->username}}</td>
+                                <?php
+                                }else{
+                                ?>
+                                <td>Visistors order</td>
+                                <?php
+                                }
+                                ?>
                                 <td>{{$order->customer_name}}</td>
                                 <td>{{$order->customer_address}}</td>
                                 <td>{{$order->customer_phone}}</td>

@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+<title>Home</title>
+@endsection
 @section('content')
 <!--banner-starts-->
 	<div class="bnr" id="home">

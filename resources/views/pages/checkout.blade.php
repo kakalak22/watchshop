@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+<title>Checkout</title>
+@endsection
 @section('content')
 <div class="container">
     <script>

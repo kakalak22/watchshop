@@ -32,6 +32,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Order Id</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
@@ -39,16 +40,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($orderItems as $orderItemDetail)
                             <tr>
-                                @foreach ($orderItems as $orderItemDetail)
-                                    <td>{{$orderItemDetail->id}}</td>
-                                    <td>{{$orderItemDetail->orders->id}}</td>
-                                    <td>{{$orderItemDetail->product->name}}</td>
-                                    <td>{{$orderItemDetail->product->price}}</td>
-                                    <td>{{$orderItemDetail->quantity}}</td>
-                                @endforeach
-
-
+                                <td>{{$orderItemDetail->id}}</td>
+                                <td>{{$orderItemDetail->orders->id}}</td>
+                                <td><img class="product_image_150_100" src="{{URL::to($orderItemDetail->product->feature_image) }}" alt=""></td>
+                                <td>{{$orderItemDetail->product->name}}</td>
+                                <td>{{$orderItemDetail->product->price}}</td>
+                                <td>{{$orderItemDetail->quantity}}</td>
                                 <td>
                                     {{-- @can('product-edit') --}}
                                     <a href="{{ route('orders.editOrderItem', ['id' => $orderItemDetail->id]) }}" class="btn btn-default">Edit</a>
@@ -58,6 +57,7 @@
                                     {{-- @endcan --}}
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
