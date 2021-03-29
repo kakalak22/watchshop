@@ -12,7 +12,8 @@ return [
         'product',
         'role',
         'order',
-        'permission'
+        'permission',
+        'home'
     ],
     'module_childrent' => [
         'list',

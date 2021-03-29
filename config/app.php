@@ -232,6 +232,8 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
 
+        'Input' => Illuminate\Support\Facades\Request::class,
+
 
     ],
 

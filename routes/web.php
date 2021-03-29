@@ -48,7 +48,7 @@ Route::get('/success', 'CartController@success');
 
 
 //admin
-Route::get('/admin_home', 'HomeController@AdminHome');
+Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-home');
 Route::get('/login', 'HomeController@getLoginAdmin');
 Route::post('/login', 'HomeController@postLoginAdmin')->name('admin.login');
 Route::get('/logout', 'HomeController@logout')->name('admin.logout');
@@ -68,7 +68,7 @@ Route::prefix('admin')->group(function () {
 
         route::post('/store', [CategoryController::class, 'store'])->name('categories.store');
 
-        route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit')->middleware('can:category-edit');
+        route::get('/edit/{id}/', [CategoryController::class, 'edit'])->name('categories.edit')->middleware('can:category-edit');
 
         route::post('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
 

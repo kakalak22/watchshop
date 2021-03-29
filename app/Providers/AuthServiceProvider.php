@@ -53,6 +53,7 @@ class AuthServiceProvider extends ServiceProvider
 
     public function defineGateUser()
     {
+        Gate::define('admin-home', 'App\Policies\UserPolicy@homeadmin');
         Gate::define('user-list', 'App\Policies\UserPolicy@view');
         Gate::define('user-add', 'App\Policies\UserPolicy@create');
         Gate::define('user-edit', 'App\Policies\UserPolicy@update');

@@ -119,7 +119,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Descriptions:</label>
-                                        <textarea type="text" name="descriptions"
+                                        <textarea rows="6" type="text" name="descriptions"
                                             class="form-control tinymce_editor_init"
                                             placeholder="Enter Descriptions">{{$product->content}}</textarea>
                                             {{-- @error('descriptions')
