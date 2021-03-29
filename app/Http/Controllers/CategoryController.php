@@ -19,11 +19,31 @@ class CategoryController extends Controller
         $this->category = $category;
     }
 
-    public function ProductByCategory($category_id)
+    public function ProductByCategory($category_id,Request $request)
     {
-        $cate = Product::where('category_id', $category_id)->with('category')->get();
+        $cate_name = Categories::all();
+        $brand_name = Brand::all();
+        $category = $request->category;
+        $brand = $request->brand;
+        if(isset($category)){
+            $cate = Product::whereIN('category_id', explode(',', $category))->paginate(8);
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            //dd($cate);
+        }else if(isset($brand)){
+            if(isset($category)){
+                $cate = Product::where('brand_id', explode(',', $brand))->whereIN('category_id', explode(',', $category))->paginate(8);
+            }else{
+                $cate = Product::whereIN('brand_id', explode(',', $brand))->paginate(8);
+            }
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            //dd($cate);
+        }else{
+            $cate = Product::where('category_id', $category_id)->with('category')->paginate(6);
+            return view('pages.productlist', compact('cate','cate_name','brand_name'));
+        }
         //dd($cate);
-        return view('pages.productlist', compact('cate'));
     }
 
     public function adminIndexCate()

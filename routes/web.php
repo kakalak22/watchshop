@@ -44,7 +44,9 @@ Route::post('/update-quantity-product', 'CartController@updateQuantityProduct')-
 Route::get('/checkout', 'CartController@checkout');
 Route::post('/store-shipping-information', 'CartController@saveShipDetail');
 Route::get('/success', 'CartController@success');
-
+//user
+Route::get('/register','UserController@register');
+Route::post('/register-process','UserController@saveUser');
 
 
 //admin

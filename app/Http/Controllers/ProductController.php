@@ -13,10 +13,12 @@ class ProductController extends Controller
     public function ProductDetail($product_id)
     {
         $pro = Product::where('id', $product_id)->with('category')->with('brand')->get();
-        //dd($pro);
+        $pro1 = Product::find($product_id);
+        //dd($pro->id);
         $image = ProductImage::where('product_id',$product_id)->get();
-        //dd($image);
-        return view('pages.productdetails', compact('pro'), compact('image'));
+        $test = Product::where('category_id',$pro1->category_id)->limit(3)->get();
+        //dd($relate);
+        return view('pages.productdetails', compact('pro','image','test'));
     }
 
     function search(Request $req)

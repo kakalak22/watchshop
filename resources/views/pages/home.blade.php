@@ -95,7 +95,7 @@
 							<div class="product-bottom">
 								<h3>{{$item->name}}</h3>
 								<a href="{{URL::to('/product-details/'.$item->id)}}"><p>Explore Now</p></a>
-								<h4><a class="item_add" href="#"
+								<h4><!--<a class="item_add" href="#"
 
 									data-url="{{URL::to('/add-to-cart/'.$item->id)}}";
 									><i></i></a> -->
@@ -112,9 +112,6 @@
 								</span>
 								</h5>
 									<h4><span class=" item_price">{{number_format($item->price)}} đ</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
 							</div>
 						</div>
 					</div>

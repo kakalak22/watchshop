@@ -4,9 +4,8 @@
 <head>
     @yield('title')    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
@@ -34,6 +33,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 });
     </script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
+    <script>
+        $(function(){
+            $('.category').click(function(){
+                //alert('check');
+                var category =[];
+                $('.category').each(function(){
+                    if($(this).is(":checked")){
+                        category.push($(this).val());
+                    }
+                });
+                Finalbrand  = category.toString();
+                $.ajax({
+                    async: true,
+                    type: 'get',
+                    dataType: 'html',
+                    url: '',
+                    data: "category=" + Finalbrand,
+                    success: function (response) {
+                        console.log(response);
+                        $('#updateDiv').replaceWith($('#updateDiv',response));
+                    }
+                });
+            });	
+
+            $('.brand').click(function(){
+                //alert('check');
+                var brand =[];
+                $('.brand').each(function(){
+                    if($(this).is(":checked")){
+                        brand.push($(this).val());
+                    }
+                });
+                Final  = brand.toString();
+                $.ajax({
+                    async: true,
+                    type: 'get',
+                    dataType: 'html',
+                    url: '',
+                    data: "brand=" + Final,
+                    success: function (response) {
+                        console.log(response);
+                        $('#updateDiv').replaceWith($('#updateDiv',response));
+                    }
+                });
+            });	
+        });
+    </script>
 </head>
 
 <body>
@@ -243,5 +289,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			form.submit();
 		});
 	}
-</script>
+</script>x
+
 </html>

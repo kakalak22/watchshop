@@ -12,21 +12,22 @@ class BrandController extends Controller
 
     use DeleteModelTrait;
     private $brand;
-
-    public function __construct(Brand $brand)
+    private $product;
+    public function __construct(Brand $brand, Product $product)
     {
         $this->brand = $brand;
+        $this->product = $product;
     }
 
     public function AllBrandProduct()
     {
-        $cate = Product::all()->sortBy('brand_id');
+        $cate = Product::orderBy('brand_id','asc')->paginate(6);
         return view('pages.productlist', compact('cate'));
     }
 
     public function ProductByBrand($brand_id)
     {
-        $cate = Product::where('brand_id', $brand_id)->get();
+        $cate = Product::where('brand_id', $brand_id)->paginate(6);
         return view('pages.productlist', compact('cate'));
     }
 

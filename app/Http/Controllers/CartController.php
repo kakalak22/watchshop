@@ -37,6 +37,7 @@ class CartController extends Controller
 
     public function deleteItem($rowId){
         Cart::remove($rowId);
+        Session::flash('delete','Your item has been successfully deleted');
         return Redirect::to('/show-cart');
     }
     //Checkout
@@ -61,13 +62,14 @@ class CartController extends Controller
         }catch(Exception $e){
             return view('pages.showcart');
         }
-        return back();
+        return Redirect::to('/show-cart#form');
         // return view('view-cart');
     }
 
     public function updateQuantityProduct(Request $request)
     {
-        $id = $request->id;
+        try{
+            $id = $request->id;
         $dataP = $request->all();
         $product = Product::find($id);
         $brand_id = $product->brand_id;
@@ -82,12 +84,16 @@ class CartController extends Controller
         $data['options']['stock'] = $product->quantity;
         Session::put($data);
         Cart::add($data);
+        }catch(Exception $e){
+            Session::flash('error','Invalid quantity !');
+            return back();
+        }
         // if($data['qty']>$data['options']['stock']){
         //     Session::flash('data','Invalid quantity');
         // }
         //dd($data);
         //Cart::update($id,$quantity);
-        return back();
+        return back()->with('success');
         // return view('view-cart');
     }
     public function saveShipDetail(Request $request){
@@ -112,6 +118,7 @@ class CartController extends Controller
             $orderItem->save();
             $product = Product::find($item->id);
             $product->quantity = $product->quantity - intval($item->qty);
+            $product->sold_quantity = $product->sold_quantity + intval($item->qty);
             //dd($product->quantity);
             $product->save();
         }

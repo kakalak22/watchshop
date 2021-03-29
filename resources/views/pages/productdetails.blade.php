@@ -25,6 +25,16 @@
 			<div class="single-main">
 				<div class="col-md-1"></div>
 				<div class="col-md-9 single-main-left">
+				<?php
+				$text = Session::pull('error');
+				if($text){
+				?>
+				<div class="alert alert-danger" style="text-align: center" role="alert">
+					{{$text}}
+				</div>
+				<?php
+				}
+				?>
 				<div class="sngl-top">
 					<div class="col-md-5 single-top-left">
 						<div class="flexslider">
@@ -64,14 +74,27 @@
                                 </ul>
                                 <div class="review">
                                     <a href="#"> 1 customer review </a>
-
-                               
-<!--end-single-->
-
 								</div>
 							<div class="clearfix"> </div>
 							</div>
-							
+							{{-- <script>
+								$(document).ready(function() {
+
+								// If cookie is set, scroll to the position saved in the cookie.
+								if ( $.cookie("scroll") !== null ) {
+									$(document).scrollTop( $.cookie("scroll") );
+								}
+
+								// When a button is clicked...
+								$('#submit').on("click", function() {
+
+									// Set a cookie that holds the scroll position.
+									$.cookie("scroll", $(document).scrollTop() );
+
+								});//end of submit 
+
+								});
+							</script> --}}
 							<h5 class="item_price">{{number_format($item->price)}} đ</h5>
 						<form action="{{ route('update-quantity-product') }}" id = "form" name ="myForm" method="post" class="frm-quantity">
 							<ul class="tag-men">
@@ -87,7 +110,7 @@
 									<li>
 										@csrf
 										<input type="hidden" name="id" value="{{ $item->id }}">
-										<span>QUANTITY : </span><input type="text" id="qty" name="qty" value="1" data-max="{{$item->quantity}}" pattern="[0-9]*" >
+										<span>QUANTITY : </span><input type="text" id="qty" name="qty" value="1" min = "1" data-max="{{$item->quantity}}" pattern="[0-9]*" >
 										<p id="demo"></p>
 										
 									</li>
@@ -115,47 +138,36 @@
 	 		        </ul>
 				</div>
                 @endforeach
+				<div class="logo">
+					<h2>Related Items</h2>
+				</div>
 				<div class="latestproducts">
 					<div class="product-one">
+						@foreach ($test as $item)
 						<div class="col-md-4 product-left p-left">
 							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+								<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{URL::to($item->feature_image)}}" alt="" />
 								<div class="product-bottom">
-									<h3>Smart Watches</h3>
+									<h3>{{$item->name}}</h3>
 									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+									<h5>
+										<span>
+										<?php
+										if($item->quantity > 0){
+											echo 'IN STOCK';
+										}else{
+											echo 'OUT OF STOCK';
+										}
+											
+										?>
+									</span>
+									</h5>
+									<h4><span class=" item_price">{{$item->price}}</span></h4>
 								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
+								</a>
 							</div>
 						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-3.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
+						@endforeach
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -165,6 +177,5 @@
 		</div>
 	</div>
 	<br>
-	br
 
 @endsection
