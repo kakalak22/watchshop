@@ -79,27 +79,11 @@
                                 <li>0</li>
                             </ul>
                             <ul class="bars">
-                              <li>
-                                  <div class="bar" data-percentage="20"></div><span>1/3/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="60"></div><span>2/5/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="80"></div><span>3/6/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="100"></div><span>4/7/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="60"></div><span>2/5/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="80"></div><span>3/6/2121</span>
-                              </li>
-                              <li>
-                                  <div class="bar" data-percentage="100"></div><span>4/7/2121</span>
-                              </li>
+                                @foreach ($orders as $order)
+                                     <li>
+                                        <div class="bar" data-percentage="{{ $order->total }}"></div><span>{{ $order->created_date }}</span>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
