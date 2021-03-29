@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Categories;
 use App\Traits\DeleteModelTrait;
@@ -25,21 +25,21 @@ class CategoryController extends Controller
         $category = $request->category;
         $brand = $request->brand;
         if(isset($category)){
+            if(isset($brand)){
+                $cate = Product::whereIN('brand_id', explode(',', $brand))->whereIN('category_id',explode(',', $category))->paginate(8);
+                response()->json($cate);
+                return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            }else{
             $cate = Product::whereIN('category_id', explode(',', $category))->paginate(8);
             response()->json($cate);
             return view('pages.productlist',compact('cate','cate_name','brand_name'));
-            //dd($cate);
-        }else if(isset($brand)){
-            if(isset($category)){
-                $cate = Product::where('brand_id', explode(',', $brand))->whereIN('category_id', explode(',', $category))->paginate(8);
-            }else{
-                $cate = Product::whereIN('brand_id', explode(',', $brand))->paginate(8);
             }
+        }else if(isset($brand)){
+            $cate = Product::whereIN('brand_id', explode(',',$brand))->where('category_id',$category_id)->paginate(8);
             response()->json($cate);
             return view('pages.productlist',compact('cate','cate_name','brand_name'));
-            //dd($cate);
         }else{
-            $cate = Product::where('category_id', $category_id)->with('category')->paginate(6);
+            $cate = Product::where('category_id',$category_id)->paginate(8);
             return view('pages.productlist', compact('cate','cate_name','brand_name'));
         }
         //dd($cate);

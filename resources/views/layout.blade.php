@@ -35,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
     <script>
         $(function(){
-            $('.category').click(function(){
+            $('.check').click(function(){
                 //alert('check');
                 var category =[];
                 $('.category').each(function(){
@@ -43,13 +43,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         category.push($(this).val());
                     }
                 });
-                Finalbrand  = category.toString();
+                var brand =[];
+                $('.brand').each(function(){
+                    if($(this).is(":checked")){
+                        brand.push($(this).val());
+                    }
+                });
+                Finalcate  = category.toString();
+                Finalbrand  = brand.toString();
                 $.ajax({
                     async: true,
                     type: 'get',
                     dataType: 'html',
                     url: '',
-                    data: "category=" + Finalbrand,
+                    data: "category=" + Finalcate +"&brand=" + Finalbrand ,
                     success: function (response) {
                         console.log(response);
                         $('#updateDiv').replaceWith($('#updateDiv',response));
@@ -57,27 +64,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 });
             });	
 
-            $('.brand').click(function(){
-                //alert('check');
-                var brand =[];
-                $('.brand').each(function(){
-                    if($(this).is(":checked")){
-                        brand.push($(this).val());
-                    }
-                });
-                Final  = brand.toString();
-                $.ajax({
-                    async: true,
-                    type: 'get',
-                    dataType: 'html',
-                    url: '',
-                    data: "brand=" + Final,
-                    success: function (response) {
-                        console.log(response);
-                        $('#updateDiv').replaceWith($('#updateDiv',response));
-                    }
-                });
-            });	
+            // $('.brand').click(function(){
+            //     //alert('check');
+            //     var brand =[];
+            //     $('.brand').each(function(){
+            //         if($(this).is(":checked")){
+            //             brand.push($(this).val());
+            //         }
+            //     });
+            //     Final  = brand.toString();
+            //     $.ajax({
+            //         async: true,
+            //         type: 'get',
+            //         dataType: 'html',
+            //         url: '',
+            //         data: "brand=" + Final,
+            //         success: function (response) {
+            //             console.log(response);
+            //             $('#updateDiv').replaceWith($('#updateDiv',response));
+            //         }
+            //     });
+            // });
         });
     </script>
 </head>
@@ -89,7 +96,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="top-header-main">
                 <div class="col-md-6 top-header-left">
                     <div class="drop">
-                        <i class="fas fa-user" style="color:white; width : 20px"></i>
+                        <?php 
+                        if(isset(Auth::user()->username)){
+                        ?>
+                        <i class="fas fa-user" style="color:white; width : 20px"></i><span style="color: white;">{{ Auth::user()->username}} </span>
+                        <?php
+                        }else{
+                        ?>
+                        <a href="{{URL::to('/user-login')}}">Login</a>
+                        <?php
+                        }
+                        ?>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -151,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
-                </div>
+                {{-- </div>
                 <div class="col-md-3 header-right">
                     <form action="/search" class="navbar-form">
                         <div class="search-bar">
@@ -163,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </form>
 
-                </div>
+                </div> --}}
                 <div class="clearfix"> </div>
             </div>
         </div>
@@ -188,35 +205,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                          alt="">
 
                     <p class="footer-links">
-                        <a href="{{ url('/index') }}">Home</a>
+                        <a href="{{ url('/home') }}">Home</a>
                         ·
-                        @if (Auth::guest())
-                            <a href="{{ url('/register') }}">Sign Up</a>
+                            <a href="{{ URL::to('/register') }}">Sign Up</a>
                             ·
-                            <a href="{{ url('/login') }}">Login</a>
+                            <a href="{{ URL::to('/user-login') }}">Login</a>
                             ·
-                        @endif
                         {{-- <a href="{{route('contactUs')}}">Contact</a> --}}
                     </p>
 
-                    <p class="footer-company-name">Develop by Elon Musk &copy; 2021</p>
+                    <p class="footer-company-name">Develop by Group 3 &copy; 2021</p>
                 </div>
 
                 <div class="footer-center">
 
                     <div>
                         <i class="fa fa-map-marker"></i>
-                        <p><span>23 Temerinska Street</span> Novi Sad, Serbia</p>
+                        <p><span>Cach Mang Thang 8</span> Ho Chi Minh, Viet Nam</p>
                     </div>
 
                     <div>
                         <i class="fa fa-phone"></i>
-                        <p>+1 555 123456</p>
+                        <p>+84 772 260 014</p>
                     </div>
 
                     <div>
                         <i class="fa fa-envelope"></i>
-                        <p><a href="mailto:watch-shop@company.com">watch-shop@company.com</a></p>
+                        <p><a href="mailto:watch-shop@company.com">watchshopgr3@gmail.com</a></p>
                     </div>
 
                 </div>
@@ -225,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <p class="footer-company-about">
                         <span>About the company</span>
-                        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                        We provide watches
                     </p>
 
                     <div class="footer-icons">
@@ -289,6 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			form.submit();
 		});
 	}
-</script>x
+</script>
+
 
 </html>
