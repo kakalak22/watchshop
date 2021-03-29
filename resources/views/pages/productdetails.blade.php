@@ -74,6 +74,7 @@
                                 </ul>
                                 <div class="review">
                                     <a href="#"> 1 customer review </a>
+<<<<<<< HEAD
 								</div>
 							<div class="clearfix"> </div>
 							</div>
@@ -96,6 +97,37 @@
 								});
 							</script> --}}
 							<h5 class="item_price">{{number_format($item->price)}} đ</h5>
+=======
+
+
+<!--end-single-->
+
+								</div>
+							<div class="clearfix"> </div>
+							</div>
+
+							<h5 class="item_price">{{number_format($item->price)}} đ</h5>
+							{{$item->content}}
+							<div class="available">
+								<ul>
+									<li>Color
+										<select>
+										<option>Silver</option>
+										<option>Black</option>
+										<option>Dark Black</option>
+										<option>Red</option>
+									</select></li>
+								<li class="size-in">Size<select>
+									<option>Large</option>
+									<option>Medium</option>
+									<option>small</option>
+									<option>Large</option>
+									<option>small</option>
+								</select></li>
+								<div class="clearfix"> </div>
+							</ul>
+						</div>
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 						<form action="{{ route('update-quantity-product') }}" id = "form" name ="myForm" method="post" class="frm-quantity">
 							<ul class="tag-men">
 								<li><span>TAG</span>
@@ -106,12 +138,19 @@
 									if ($item->quantity > 0) {
 								?>
 								<li><span>STOCK</span>
+<<<<<<< HEAD
 									<span>: {{$item->quantity}}</span></li>
 									<li>
+=======
+								<span>: {{$item->quantity}}</span></li>
+								<li>
+
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 										@csrf
 										<input type="hidden" name="id" value="{{ $item->id }}">
 										<span>QUANTITY : </span><input type="text" id="qty" name="qty" value="1" min = "1" data-max="{{$item->quantity}}" pattern="[0-9]*" >
 										<p id="demo"></p>
+<<<<<<< HEAD
 										
 									</li>
 									<button type="submit" class="add-cart">ADD TO CART</button>
@@ -124,6 +163,31 @@
 								?>
 							</ul>
 						</form>
+=======
+
+								</li>
+								<button type="submit" class="add-cart">ADD TO CART</button>
+							</ul>
+						</form>
+						<script type="text/javascript">
+						$("#form").validate({
+							rules: {
+								qty: {
+									required: true,
+									min: 1,
+									max: <?php echo($item->quantity) ?>
+								}
+							},
+							messages: {
+								qty:{
+									min: "Invalid quantity",
+									max: "Invalid quantity"
+								}
+							}
+
+						});
+						</script>
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -177,5 +241,9 @@
 		</div>
 	</div>
 	<br>
+<<<<<<< HEAD
+=======
+	
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 
 @endsection

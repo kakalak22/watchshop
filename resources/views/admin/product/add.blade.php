@@ -11,11 +11,6 @@
 
 @endsection
 
-<style>
-
-</style>
-
-
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -109,7 +104,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Descriptions:</label>
-                                        <textarea type="text" name="descriptions" @error('descriptions') is-invalid
+                                        <textarea rows="6" type="text" name="descriptions" @error('descriptions') is-invalid
                                             @enderror class="form-control tinymce_editor_init"
                                             placeholder="Enter Descriptions" value="{{old('descriptions')}}"></textarea>
                                         @error('descriptions')
@@ -138,5 +133,7 @@
 <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script src="{{asset('admins/product/add/add.js')}}"></script>
+
+
 
 @endsection

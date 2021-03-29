@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Brand;
 use App\Models\Categories;
 use App\Traits\DeleteModelTrait;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
     private $category;
     use DeleteModelTrait;
 
-    public function __construct(Categories $category)
+    public function __construct(Categories $category, Product $product)
     {
         $this->category = $category;
+        $this->product = $product;
     }
 
     public function ProductByCategory($category_id,Request $request)
@@ -70,6 +69,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+
         $category = $this->category->find($id);
         return \view('admin.category.editCate', \compact('category'));
     }
@@ -84,6 +84,17 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        return $this->deleteModelTrait($id, $this->category);
+        $countCate = $this->getCountCateByProduct($id);
+        if ($countCate > 0) {
+            \dd(1232);
+        } else {
+            return $this->deleteModelTrait($id, $this->category);
+        }
+    }
+
+    public function getCountCateByProduct($category_id)
+    {
+        $cate = Product::where('category_id', $category_id)->with('category')->count();
+        return $cate;
     }
 }

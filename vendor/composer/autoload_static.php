@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit672c88f57a65d1998e0101349ec41c5c
+=======
+class ComposerStaticInit2119f27417735945b9467431f5dd364d
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -539,6 +543,7 @@ class ComposerStaticInit672c88f57a65d1998e0101349ec41c5c
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AdminOrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminOrdersController.php',
         'App\\Http\\Controllers\\AdminPermissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPermissionController.php',
         'App\\Http\\Controllers\\AdminProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminProductController.php',
         'App\\Http\\Controllers\\AdminRoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminRoleController.php',
@@ -570,6 +575,7 @@ class ComposerStaticInit672c88f57a65d1998e0101349ec41c5c
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\BrandPolicy' => __DIR__ . '/../..' . '/app/Policies/BrandPolicy.php',
         'App\\Policies\\CategoryPolicy' => __DIR__ . '/../..' . '/app/Policies/CategoryPolicy.php',
+        'App\\Policies\\OrderPolicy' => __DIR__ . '/../..' . '/app/Policies/OrderPolicy.php',
         'App\\Policies\\PermissionPolicy' => __DIR__ . '/../..' . '/app/Policies/PermissionPolicy.php',
         'App\\Policies\\ProductPolicy' => __DIR__ . '/../..' . '/app/Policies/ProductPolicy.php',
         'App\\Policies\\RolePolicy' => __DIR__ . '/../..' . '/app/Policies/RolePolicy.php',
@@ -5406,10 +5412,17 @@ class ComposerStaticInit672c88f57a65d1998e0101349ec41c5c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit672c88f57a65d1998e0101349ec41c5c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit672c88f57a65d1998e0101349ec41c5c::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit672c88f57a65d1998e0101349ec41c5c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit672c88f57a65d1998e0101349ec41c5c::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2119f27417735945b9467431f5dd364d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2119f27417735945b9467431f5dd364d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2119f27417735945b9467431f5dd364d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2119f27417735945b9467431f5dd364d::$classMap;
+>>>>>>> fea26f9cae5f6b986e87aca4bc124325fd48d6c8
 
         }, null, ClassLoader::class);
     }
