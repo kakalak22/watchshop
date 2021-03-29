@@ -70,6 +70,17 @@ class BrandController extends Controller
 
     public function delete($id)
     {
-        return $this->deleteModelTrait($id, $this->brand);
+        $countCate = $this->getCountBrandByProduct($id);
+        if ($countCate > 0) {
+            \dd(1232);
+        } else {
+            return $this->deleteModelTrait($id, $this->brand);
+        }
+    }
+
+    public function getCountBrandByProduct($brand_id)
+    {
+        $cate = Product::where('brand_id', $brand_id)->with('brand')->count();
+        return $cate;
     }
 }

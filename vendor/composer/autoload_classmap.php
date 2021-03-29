@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AdminOrdersController' => $baseDir . '/app/Http/Controllers/AdminOrdersController.php',
     'App\\Http\\Controllers\\AdminPermissionController' => $baseDir . '/app/Http/Controllers/AdminPermissionController.php',
     'App\\Http\\Controllers\\AdminProductController' => $baseDir . '/app/Http/Controllers/AdminProductController.php',
     'App\\Http\\Controllers\\AdminRoleController' => $baseDir . '/app/Http/Controllers/AdminRoleController.php',
@@ -39,6 +40,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\BrandPolicy' => $baseDir . '/app/Policies/BrandPolicy.php',
     'App\\Policies\\CategoryPolicy' => $baseDir . '/app/Policies/CategoryPolicy.php',
+    'App\\Policies\\OrderPolicy' => $baseDir . '/app/Policies/OrderPolicy.php',
     'App\\Policies\\PermissionPolicy' => $baseDir . '/app/Policies/PermissionPolicy.php',
     'App\\Policies\\ProductPolicy' => $baseDir . '/app/Policies/ProductPolicy.php',
     'App\\Policies\\RolePolicy' => $baseDir . '/app/Policies/RolePolicy.php',

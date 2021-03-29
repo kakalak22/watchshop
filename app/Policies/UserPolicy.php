@@ -32,6 +32,11 @@ class UserPolicy
         return $user->checkPermissionAccess('user_list');
     }
 
+    public function homeadmin(User $user)
+    {
+        return $user->checkPermissionAccess('home_list');
+    }
+
     /**
      * Determine whether the user can create models.
      *

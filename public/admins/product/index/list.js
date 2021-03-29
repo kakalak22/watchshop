@@ -19,17 +19,23 @@ function actionDelete(event) {
                 success: function (data) {
                     if (data.code == 200) {
                         that.parent().parent().remove();
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    } else {
+                        Swal.fire(
+                            'Can not to delete!',
+                            'failure'
+                        )
                     }
                 },
                 error: function () {
 
                 }
             });
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
+
         }
     })
 }

@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Categories;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-// use Sentinal;
-// use Illuminate\Support\Facades\Validator;
-// use Cartalyst\Sentinal\Checkpoints\ThrottlingException;
-// use Cartalyst\Sentinal\Checkpoints\NotActivatedException;
 
 class HomeController extends Controller
 {
+
+
+    private $brand;
+    private $product;
+    private $category;
+    private $user;
+
+    public function __construct(Brand $brand, User $user, Categories $category, Product $product)
+    {
+        $this->brand = $brand;
+        $this->product = $product;
+        $this->category = $category;
+        $this->user = $user;
+    }
+
     public function getIndex()
     {
         $new_product = Product::orderBy('created_at', 'asc')->limit(8)->get();
@@ -22,8 +37,16 @@ class HomeController extends Controller
 
     public function AdminHome()
     {
-        return view('admin.admin_home');
+
+        $brands = Brand::count();
+        $products = Product::count();
+        $categories = Categories::count();
+        $users = User::count();
+
+        return view('admin.admin_home', compact('brands', 'products', 'categories', 'users'));
     }
+
+
 
     public function getLoginAdmin()
     {

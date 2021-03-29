@@ -62,15 +62,15 @@
                                 <div class="review">
                                     <a href="#"> 1 customer review </a>
 
-                               
+
 <!--end-single-->
 
 								</div>
 							<div class="clearfix"> </div>
 							</div>
-							
+
 							<h5 class="item_price">{{number_format($item->price)}} đ</h5>
-							<p>{{$item->content}}</p>
+							{{$item->content}}
 							<div class="available">
 								<ul>
 									<li>Color
@@ -99,13 +99,13 @@
 								<li><span>STOCK</span>
 								<span>: {{$item->quantity}}</span></li>
 								<li>
-									
+
 										@csrf
 										<input type="hidden" name="stock" value = {{$item->quantity}}>
 										<input type="hidden" name="id" value="{{ $item->id }}">
 										<span>QUANTITY : </span><input type="text" id="qty" name="qty" value="1" data-max="{{$item->quantity}}" pattern="[0-9]*" >
 										<p id="demo"></p>
-										
+
 								</li>
 								<button type="submit" class="add-cart">ADD TO CART</button>
 							</ul>
@@ -125,7 +125,7 @@
 									max: "Invalid quantity"
 								}
 							}
-							
+
 						});
 						</script>
 						</div>
@@ -259,6 +259,6 @@
 		</div>
 	</div>
 	<br>
-	br
+	
 
 @endsection
