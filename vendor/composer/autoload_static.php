@@ -4,11 +4,7 @@
 
 namespace Composer\Autoload;
 
-<<<<<<< HEAD
-class ComposerStaticInit533021db7e3bfbd995d09f00109e3e0c
-=======
-class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
->>>>>>> 0e52c9bf09d9f2aca54056917f81f254b95c5855
+class ComposerStaticInit3463983e37d38b63f239e589123e5edb
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -547,6 +543,7 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
         'App\\Http\\Controllers\\AdminPermissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPermissionController.php',
         'App\\Http\\Controllers\\AdminProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminProductController.php',
         'App\\Http\\Controllers\\AdminRoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminRoleController.php',
+        'App\\Http\\Controllers\\AdminSaleController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminSaleController.php',
         'App\\Http\\Controllers\\AdminUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminUserController.php',
         'App\\Http\\Controllers\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/BrandController.php',
         'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
@@ -573,6 +570,7 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\ProductImage' => __DIR__ . '/../..' . '/app/Models/ProductImage.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
+        'App\\Models\\Sale' => __DIR__ . '/../..' . '/app/Models/Sale.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
         'App\\Policies\\BrandPolicy' => __DIR__ . '/../..' . '/app/Policies/BrandPolicy.php',
@@ -5414,17 +5412,10 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-<<<<<<< HEAD
-            $loader->prefixLengthsPsr4 = ComposerStaticInit533021db7e3bfbd995d09f00109e3e0c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit533021db7e3bfbd995d09f00109e3e0c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit533021db7e3bfbd995d09f00109e3e0c::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit533021db7e3bfbd995d09f00109e3e0c::$classMap;
-=======
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$classMap;
->>>>>>> 0e52c9bf09d9f2aca54056917f81f254b95c5855
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3463983e37d38b63f239e589123e5edb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3463983e37d38b63f239e589123e5edb::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3463983e37d38b63f239e589123e5edb::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit3463983e37d38b63f239e589123e5edb::$classMap;
 
         }, null, ClassLoader::class);
     }

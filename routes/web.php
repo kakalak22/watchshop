@@ -55,10 +55,12 @@ Route::get('/home', 'HomeController@getIndex');
 Route::get('/user/login', function () {
     return view('pages.login');
 });
-Route::post('/user/login', 'HomeController@userLogin');
+Route::post('/user/login', 'HomeController@userLogin')->name('login');
 Route::get('/user/logout', 'HomeController@logoutuser');
-Route::post('/user/register', 'HomeController@registeruser');
-Route::view('/user/register','pages.register');
+Route::post('/user/register', 'HomeController@registeruser')->name('register');
+Route::get('/user/register', function () {
+    return view('pages.register');
+});
 Route::get('/user/logout', function () {
     Session::forget('user');
     return redirect('/user/login');

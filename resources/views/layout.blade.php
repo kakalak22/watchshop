@@ -101,8 +101,8 @@
 
                             </div>
                             @else
-                            <a href="/user/login">Login</a>
-                            <a href="/user/register">Register</a>
+                            <a href="{{URL::to('/user/login')}}">Login</a>
+                            <a href="{{URL::to('/user/register')}}">Register</a>
                             @endif
 
                         </ul>
@@ -188,49 +188,75 @@
     <hr>
 
    <!--information-starts-->
-	<div class="information">
-		<div class="container">
-			<div class="infor-top">
-				<div class="col-md-3 infor-left">
-					<h3>Follow Us</h3>
-					<ul>
-						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
-						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
-						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>Information</h3>
-					<ul>
-						<li><a href="#"><p>Specials</p></a></li>
-						<li><a href="#"><p>New Products</p></a></li>
-						<li><a href="#"><p>Our Stores</p></a></li>
-						<li><a href="contact.html"><p>Contact Us</p></a></li>
-						<li><a href="#"><p>Top Sellers</p></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>My Account</h3>
-					<ul>
-						<li><a href="account.html"><p>My Account</p></a></li>
-						<li><a href="#"><p>My Credit slips</p></a></li>
-						<li><a href="#"><p>My Merchandise returns</p></a></li>
-						<li><a href="#"><p>My Personal info</p></a></li>
-						<li><a href="#"><p>My Addresses</p></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>Store Information</h3>
-					<h4>The company name,
-						<span>Lorem ipsum dolor,</span>
-						Glasglow Dr 40 Fe 72.</h4>
-					<h5>+955 123 4567</h5>
-					<p><a href="mailto:example@email.com">contact@example.com</a></p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
+   <div class="footer">
+
+    <div class="row">
+        <!-- FOOTER CONTENT -->
+
+        <footer class="footer-distributed">
+
+            <div class="footer-left">
+
+                <img src="{{URL::to('src/images/logo.png')}}" style="width: 200px; height:
+                100px;"
+                     alt="">
+
+                <p class="footer-links">
+                    <a href="{{ url('/index') }}">Home</a>
+                    ·
+                    @if (Auth::guest())
+                        <a href="{{ url('/register') }}">Sign Up</a>
+                        ·
+                        <a href="{{ url('/login') }}">Login</a>
+                        ·
+                    @endif
+                    {{-- <a href="{{route('contactUs')}}">Contact</a> --}}
+                </p>
+
+                <p class="footer-company-name">Develop by Elon Musk &copy; 2021</p>
+            </div>
+
+            <div class="footer-center">
+
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>23 Temerinska Street</span> Novi Sad, Serbia</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+1 555 123456</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:watch-shop@company.com">watch-shop@company.com</a></p>
+                </div>
+
+            </div>
+
+            <div class="footer-right">
+
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                </p>
+
+                <div class="footer-icons">
+
+                    <a target="_blank" href="https://www.linkedin.com/in/aleksandar-bu%C5%A1baher-430537137/"><i class="fa
+                    fa-linkedin"></i></a>
+                    <a target="_blank" href="https://github.com/ABusbaher/watch-shop-laravel"><i class="fa fa-github"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+
+                </div>
+
+            </div>
+
+        </footer>
+    </div>
+</div>
 	<!--information-end-->
 	<!--footer-starts-->
 	<div class="footer">
