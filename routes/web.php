@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminOrdersController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminPermissionController;
+use Illuminate\Support\Facades\Session;
 
 
 //CLIENT
@@ -54,6 +55,10 @@ Route::post('/user/login', 'HomeController@userLogin');
 Route::get('/user/logout', 'HomeController@logoutuser');
 Route::post('/user/register', 'HomeController@registeruser');
 Route::view('/user/register','pages.register');
+Route::get('/user/logout', function () {
+    Session::forget('user');
+    return redirect('/user/login');
+});
 
 
 // category

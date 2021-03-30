@@ -47,7 +47,7 @@
                             <h5>
                                 {{Session::get('user')['username']}}
                             </h5>
-                            <a href="/logout">Logout</a>
+                            <a href="/user/logout">Logout</a>
 
                             </div>
                             @else
