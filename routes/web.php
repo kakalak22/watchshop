@@ -1,27 +1,20 @@
 <?php
 
-use App\Http\Controllers\AdminOrdersController;
-use App\Http\Controllers\AdminPermissionController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\AdminRoleController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\AdminSaleController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminOrdersController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminPermissionController;
+use Illuminate\Support\Facades\Session;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 //CLIENT
 // Search
 Route::get("search", [ProductController::class, 'search']);
@@ -53,15 +46,27 @@ Route::get('/user-login','UserController@getLogin');
 
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-home');
-Route::get('/login', 'HomeController@getLoginAdmin');
-Route::post('/login', 'HomeController@postLoginAdmin')->name('admin.login');
-Route::get('/logout', 'HomeController@logout')->name('admin.logout');
-Route::post('/postlogin','UserController@postLogin');
+Route::get('/admin/login', 'HomeController@getLoginAdmin');
+Route::post('/admin/login', 'HomeController@postLoginAdmin')->name('admin.login');
+Route::get('/admin/logout', 'HomeController@logout')->name('admin.logout');
+
+//user
+Route::get('/home', 'HomeController@getIndex');
+Route::get('/user/login', function () {
+    return view('pages.login');
+});
+Route::post('/user/login', 'HomeController@userLogin');
+Route::get('/user/logout', 'HomeController@logoutuser');
+Route::post('/user/register', 'HomeController@registeruser');
+Route::view('/user/register','pages.register');
+Route::get('/user/logout', function () {
+    Session::forget('user');
+    return redirect('/user/login');
+});
+
 
 // category
 Route::prefix('admin')->group(function () {
-
-
 
     //create category by admin
     Route::prefix('categories')->group(function () {
@@ -159,8 +164,21 @@ Route::prefix('admin')->group(function () {
         Route::post('/updateOrderItem/{id}', [AdminOrdersController::class, 'updateOrderItem'])->name('orders.updateOrderItem');
     });
 
+    //sale
+    Route::prefix('sales')->group(function () {
 
+        Route::get('/', 'AdminSaleController@index')->name('sales.index')->middleware('can:sale-list');
 
+        // Route::get('/edit/{id}', 'AdminOrdersController@edit')->name('orders.edit')->middleware('can:order-edit');
+
+        // Route::post('/update/{id}', [AdminOrdersController::class, 'update'])->name('orders.update');
+
+        // Route::get('/orderItemIndex/{id}', [AdminOrdersController::class, 'orderItemIndex'])->name('orders.indexOrderItem');
+
+        // Route::get('/editOrderItem/{id}', [AdminOrdersController::class, 'editOrderItem'])->name('orders.editOrderItem');
+
+        // Route::post('/updateOrderItem/{id}', [AdminOrdersController::class, 'updateOrderItem'])->name('orders.updateOrderItem');
+    });
 
     //permission
     Route::prefix('permission')->group(function () {

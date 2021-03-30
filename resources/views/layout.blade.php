@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -10,10 +11,6 @@
     <!--theme-style-->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     </script>
@@ -95,20 +92,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="top-header-main">
                 <div class="col-md-6 top-header-left">
-                    {{-- <div class="drop">
-                        <?php 
-                        if(isset(Auth::user()->username)){
-                        ?>
-                        <i class="fas fa-user" style="color:white; width : 20px"></i><span style="color: white;">{{ Auth::user()->username}} </span>
-                        <?php
-                        }else{
-                        ?>
-                        <a href="{{URL::to('/user-login')}}">Login</a>
-                        <?php
-                        }
-                        ?>
-                        <div class="clearfix"></div> --}}
-                    </div>
+                        <ul class="nav navbar-nav navbar-left">
+                            @if(Session::has('user'))
+                            <h5>
+                                {{Session::get('user')['username']}}
+                            </h5>
+                            <a href="/user/logout">Logout</a>
+
+                            </div>
+                            @else
+                            <a href="/user/login">Login</a>
+                            <a href="/user/register">Register</a>
+                            @endif
+
+                        </ul>
+
                 </div>
                 <div class="col-md-6 top-header-left">
                     <div class="cart box_1">
@@ -187,78 +185,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--bottom-header-->
     @yield('content')
-    <!--information-starts-->
+    <hr>
 
-    <!--information-end-->
-    <!--footer-starts-->
-    <div class="footer">
-
-        <div class="row">
-            <!-- FOOTER CONTENT -->
-
-            <footer class="footer-distributed">
-
-                <div class="footer-left">
-
-                    <img src="{{URL::to('src/images/logo.png')}}" style="width: 200px; height:
-                    100px;"
-                         alt="">
-
-                    <p class="footer-links">
-                        <a href="{{ url('/home') }}">Home</a>
-                        ·
-                            <a href="{{ URL::to('/register') }}">Sign Up</a>
-                            ·
-                            <a href="{{ URL::to('/user-login') }}">Login</a>
-                            ·
-                        {{-- <a href="{{route('contactUs')}}">Contact</a> --}}
-                    </p>
-
-                    <p class="footer-company-name">Develop by Group 3 &copy; 2021</p>
-                </div>
-
-                <div class="footer-center">
-
-                    <div>
-                        <i class="fa fa-map-marker"></i>
-                        <p><span>Cach Mang Thang 8</span> Ho Chi Minh, Viet Nam</p>
-                    </div>
-
-                    <div>
-                        <i class="fa fa-phone"></i>
-                        <p>+84 772 260 014</p>
-                    </div>
-
-                    <div>
-                        <i class="fa fa-envelope"></i>
-                        <p><a href="mailto:watch-shop@company.com">watchshopgr3@gmail.com</a></p>
-                    </div>
-
-                </div>
-
-                <div class="footer-right">
-
-                    <p class="footer-company-about">
-                        <span>About the company</span>
-                        We provide watches
-                    </p>
-
-                    <div class="footer-icons">
-
-                        <a target="_blank" href="https://www.linkedin.com/in/aleksandar-bu%C5%A1baher-430537137/"><i class="fa
-                        fa-linkedin"></i></a>
-                        <a target="_blank" href="https://github.com/ABusbaher/watch-shop-laravel"><i class="fa fa-github"></i></a>
-                        <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                        <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-
-                    </div>
-
-                </div>
-
-            </footer>
-        </div>
-    </div>
-    <!--footer-end-->
+   <!--information-starts-->
+	<div class="information">
+		<div class="container">
+			<div class="infor-top">
+				<div class="col-md-3 infor-left">
+					<h3>Follow Us</h3>
+					<ul>
+						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Information</h3>
+					<ul>
+						<li><a href="#"><p>Specials</p></a></li>
+						<li><a href="#"><p>New Products</p></a></li>
+						<li><a href="#"><p>Our Stores</p></a></li>
+						<li><a href="contact.html"><p>Contact Us</p></a></li>
+						<li><a href="#"><p>Top Sellers</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>My Account</h3>
+					<ul>
+						<li><a href="account.html"><p>My Account</p></a></li>
+						<li><a href="#"><p>My Credit slips</p></a></li>
+						<li><a href="#"><p>My Merchandise returns</p></a></li>
+						<li><a href="#"><p>My Personal info</p></a></li>
+						<li><a href="#"><p>My Addresses</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Store Information</h3>
+					<h4>The company name,
+						<span>Lorem ipsum dolor,</span>
+						Glasglow Dr 40 Fe 72.</h4>
+					<h5>+955 123 4567</h5>
+					<p><a href="mailto:example@email.com">contact@example.com</a></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					<form>
+						<input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+						<input type="submit" value="Subscribe">
+					</form>
+				</div>
+				<div class="col-md-6 footer-right">
+					<p>© 2020 WatchShop by Group3 </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->
 </body>
 <script>
     function addToCart(event){

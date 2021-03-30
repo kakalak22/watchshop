@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -79,9 +79,39 @@ class HomeController extends Controller
         }
     }
 
+
+    public function userLogin(Request $req)
+    {
+        $user = User::where(['email'=>$req->email])->first();
+        if(!$user || !Hash::check($req->password,$user->password))
+        {
+            return "username or password is not matched";
+        }
+        else{
+            $req->session()->put('user',$user);
+            return redirect('/home');
+        }
+    }
+
     public function logout()
     {
         Auth::logout();
         return \view('admin.demoHtml.admin_login');
+    }
+
+    public function logoutuser()
+    {
+        Auth::logout();
+        return \view('pages.home');
+    }
+
+    function registeruser(Request $req)
+    {
+        $user = new User;
+        $user->username=$req->username;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->save();
+        return redirect('/user/login');
     }
 }
