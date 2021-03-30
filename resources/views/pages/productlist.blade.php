@@ -59,12 +59,9 @@
 					<section  class="sky-form">
 						<h4>Catogories</h4>
 						<div class="row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Categories</label>
-							</div>
 							<div class="col col-4">	
 								@foreach($cate_name as $item)
-								<label class="checkbox"><input type="checkbox" class="category" name="checkbox" value="{{$item->id}}"><i></i>{{$item->name}} ({{App\Models\Product::where('category_id',$item->id)->count()}})</label>
+								<label class="checkbox"><input type="checkbox"  class="check category" name="checkbox" value="{{$item->id}}"><i></i>{{$item->name}} ({{App\Models\Product::where('category_id',$item->id)->count()}})</label>
 								@endforeach
 							</div>
 						</div>
@@ -74,7 +71,7 @@
 						<div class="row1 row2 scroll-pane">
 							<div class="col col-4">
 								@foreach ($brand_name as $item)
-									<label class="checkbox"><input type="checkbox" name="checkbox" class="brand" value = "{{$item->id}}"><i></i>{{$item->name}} ({{App\Models\Product::where('brand_id',$item->id)->count()}})</label>		
+									<label class="checkbox"><input type="checkbox" name="checkbox"  class="check brand" value = "{{$item->id}}"><i></i>{{$item->name}} ({{App\Models\Product::where('brand_id',$item->id)->count()}})</label>		
 								@endforeach				
 							</div>
 						</div>

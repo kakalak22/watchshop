@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Categories;
 
 use App\Models\Product;
 use App\Models\Brand;
@@ -19,16 +20,56 @@ class BrandController extends Controller
         $this->product = $product;
     }
 
-    public function AllBrandProduct()
+    public function AllBrandProduct(Request $request)
     {
-        $cate = Product::orderBy('brand_id','asc')->paginate(6);
-        return view('pages.productlist', compact('cate'));
+        $cate_name = Categories::all();
+        $brand_name = Brand::all();
+        $category = $request->category;
+        $brand = $request->brand;
+        if(isset($category)){
+            if(isset($brand)){
+                $cate = Product::whereIN('brand_id', explode(',', $brand))->whereIN('category_id',explode(',', $category))->paginate(8);
+                response()->json($cate);
+                return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            }else{
+            $cate = Product::whereIN('category_id', explode(',', $category))->paginate(6);
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            }
+        }else if(isset($brand)){
+            $cate = Product::whereIN('brand_id', explode(',',$brand))->paginate(6);
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+        }else{
+            $cate = Product::orderBy('brand_id','ASC')->paginate(6);
+            return view('pages.productlist', compact('cate','cate_name','brand_name'));
+        }
     }
 
-    public function ProductByBrand($brand_id)
+    public function ProductByBrand($brand_id,Request $request)
     {
-        $cate = Product::where('brand_id', $brand_id)->paginate(6);
-        return view('pages.productlist', compact('cate'));
+        $cate_name = Categories::all();
+        $brand_name = Brand::all();
+        $category = $request->category;
+        $brand = $request->brand;
+        if(isset($category)){
+            if(isset($brand)){
+                $cate = Product::whereIN('brand_id', explode(',', $brand))->whereIN('category_id',explode(',', $category))->paginate(6);
+                response()->json($cate);
+                return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            }else{
+            $cate = Product::whereIN('category_id', explode(',', $category))->paginate(6);
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+            }
+        }else if(isset($brand)){
+            $cate = Product::whereIN('brand_id', explode(',',$brand))->where('brand_id',$brand_id)->paginate(6);
+            response()->json($cate);
+            return view('pages.productlist',compact('cate','cate_name','brand_name'));
+        }else{
+            $cate = Product::where('brand_id',$brand_id)->paginate(8);
+            return view('pages.productlist', compact('cate','cate_name','brand_name'));
+        }
     }
 
 

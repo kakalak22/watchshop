@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 use App\Traits\DeleteModelTrait;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,7 @@ class UserController extends Controller
     public function register(){
         return view('pages.register');
     }
-    public function saveUser(Request $request){{
+    public function saveUser(Request $request){
         try {
             DB::beginTransaction();
             $data = $request->all();
@@ -44,5 +45,23 @@ class UserController extends Controller
             Log::error('Message: ' . $ex->getMessage() . '---- Line: ' . $ex->getLine());
         }
     }
+
+    public function getLogin(){
+        return view('/pages.userlogin');
     }
+
+    public function postLogin(Request $request)
+    {
+        $arr = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+
+        if (Auth::attempt($arr)) {
+            return Redirect::to('/home');
+        } else {
+            \dd("Login fail!!");
+        }
+    }
+    
 }

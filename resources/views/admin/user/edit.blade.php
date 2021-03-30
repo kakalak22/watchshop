@@ -33,7 +33,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Username:</label>
-                                            <input type="text" name="username" class="form-control"  placeholder="Enter Product Name" value="{{$user->username}}">
+                                            <input type="text" readonly name="username" class="form-control"  placeholder="Enter Product Name" value="{{$user->username}}">
                                         </div>
 
                                         <div class="form-group">
