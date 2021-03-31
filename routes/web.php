@@ -49,9 +49,9 @@ Route::view('/user/register','pages.register');
 Route::get('/user/logout', 'HomeController@logoutuser');
 
 //user orders
-Route::get('/orders','OrdersController@orders');
-
-
+Route::get('/user/orders','OrdersController@orders');
+//user view order details
+Route::get('/user/orders/{id}','OrdersController@orderDetails');
 
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-home');

@@ -2,28 +2,38 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <h2>Register form</h2>
-            <form action="register" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username"
-                        name="name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email"
-                        name="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter password"
-                        name="pwd">
-                </div>
-
-                <button type="submit" class="btn btn-default">Register</button>
-            </form>
+        <div class="col-md-12">
+            <h2>My order history</h2>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Order id</th>
+                        <th>Order products</th>
+                        <th>Payment method</th>
+                        <th>Total</th>
+                        <th>Created on</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($orders as $order)
+                    <tr>
+                        <td><a style="text-decoration: underline;"
+                                href="{{url('orders/'.$order['id'])}}">#{{$order['id']}}</a></td>
+                        <td>
+                            @foreach ($order['orders_items'] as $pro)
+                            {{$pro['product_name']}}<br>
+                            @endforeach
+                        </td>
+                        <td>{{$order['payment_method']}}</td>
+                        <td><span>${{$order['total']}}</span></td>
+                        <td><span>{{ date('d-m-Y', strtotime($order['created_at'])) }}</span></td>
+                        <td><a style="text-decoration: underline;"
+                            href="{{url('/user/orders/'.$order['id'])}}">View details</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

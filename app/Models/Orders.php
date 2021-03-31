@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\OrdersProduct;
+use App\Models\OrderItems;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,8 +25,8 @@ class Orders extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
-    public function orders_products()
+    public function orders_items()
     {
-        return $this->hasMany('App\Models\OrdersProduct','order_id');
+        return $this->hasMany('App\Models\OrderItems','order_id','id');
     }
 }
