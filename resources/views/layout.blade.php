@@ -31,7 +31,7 @@
 });
     </script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
-
+    <script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
 
 </head>
 
@@ -44,13 +44,20 @@
 
                 <div class="col-md-6 top-header-left">
                     <ul class="nav navbar-nav">
-                        @if(Session::has('user'))
+                        @if(Auth::check())
                         <li>
                             <a href="">
-                                <span class="glyphicon glyphicon-user"> Hi {{Session::get('user')['username']}}</span>
+                                <span class="glyphicon glyphicon-user"> My account</span>
                             </a>
 
                         </li>
+                        <li>
+                            <a href="{{url('/user/orders')}}">
+                                <span class="glyphicon glyphicon-user"> Orders</span>
+                            </a>
+
+                        </li>
+
                         <li>
                             <a href="/user/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
                         </li>

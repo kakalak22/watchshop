@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Brand;
-use App\Models\Categories;
 use App\Models\Orders;
 use App\Models\Product;
-use App\Models\User;
+use App\Models\Categories;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -82,14 +83,16 @@ class HomeController extends Controller
 
     public function userLogin(Request $req)
     {
-        $user = User::where(['email'=>$req->email])->first();
-        if(!$user || !Hash::check($req->password,$user->password))
-        {
-            return "username or password is not matched";
-        }
-        else{
-            $req->session()->put('user',$user);
-            return redirect('/home');
+        if($req->isMethod('post')){
+            $data = $req->all();
+            // echo "<pre>";print_r($data);die;
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                return redirect('/home');
+            }else{
+                $message = "invalid username or password";
+                Session::flash('error_message',$message);
+                return redirect()->back();
+            }
         }
     }
 
@@ -102,16 +105,31 @@ class HomeController extends Controller
     public function logoutuser()
     {
         Auth::logout();
-        return \view('pages.home');
+        return redirect('/home');
     }
 
     function registeruser(Request $req)
     {
-        $user = new User;
-        $user->username=$req->username;
-        $user->email=$req->email;
-        $user->password=Hash::make($req->password);
-        $user->save();
-        return redirect('/user/login');
+        if($req->isMethod('post')){
+            $data = $req->all();
+            // echo "<pre>";print_r($data);die;
+            //check if user already exits
+            $userCount = User::where('email',$data['email'])->count();
+            if($userCount>0){
+                $message = "Email already exits";
+                Session::flash('error_message',$message);
+                return redirect()->back();
+            }else{
+                // register user
+                $user = new User;
+                $user->username=$data['username'];
+                $user->email=$data['email'];
+                $user->password=bcrypt($data['password']);
+                $user->save();
+                if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                    return redirect('/home');
+                }
+            }
+        }
     }
 }
