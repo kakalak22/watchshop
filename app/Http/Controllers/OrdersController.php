@@ -10,8 +10,17 @@ class OrdersController extends Controller
 {
     public function orders()
     {
-        $orders = Orders::with('orders_products')->where('user_id', Auth::user()->id)->get()->toArray();
-        // dd($orders);die;
+        $orders = Orders::with('orders_items')->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->get()->toArray();
+        // dd($orders);
+        // die;
         return view('pages.ordershistory')->with(compact('orders'));
+    }
+
+
+    public function orderDetails($id)
+    {
+        $orderDetails = Orders::with('orders_items')->where('id',$id)->first()->toArray();
+        // dd($orderDetails);die;
+        return view('pages.orderdetails')->with(compact('orderDetails'));
     }
 }

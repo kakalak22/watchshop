@@ -53,7 +53,7 @@
                         </li>
                         <li>
                             <a href="{{url('/user/orders')}}">
-                                <span class="glyphicon glyphicon-user"> Orders</span>
+                                <span class="glyphicon glyphicon-user"> My Orders</span>
                             </a>
 
                         </li>
