@@ -91,7 +91,12 @@
 					@foreach ($new_product as $item)
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
+<<<<<<< HEAD
 							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{URL::to($item->feature_image) }}" alt="" />
+=======
+
+							<a href="{{URL::to('/product-details/'.$item->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{URL::to($item->feature_image)}}" style="width: 200px; height: 200px;" alt="" /></a>
+>>>>>>> 2c21ef9689e2c651076bd572ea375029f5e055a5
 							<div class="product-bottom">
 								<h3>{{$item->name}}</h3>
 								<a href="{{URL::to('/product-details/'.$item->id)}}"><p>Explore Now</p></a>
@@ -107,7 +112,7 @@
 									}else{
 										echo 'OUT OF STOCK';
 									}
-										
+
 									?>
 								</span>
 								</h5>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -30,6 +29,7 @@
 });
     </script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
+<<<<<<< HEAD
     <script>
         $(function(){
             $('.check').click(function(){
@@ -84,39 +84,76 @@
             // });
         });
     </script>
+=======
+    <script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
+
+>>>>>>> 2c21ef9689e2c651076bd572ea375029f5e055a5
 </head>
 
 <body>
     <!--top-header-->
     <div class="top-header">
         <div class="container">
-            <div class="top-header-main">
-                <div class="col-md-6 top-header-left">
-                        <ul class="nav navbar-nav navbar-left">
-                            @if(Session::has('user'))
-                            <h5>
-                                {{Session::get('user')['username']}}
-                            </h5>
-                            <a href="/user/logout">Logout</a>
 
+            <div class="top-header-main">
+
+                <div class="col-md-6 top-header-left">
+                    <ul class="nav navbar-nav">
+                        @if(Auth::check())
+                        <li>
+                            <a href="">
+                                <span class="glyphicon glyphicon-user"> My account</span>
+                            </a>
+
+<<<<<<< HEAD
                             </div>
                             @else
                             <a href="{{URL::to('/user/login')}}">Login</a>
                             <a href="{{URL::to('/user/register')}}">Register</a>
                             @endif
+=======
+                        </li>
+                        <li>
+                            <a href="{{url('/user/orders')}}">
+                                <span class="glyphicon glyphicon-user"> My Orders</span>
+                            </a>
 
-                        </ul>
+                        </li>
+
+                        <li>
+                            <a href="/user/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
+                        </li>
+
+                        @else
+                        <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/user/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+
+                        @endif
+                    </ul>
+>>>>>>> 2c21ef9689e2c651076bd572ea375029f5e055a5
+
 
                 </div>
                 <div class="col-md-6 top-header-left">
+<<<<<<< HEAD
                     <div class="cart box_1">
                         <a class = "cart" href="{{URL::to('/show-cart')}}">
                             <i class="fa" style="font-size:24px">&#xf07a;</i>
                             <span class='badge badge-warning' id='lblCartCount'> {{Cart::count()}} </span>
                         </a>
                         <div class="clearfix"></div>
+=======
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href=""><i class="fa fa-envelope"></i> Contact</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::to('/show-cart')}}"><span class="glyphicon glyphicon-shopping-cart"></span>Cart(0)</a>
+                        </li>
+>>>>>>> 2c21ef9689e2c651076bd572ea375029f5e055a5
 
-                    </div>
+
+                    </ul>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -187,6 +224,7 @@
     @yield('content')
     <hr>
 
+<<<<<<< HEAD
    <!--information-starts-->
    <div class="footer">
 
@@ -276,6 +314,95 @@
 		</div>
 	</div>
 	<!--footer-end-->
+=======
+    <!--information-starts-->
+    <div class="information">
+        <div class="container">
+            <div class="infor-top" style="background-color: black;">
+                <div class="col-md-3 infor-left">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><span class="fb"></span>
+                                <h6>Facebook</h6>
+                            </a></li>
+                        <li><a href="#"><span class="twit"></span>
+                                <h6>Twitter</h6>
+                            </a></li>
+                        <li><a href="#"><span class="google"></span>
+                                <h6>Google+</h6>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">
+                                <p>Specials</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>New Products</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>Our Stores</p>
+                            </a></li>
+                        <li><a href="contact.html">
+                                <p>Contact Us</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>Top Sellers</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>My Account</h3>
+                    <ul>
+                        <li><a href="account.html">
+                                <p>My Account</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Credit slips</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Merchandise returns</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Personal info</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Addresses</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Store Information</h3>
+                    <h4>The company name,
+                        <span>Lorem ipsum dolor,</span>
+                        Glasglow Dr 40 Fe 72.</h4>
+                    <h5>+955 123 4567</h5>
+                    <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--information-end-->
+    <!--footer-starts-->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    © 2021 Watch Shop. All Rights Reserved
+                </div>
+                <div class="col-md-6 footer-right">
+                    Design by <a href="http://w3layouts.com/"
+                            target="_blank">FPT Aptech</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--footer-end-->
+>>>>>>> 2c21ef9689e2c651076bd572ea375029f5e055a5
 </body>
 <script>
     function addToCart(event){
