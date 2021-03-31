@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminSaleController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminOrdersController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AdminPermissionController;
 use Illuminate\Support\Facades\Session;
 
@@ -37,6 +38,18 @@ Route::post('/update-quantity-product', 'CartController@updateQuantityProduct')-
 Route::get('/checkout', 'CartController@checkout');
 Route::post('/store-shipping-information', 'CartController@saveShipDetail');
 Route::get('/success', 'CartController@success');
+//login-register
+Route::get('/home', 'HomeController@getIndex');
+Route::get('/user/login', function () {
+    return view('pages.login');
+});
+Route::post('/user/login', 'HomeController@userLogin');
+Route::post('/user/register', 'HomeController@registeruser');
+Route::view('/user/register','pages.register');
+Route::get('/user/logout', 'HomeController@logoutuser');
+
+//user orders
+Route::get('/orders','OrdersController@orders');
 
 
 
@@ -46,19 +59,7 @@ Route::get('/admin/login', 'HomeController@getLoginAdmin');
 Route::post('/admin/login', 'HomeController@postLoginAdmin')->name('admin.login');
 Route::get('/admin/logout', 'HomeController@logout')->name('admin.logout');
 
-//user
-Route::get('/home', 'HomeController@getIndex');
-Route::get('/user/login', function () {
-    return view('pages.login');
-});
-Route::post('/user/login', 'HomeController@userLogin');
-Route::get('/user/logout', 'HomeController@logoutuser');
-Route::post('/user/register', 'HomeController@registeruser');
-Route::view('/user/register','pages.register');
-Route::get('/user/logout', function () {
-    Session::forget('user');
-    return redirect('/user/login');
-});
+
 
 
 // category
