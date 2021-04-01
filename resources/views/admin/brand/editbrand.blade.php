@@ -21,7 +21,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="text" name="name" value="{{ $brand->name }}"
-                                     class="form-control" placeholder="Enter Category">
+                                     class="form-control" @error('name') is-invalid
+                                            @enderror placeholder="Enter Brand">
+                                            @error('name')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>

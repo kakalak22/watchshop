@@ -20,7 +20,11 @@
                             <label>Brand Name:</label>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Brand">
+                                    <input type="text" name="name" class="form-control" @error('name') is-invalid
+                                            @enderror placeholder="Enter Brand">
+                                             @error('name')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>

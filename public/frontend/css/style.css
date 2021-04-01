@@ -3436,3 +3436,9 @@ input.quantity-input {
       vertical-align: top;
       margin-left: -10px; 
   }
+
+  .img-responsive {
+    display: block;
+    height: 200px;
+    max-width: 100%;
+}

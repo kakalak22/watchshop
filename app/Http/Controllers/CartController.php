@@ -119,7 +119,7 @@ class CartController extends Controller
             $product = Product::find($item->id);
             $product->quantity = $product->quantity - intval($item->qty);
             $product->sold_quantity = $product->sold_quantity + intval($item->qty);
-            //dd($product->quantity);
+            //dd($product->sold_quantity);
             $product->save();
         }
         //dd($orderItem);

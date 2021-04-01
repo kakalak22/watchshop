@@ -47,6 +47,8 @@ Route::get('/success', 'CartController@success');
 //user
 Route::get('/register','UserController@register');
 Route::post('/register-process','UserController@saveUser');
+Route::get('/user-login','UserController@getLogin');
+
 
 
 //admin
@@ -54,7 +56,7 @@ Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-hom
 Route::get('/login', 'HomeController@getLoginAdmin');
 Route::post('/login', 'HomeController@postLoginAdmin')->name('admin.login');
 Route::get('/logout', 'HomeController@logout')->name('admin.logout');
-
+Route::post('/postlogin','UserController@postLogin');
 
 // category
 Route::prefix('admin')->group(function () {

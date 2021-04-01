@@ -26,60 +26,71 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-
-
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('user-list')
+                        <a href="{{ route('users.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
                         </p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('category-list')
+                         <a href="{{ route('categories.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-list-alt"></i>
                         <p>
                             Categories
                         </p>
                     </a>
+                    @endcan
+
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{URL::to('/admin/brands')}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('brand-list')
+                        <a href="{{URL::to('/admin/brands')}}" class="nav-link">
+                        <i class="nav-icon fab fa-bandcamp"></i>
                         <p>
                             Brands
                         </p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{URL::to('/admin/products')}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('product-list')
+                        <a href="{{URL::to('/admin/products')}}" class="nav-link">
+                        <i class="nav-icon fas fa-archway"></i>
                         <p>
                             Products
                         </p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{URL::to('/admin/orders')}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('order-list')
+                         <a href="{{URL::to('/admin/orders')}}" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Orders
                         </p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('roles.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    @can('role-list')
+                         <a href="{{ route('roles.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-tag"></i>
                         <p>
                             Roles
                         </p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">

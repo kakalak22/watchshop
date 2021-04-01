@@ -30,18 +30,16 @@
                                 <th scope="col">Username</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($users as $key => $user)
                             <tr>
-                                <th scope="row">{{$user->id}}</th>
+                                <th scope="row">{{($users->currentpage()-1) * $users->perpage() + $key + 1 }}</th>
                                 <td>{{$user->username}}</td>
                                 <td>{{$user->address}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->status}}</td>
                                 <td>
                                     @can('user-edit')
                                     <a href="{{ route('users.edit', ['id' => $user->id]) }}"
@@ -59,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                {{-- {{ $categories->links() }} --}}
+                {{ $users->links() }}
             </div>
         </div>
     </div>

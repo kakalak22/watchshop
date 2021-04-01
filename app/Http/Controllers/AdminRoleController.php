@@ -21,7 +21,7 @@ class AdminRoleController extends Controller
     }
     public function index()
     {
-        $roles = $this->role->simplePaginate(10);
+        $roles = $this->role->paginate(5);
         return \view('admin.role.index', \compact('roles'));
     }
 
@@ -66,5 +66,9 @@ class AdminRoleController extends Controller
         return $this->deleteModelTrait($id, $this->role);
     }
 
-  
+    public function getCountRolesByUser($role_id)
+    {
+        $roles = Role::where('role_id', $role_id)->with('role_user')->count();
+        return $roles;
+    }
 }

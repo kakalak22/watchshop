@@ -32,9 +32,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($brands as $br)
+                            @foreach($brands as $key => $br)
                             <tr>
-                                <th scope="row">{{$br->id}}</th>
+                                <th scope="row">{{($brands->currentpage()-1) * $brands->perpage() + $key + 1 }}</th>
                                 <td>{{$br->name}}</td>
                                 <td>
                                 @can('brand-edit')

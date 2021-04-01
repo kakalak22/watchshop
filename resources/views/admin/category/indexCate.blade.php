@@ -32,9 +32,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $cate)
+                            @foreach($categories as $key => $cate)
                             <tr>
-                                <th scope="row">{{$cate->id}}</th>
+                                <th scope="row">{{($categories->currentpage()-1) * $categories->perpage() + $key + 1 }}</th>
                                 <td>{{$cate->name}}</td>
                                 <td>
                                      @can('category-edit')

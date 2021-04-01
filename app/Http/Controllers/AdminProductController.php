@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductAddRequest;
 use App\Models\Brand;
 use App\Models\Categories;
+use App\Models\OrderItems;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Traits\DeleteModelTrait;
@@ -22,19 +23,21 @@ class AdminProductController extends Controller
     private $category;
     private $product;
     private $brand;
+    private $orderItem;
 
 
-    public function __construct(Categories $category, Brand $brand, Product $product, ProductImage $productImage)
+    public function __construct(Categories $category, Brand $brand, Product $product, ProductImage $productImage, OrderItems $orderItem)
     {
         $this->category = $category;
         $this->product = $product;
         $this->productImage = $productImage;
         $this->brand = $brand;
+        $this->orderItem = $orderItem;
     }
 
     public function index()
     {
-        $products = $this->product->latest()->simplePaginate(4);
+        $products = $this->product->latest()->paginate(4);
         return \view('admin.product.index', compact('products'));
     }
 
@@ -135,7 +138,17 @@ class AdminProductController extends Controller
 
     public function delete($id)
     {
-        return $this->deleteModelTrait($id, $this->product);
-        return \redirect()->route('product.index');
+        $CountOrder = $this->getCountOrderItemByProduct($id);
+        if ($CountOrder > 0) {
+            \dd(1232);
+        } else {
+            return $this->deleteModelTrait($id, $this->product);
+        }
+    }
+
+    public function getCountOrderItemByProduct($product_id)
+    {
+        $orderItem = OrderItems::where('product_id', $product_id)->with('orderItem')->count();
+        return $orderItem;
     }
 }

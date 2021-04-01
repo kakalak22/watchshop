@@ -42,9 +42,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($products as $product)
+                            @foreach($products as $key => $product)
                             <tr>
-                                <th scope="row">{{$product->id}}</th>
+                                <th scope="row">{{($products->currentpage()-1) * $products->perpage() + $key + 1 }}</th>
                                 <td>{{$product->name}}</td>
                                 <td>{{ number_format($product->price)}}</td>
                                 <td><img class="product_image_150_100" src="{{URL::to($product->feature_image) }}" alt=""></td>
