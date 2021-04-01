@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     @yield('title')    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
@@ -10,10 +11,7 @@
     <!--theme-style-->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
     <script type="application/x-javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     </script>
@@ -33,6 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 });
     </script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
+
     <script>
         $(function(){
             $('.check').click(function(){
@@ -87,38 +86,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             // });
         });
     </script>
+
+    <script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
 </head>
 
 <body>
     <!--top-header-->
     <div class="top-header">
         <div class="container">
+
             <div class="top-header-main">
+
                 <div class="col-md-6 top-header-left">
-                    {{-- <div class="drop">
-                        <?php 
-                        if(isset(Auth::user()->username)){
-                        ?>
-                        <i class="fas fa-user" style="color:white; width : 20px"></i><span style="color: white;">{{ Auth::user()->username}} </span>
-                        <?php
-                        }else{
-                        ?>
-                        <a href="{{URL::to('/user-login')}}">Login</a>
-                        <?php
-                        }
-                        ?>
-                        <div class="clearfix"></div> --}}
-                    </div>
+
+                    <ul class="nav navbar-nav">
+                        @if(Auth::check())
+                        <li>
+                            <a href="">
+                                <span class="glyphicon glyphicon-user"> My account</span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="{{url('/user/orders')}}">
+                                <span class="glyphicon glyphicon-user"> My Orders</span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="/user/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
+                        </li>
+
+                        @else
+                        <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/user/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+
+                        @endif
+                    </ul>
+
+
                 </div>
                 <div class="col-md-6 top-header-left">
-                    <div class="cart box_1">
-                        <a class = "cart" href="{{URL::to('/show-cart')}}">
-                            <i class="fa" style="font-size:24px">&#xf07a;</i>
-                            <span class='badge badge-warning' id='lblCartCount'> {{Cart::count()}} </span>
-                        </a>
-                        <div class="clearfix"></div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href=""><i class="fa fa-envelope"></i> Contact</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::to('/show-cart')}}"><span class="glyphicon glyphicon-shopping-cart"></span>Cart(0)</a>
+                        </li>
 
-                    </div>
+                    </ul>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -187,8 +205,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--bottom-header-->
     @yield('content')
-    <!--information-starts-->
+    <hr>
 
+    <!--information-starts-->
+    <div class="information">
+        <div class="container">
+            <div class="infor-top" style="background-color: black;">
+                <div class="col-md-3 infor-left">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><span class="fb"></span>
+                                <h6>Facebook</h6>
+                            </a></li>
+                        <li><a href="#"><span class="twit"></span>
+                                <h6>Twitter</h6>
+                            </a></li>
+                        <li><a href="#"><span class="google"></span>
+                                <h6>Google+</h6>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">
+                                <p>Specials</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>New Products</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>Our Stores</p>
+                            </a></li>
+                        <li><a href="contact.html">
+                                <p>Contact Us</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>Top Sellers</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>My Account</h3>
+                    <ul>
+                        <li><a href="account.html">
+                                <p>My Account</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Credit slips</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Merchandise returns</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Personal info</p>
+                            </a></li>
+                        <li><a href="#">
+                                <p>My Addresses</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Store Information</h3>
+                    <h4>The company name,
+                        <span>Lorem ipsum dolor,</span>
+                        Glasglow Dr 40 Fe 72.</h4>
+                    <h5>+955 123 4567</h5>
+                    <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
     <!--information-end-->
     <!--footer-starts-->
     <div class="footer">
@@ -253,9 +341,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     </div>
 
-                </div>
 
-            </footer>
+                </div>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
     <!--footer-end-->
@@ -288,6 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 <script>
+
 	if($(".frm-update-quantity .quantity-input").length > 0){
 		$(".frm-update-quantity .quantity-input").on('click', '.btn', function(event) {
 			event.preventDefault();
@@ -304,6 +394,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			form.submit();
 		});
 	}
+</script>
+
+
+    var text = $("#product-quantity");
+	var form = $("#myform");
+	console.log(text);
+	text.bind("change keyup", function() {
+		if( $(this).val() > 1 )
+		$("#myform").submit();
+	});
 </script>
 
 
