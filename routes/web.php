@@ -58,7 +58,7 @@ Route::get('/user/orders/{id}','OrdersController@orderDetails');
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-home');
 
-Route::get('/admin/login', 'HomeController@getLoginAdmin');
+Route::get('/admin/login', 'HomeController@getLoginAdmin')->name('admin');
 Route::post('/admin/login', 'HomeController@postLoginAdmin')->name('admin.login');
 Route::get('/admin/logout', 'HomeController@logout')->name('admin.logout');
 

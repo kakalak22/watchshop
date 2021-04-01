@@ -9,8 +9,6 @@ use App\Models\Product;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -87,14 +85,14 @@ class HomeController extends Controller
 
     public function userLogin(Request $req)
     {
-        if($req->isMethod('post')){
+        if ($req->isMethod('post')) {
             $data = $req->all();
             // echo "<pre>";print_r($data);die;
-            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+            if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 return redirect('/home');
-            }else{
+            } else {
                 $message = "invalid username or password";
-                Session::flash('error_message',$message);
+                Session::flash('error_message', $message);
                 return redirect()->back();
             }
         }
@@ -103,7 +101,7 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return \view('admin.demoHtml.admin_login');
+        return \redirect('/admin/login');
     }
 
     public function logoutuser()
@@ -114,23 +112,23 @@ class HomeController extends Controller
 
     function registeruser(Request $req)
     {
-        if($req->isMethod('post')){
+        if ($req->isMethod('post')) {
             $data = $req->all();
             // echo "<pre>";print_r($data);die;
             //check if user already exits
-            $userCount = User::where('email',$data['email'])->count();
-            if($userCount>0){
+            $userCount = User::where('email', $data['email'])->count();
+            if ($userCount > 0) {
                 $message = "Email already exits";
-                Session::flash('error_message',$message);
+                Session::flash('error_message', $message);
                 return redirect()->back();
-            }else{
+            } else {
                 // register user
                 $user = new User;
-                $user->username=$data['username'];
-                $user->email=$data['email'];
-                $user->password=bcrypt($data['password']);
+                $user->username = $data['username'];
+                $user->email = $data['email'];
+                $user->password = bcrypt($data['password']);
                 $user->save();
-                if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     return redirect('/home');
                 }
             }
