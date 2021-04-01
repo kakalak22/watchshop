@@ -8,11 +8,16 @@ use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+
 
 class HomeController extends Controller
 {
@@ -33,16 +38,13 @@ class HomeController extends Controller
 
     public function getIndex()
     {
-        $new_product = Product::orderBy('created_at', 'asc')->limit(8)->get();
+        $new_product = Product::orderBy('created_at', 'asc')->limit(4)->get();
         //dd($new_product);
         return view('pages.home', compact('new_product'));
     }
 
     public function AdminHome()
     {
-        // $date = orders::where('status', 'active')
-        //     ->where('created_at', '>', Carbon::now()->subDays(7))
-        //     ->get();
 
         $orders = Orders::select(DB::raw('count(*) as total '), DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_date '))
             ->where('created_at', '>=', DB::raw('DATE(NOW()) - INTERVAL 7 DAY'))
@@ -66,8 +68,10 @@ class HomeController extends Controller
         return view('admin.demoHtml.admin_login');
     }
 
+
     public function postLoginAdmin(Request $request)
     {
+
         $arr = [
             'username' => $request->username,
             'password' => $request->password
@@ -76,7 +80,7 @@ class HomeController extends Controller
         if (Auth::attempt($arr)) {
             return \redirect()->to('admin_home');
         } else {
-            \dd("Login fail!!");
+            return back()->with('error', 'Wrong Login!');
         }
     }
 

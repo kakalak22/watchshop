@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+<title>Cart</title>
+@endsection
 @section('content')
 	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
@@ -32,11 +35,38 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php 
+							$text = Session::pull('data');
+							$text2 = Session::pull('noti');
+							$text3 = Session::pull('delete');
+							if($text){
+							?>
+							<div class="alert alert-danger" style="text-align: center" role="alert">
+								{{$text}}
+							</div>
+							<?php
+							}else{
+								if($text2){
+							?>
+							<div class="alert alert-success" style="text-align: center;" role="alert">
+								{{$text2}}
+							  </div>
+							<?php
+								}
+							}
+								if($text3){
+							?>
+							<div class="alert alert-success" style="text-align: center;" role="alert">
+								{{$text3}}
+							</div>
+							<?php
+							}
+							?>
 							@foreach (Cart::content() as $item)
 							<tr>
 								<td class="col-sm-8 col-md-6">
 								<div class="media">
-									<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{$item->options->image}}" style="width: 72px; height: 72px;"> </a>
+									<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{URL::to($item->options->image)}}" style="width: 72px; height: 72px;"> </a>
 									<div class="media-body">
 										<h4 class="media-heading"><a href="#">{{$item->name}}</a></h4>
 										<h5 class="media-heading"> by <a href="#">{{$item->options->brand}}</a></h5>
@@ -46,18 +76,14 @@
 									{{-- <a href="#" style="font-size: 20px;" >+</a>	
 									<input type="qty" class="form-control" name="qty" value="{{$item->qty}}">
 									<a href="#" style="font-size: 20px;" >-</a>	 --}}
-									<form action="{{ route('update-quantity') }}" method="post" class="frm-update-quantity" >
+									<form action="{{ route('update-quantity') }}" id = "form" method="post" class="frm-update-quantity" >
 										@csrf
 										<input type="hidden" name="pid" value="{{ $item->rowId }}">
 										<div class="quantity-input">
 											<a class="btn btn-primary btn-increase" href="#">+</a>
 											<input type="text" class="quantity-input" id="qty" name="product-quantity" 
-											<?php if(intval($item->qty) > intval($item->options->stock)){?>
-												value = "{{$item->options->stock}}"
-											<?php	}else{?>
-												value = "{{$item->qty}}"
-											<?php	}
-											 ?> data-max="{{$item->options->stock}}" pattern="[0-9]*" >									
+											value = "{{$item->qty}}"
+											 data-max="500" pattern="[0-9]*" >									
 											<a class="btn btn-primary btn-reduce" href="#">-</a>
 										</div>
 									</form>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersAddRequest;
+use App\Http\Requests\UsersUpdateRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class AdminUserController extends Controller
 
     public function index()
     {
-        $users = $this->user->simplePaginate(10);
+        $users = $this->user->paginate(5);
 
         return \view('admin.user.index', \compact('users'));
     }
@@ -36,16 +38,19 @@ class AdminUserController extends Controller
         return \view('admin.user.add', \compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(UsersAddRequest $request)
     {
         try {
             DB::beginTransaction();
-            $user = $this->user->create([
+
+            $dataUsersCreate = [
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'address' => $request->address
-            ]);
+            ];
+            $user = $this->user->create($dataUsersCreate);
+
             $user->roles()->attach($request->role_id);
             DB::commit();
             return \redirect()->route('users.index');
@@ -63,16 +68,27 @@ class AdminUserController extends Controller
         return \view('admin.user.edit', \compact('roles', 'user', 'rolesOfUser'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UsersUpdateRequest $request, $id)
     {
+
         try {
             DB::beginTransaction();
-            $this->user->find($id)->update([
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'address' => $request->address
-            ]);
+
+            $user = User::find($id);
+
+            if ($user->email == $request->email) {
+                $this->user->find($id)->update([
+                    'password' => Hash::make($request->password),
+                    'address' => $request->address
+                ]);
+            } else {
+                $this->user->find($id)->update([
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'address' => $request->address
+                ]);
+            }
+
             $user = $this->user->find($id);
             $user->roles()->sync($request->role_id);
             DB::commit();

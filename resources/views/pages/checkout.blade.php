@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+<title>Checkout</title>
+@endsection
 @section('content')
 <div class="container">
     <script>
@@ -36,7 +39,7 @@
                 @foreach (Cart::content() as $item)
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">{{$item->name}}</h6>
+                        <h6 class="my-0"><span style="font-size:17px;">{{$item->name}}</span> x {{$item->qty}}</h6>
                         <small class="text-muted">{{$item->options->content}}</small>
                     </div>
                     <span class="text-muted">{{number_format($item->price)}} VND</span>
@@ -44,7 +47,7 @@
                 @endforeach
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (VND)</span>
-                    <strong>{{Cart::total()}} VND</strong>
+                    <strong>{{number_format(Cart::total())}} VND</strong>
                 </li>
             </ul>
         </div>
@@ -65,17 +68,17 @@
                     </div>
                 </div> --}}
                 <div class="mb-3">
-                    <label for="name">Name <span class="text-muted">(Required)</span></label>
+                    <label for="name">Name* <span class="text-muted">(Required)</span></label>
                     <input type="text" class="form-control" name="name" placeholder="you@example.com">
                     <div class="invalid-feedback"> Please enter your name. </div>
                 </div>
                 <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Required)</span></label>
+                    <label for="email">Email* <span class="text-muted">(Required)</span></label>
                     <input type="email" class="form-control" name="email" placeholder="you@example.com">
                     <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                 </div>
                 <div class="mb-3">
-                    <label for="address">Address</label>
+                    <label for="address">Address*</label>
                     <input type="text" class="form-control" name="address" placeholder="Your address" required="">
                     <div class="invalid-feedback"> Please enter your shipping address. </div>
                 </div>
@@ -160,18 +163,18 @@
                 </div> --}}
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="city">City</label>
+                        <label for="city">City*</label>
                         <input type="text" class="form-control" name="city" placeholder="Your city" value="" required="">
                         <div class="invalid-feedback"> Valid city is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="district">District</label>
+                        <label for="district">District*</label>
                         <input type="text" class="form-control" name="district" placeholder="Your district" value="" required="">
                         <div class="invalid-feedback"> Valid district is required. </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                   <label for="phone">Phone</label>
+                   <label for="phone">Phone*<span class="text-muted">(Required)</span></label>
                    <input type="text" class="form-control" name="phone" placeholder="Input your phone number" required>
                    <div class="invalid-feedback"> Please enter your phone number. </div>   
                </div>

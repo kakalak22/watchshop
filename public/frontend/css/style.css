@@ -3236,13 +3236,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 }
 
 /*cart*/
-<<<<<<< HEAD
 input.quantity-input {
-    text-align: center;
     width: 40px;
-    height: 34px;
+    height: 32px;
+    text-align: center;
 }
-=======
 
 .footer-distributed{
 	background-color: #292c2f;
@@ -3270,7 +3268,6 @@ input.quantity-input {
 }
 
 /* The company logo */
->>>>>>> 33c6c1e986b682f8b42be70b10f3124903b043e0
 
 .footer-distributed h3{
 	color:  #ffffff;
@@ -3412,4 +3409,36 @@ input.quantity-input {
 		margin-left: 0;
 	}
 
+}
+
+.cart{
+    text-decoration: none;
+    color: white;
+}
+
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+  
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  #lblCartCount {
+      font-size: 12px;
+      background: #ff0000;
+      color: #fff;
+      padding: 0 5px;
+      vertical-align: top;
+      margin-left: -10px; 
+  }
+
+  .img-responsive {
+    display: block;
+    height: 200px;
+    max-width: 100%;
 }

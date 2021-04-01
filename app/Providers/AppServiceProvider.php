@@ -6,7 +6,7 @@ use App\Models\Categories;
 use App\Models\Brand;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         view()->composer('layout', function ($view) {
             $product_type = Categories::all();
             $product_brand = Brand::all();

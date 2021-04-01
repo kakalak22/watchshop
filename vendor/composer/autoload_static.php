@@ -4,7 +4,8 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
+class ComposerStaticInit0ecdde8d30ff8b9c2f0eed9b0310bfcf
+
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -552,6 +553,7 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrdersController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -572,6 +574,7 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\Sale' => __DIR__ . '/../..' . '/app/Models/Sale.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
         'App\\Policies\\BrandPolicy' => __DIR__ . '/../..' . '/app/Policies/BrandPolicy.php',
         'App\\Policies\\CategoryPolicy' => __DIR__ . '/../..' . '/app/Policies/CategoryPolicy.php',
         'App\\Policies\\OrderPolicy' => __DIR__ . '/../..' . '/app/Policies/OrderPolicy.php',
@@ -5410,10 +5413,11 @@ class ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitaee3bfec990952c7c4583afd1b5f3373::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0ecdde8d30ff8b9c2f0eed9b0310bfcf::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0ecdde8d30ff8b9c2f0eed9b0310bfcf::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0ecdde8d30ff8b9c2f0eed9b0310bfcf::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0ecdde8d30ff8b9c2f0eed9b0310bfcf::$classMap;
+
 
         }, null, ClassLoader::class);
     }

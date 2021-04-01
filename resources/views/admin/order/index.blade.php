@@ -9,8 +9,8 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
-    <script src="{{ asset('admins/product/index/list.js')}}"></script>
+<script src="{{asset('vendor/sweetAlert2/sweetalert2@10.js')}}"></script>
+<script src="{{ asset('admins/product/index/list.js')}}"></script>
 @endsection
 
 @section('content')
@@ -43,10 +43,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($orders as $order)
+                            @foreach($orders as $key => $order)
                             <tr>
-                                <th scope="row">{{$order->id}}</th>
+                                <th scope="row">{{($orders->currentpage()-1) * $orders->perpage() + $key + 1 }}</th>
+                                <?php
+                                try{
+                                    $test = $order->user->username;
+                                }catch(Exception $e){
+                                    $test = 0;
+                                }
+                                if($test){
+                                ?>
                                 <td>{{$order->user->username}}</td>
+                                <?php
+                                }else{
+                                ?>
+                                <td>Visistors order</td>
+                                <?php
+                                }
+                                ?>
                                 <td>{{$order->customer_name}}</td>
                                 <td>{{$order->customer_address}}</td>
                                 <td>{{$order->customer_phone}}</td>
@@ -56,11 +71,13 @@
                                 <td>@if($order->status) Accepted @else Cancel @endif</td>
                                 <td>
                                     {{-- @can('product-edit') --}}
-                                    <a href="{{ route('orders.edit', ['id' => $order->id]) }}" class="btn btn-default">Edit</a>
+                                    <a href="{{ route('orders.edit', ['id' => $order->id]) }}"
+                                        class="btn btn-default">Edit</a>
                                     {{-- @endcan --}}
                                     {{-- @can('product-delete') --}}
-                                    <a href="{{ route('orders.indexOrderItem', ['id' => $order->id]) }}" class="btn btn-warning ">Details</a>
-                                     {{-- data-url="{{route('product.delete', ['id' => $product->id])}}" --}}
+                                    <a href="{{ route('orders.indexOrderItem', ['id' => $order->id]) }}"
+                                        class="btn btn-warning ">Details</a>
+                                    {{-- data-url="{{route('product.delete', ['id' => $product->id])}}" --}}
                                     {{-- @endcan --}}
                                 </td>
                             </tr>

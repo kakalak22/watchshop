@@ -33,9 +33,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($roles as $role)
+                            @foreach($roles as $key => $role)
                             <tr>
-                                <th scope="row">{{$role->id}}</th>
+                                <th scope="row">{{($roles->currentpage()-1) * $roles->perpage() + $key + 1 }}</th>
                                 <td>{{$role->name}}</td>
                                 <td>{{$role->display_name}}</td>
                                 <td>
@@ -44,9 +44,9 @@
                                         class="btn btn-default">Edit</a>
                                     @endcan
 
-                                    @can('role-delete')
+                                    {{-- @can('role-delete')
                                     <a href="" data-url="{{route('roles.delete', ['id' => $role->id])}}" class="btn btn-danger action_delete">Delete</a>
-                                    @endcan
+                                    @endcan --}}
                                 </td>
                             </tr>
 

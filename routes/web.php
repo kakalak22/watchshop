@@ -38,6 +38,7 @@ Route::post('/update-quantity-product', 'CartController@updateQuantityProduct')-
 Route::get('/checkout', 'CartController@checkout');
 Route::post('/store-shipping-information', 'CartController@saveShipDetail');
 Route::get('/success', 'CartController@success');
+
 //login-register
 Route::get('/home', 'HomeController@getIndex');
 Route::get('/user/login', function () {
@@ -48,6 +49,7 @@ Route::post('/user/register', 'HomeController@registeruser');
 Route::view('/user/register','pages.register');
 Route::get('/user/logout', 'HomeController@logoutuser');
 
+
 //user orders
 Route::get('/user/orders','OrdersController@orders');
 //user view order details
@@ -55,12 +57,10 @@ Route::get('/user/orders/{id}','OrdersController@orderDetails');
 
 //admin
 Route::get('/admin_home', 'HomeController@AdminHome')->middleware('can:admin-home');
+
 Route::get('/admin/login', 'HomeController@getLoginAdmin');
 Route::post('/admin/login', 'HomeController@postLoginAdmin')->name('admin.login');
 Route::get('/admin/logout', 'HomeController@logout')->name('admin.logout');
-
-
-
 
 // category
 Route::prefix('admin')->group(function () {

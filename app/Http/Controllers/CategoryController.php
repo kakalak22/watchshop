@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriesAddRequest;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Categories;
 use App\Traits\DeleteModelTrait;
@@ -18,11 +20,31 @@ class CategoryController extends Controller
         $this->product = $product;
     }
 
-    public function ProductByCategory($category_id)
+    public function ProductByCategory($category_id, Request $request)
     {
-        $cate = Product::where('category_id', $category_id)->with('category')->get();
+        $cate_name = Categories::all();
+        $brand_name = Brand::all();
+        $category = $request->category;
+        $brand = $request->brand;
+        if (isset($category)) {
+            if (isset($brand)) {
+                $cate = Product::whereIN('brand_id', explode(',', $brand))->whereIN('category_id', explode(',', $category))->paginate(6);
+                response()->json($cate);
+                return view('pages.productlist', compact('cate', 'cate_name', 'brand_name'));
+            } else {
+                $cate = Product::whereIN('category_id', explode(',', $category))->paginate(6);
+                response()->json($cate);
+                return view('pages.productlist', compact('cate', 'cate_name', 'brand_name'));
+            }
+        } else if (isset($brand)) {
+            $cate = Product::whereIN('brand_id', explode(',', $brand))->where('category_id', $category_id)->paginate(6);
+            response()->json($cate);
+            return view('pages.productlist', compact('cate', 'cate_name', 'brand_name'));
+        } else {
+            $cate = Product::where('category_id', $category_id)->paginate(8);
+            return view('pages.productlist', compact('cate', 'cate_name', 'brand_name'));
+        }
         //dd($cate);
-        return view('pages.productlist', compact('cate'));
     }
 
     public function adminIndexCate()
@@ -36,14 +58,12 @@ class CategoryController extends Controller
         return \view('admin.category.addCate');
     }
 
-    public function store(Request $request)
+    public function store(CategoriesAddRequest $request)
     {
-        $this->category->create([
+        $dataCategoriesCreate = [
             'name' => $request->name
-        ]);
-        // $categories = new \Categories();
-        // $categories->name = $request->name;
-        // $categories->save();
+        ];
+        $this->category->create($dataCategoriesCreate);
         return \redirect()->route('categories.index');
     }
 
@@ -54,11 +74,12 @@ class CategoryController extends Controller
         return \view('admin.category.editCate', \compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoriesAddRequest $request, $id)
     {
-        $this->category->find($id)->update(
-            ['name' => $request->name]
-        );
+        $dateCategoriesUpdate = [
+            'name' => $request->name
+        ];
+        $this->category->find($id)->update($dateCategoriesUpdate);
         return \redirect()->route('categories.index');
     }
 

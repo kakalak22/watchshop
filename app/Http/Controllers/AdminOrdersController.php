@@ -25,7 +25,7 @@ class AdminOrdersController extends Controller
 
     public function index()
     {
-        $orders = $this->order->latest()->simplePaginate(4);
+        $orders = $this->order->latest()->paginate(5);
         return \view('admin.order.index', compact('orders'));
     }
 

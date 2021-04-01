@@ -33,23 +33,35 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Username:</label>
-                                            <input type="text" name="username" class="form-control"  placeholder="Enter Product Name" value="{{$user->username}}">
+                                            <input type="text" readonly name="username" class="form-control"  placeholder="Enter Product Name" value="{{$user->username}}">
+
                                         </div>
 
                                         <div class="form-group">
                                             <label>Email:</label>
-                                            <input type="email" name="email" class="form-control"  placeholder="Enter Email" value="{{$user->email}}">
+                                            <input type="email" name="email" class="form-control"  @error('email') is-invalid
+                                            @enderror placeholder="Enter Email" value="{{$user->email}}">
+                                            @error('email')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password:</label>
-                                            <input type="password" name="password" class="form-control"  placeholder="Enter Password">
+                                            <input type="password" name="password" class="form-control" @error('password') is-invalid
+                                            @enderror placeholder="Enter Password">
+                                            @error('password')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror
                                         </div>
-
 
                                         <div class="form-group">
                                             <label>Address:</label>
-                                            <input type="text" name="address" class="form-control" placeholder="Enter Address" value="{{$user->address}}">
+                                            <input type="text" name="address" class="form-control"  @error('address') is-invalid
+                                            @enderror placeholder="Enter Address" value="{{$user->address}}">
+                                             @error('address')
+                                        <p class="pt-1" style="color: red">{{ $message }}</p>
+                                        @enderror
                                         </div>
 
                                         <div class="form-group">

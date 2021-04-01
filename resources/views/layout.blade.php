@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <title>Luxury Watches | Home</title>
+
+    @yield('title')    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="{{asset('frontend/js/jquery-1.11.0.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
+
     <script type="application/x-javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     </script>
@@ -31,8 +31,63 @@
 });
     </script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
 
+    <script>
+        $(function(){
+            $('.check').click(function(){
+                //alert('check');
+                var category =[];
+                $('.category').each(function(){
+                    if($(this).is(":checked")){
+                        category.push($(this).val());
+                    }
+                });
+                var brand =[];
+                $('.brand').each(function(){
+                    if($(this).is(":checked")){
+                        brand.push($(this).val());
+                    }
+                });
+                Finalcate  = category.toString();
+                Finalbrand  = brand.toString();
+                $.ajax({
+                    async: true,
+                    type: 'get',
+                    dataType: 'html',
+                    url: '',
+                    data: "category=" + Finalcate +"&brand=" + Finalbrand ,
+                    success: function (response) {
+                        console.log(response);
+                        $('#updateDiv').replaceWith($('#updateDiv',response));
+                    }
+                });
+            });	
+
+            // $('.brand').click(function(){
+            //     //alert('check');
+            //     var brand =[];
+            //     $('.brand').each(function(){
+            //         if($(this).is(":checked")){
+            //             brand.push($(this).val());
+            //         }
+            //     });
+            //     Final  = brand.toString();
+            //     $.ajax({
+            //         async: true,
+            //         type: 'get',
+            //         dataType: 'html',
+            //         url: '',
+            //         data: "brand=" + Final,
+            //         success: function (response) {
+            //             console.log(response);
+            //             $('#updateDiv').replaceWith($('#updateDiv',response));
+            //         }
+            //     });
+            // });
+        });
+    </script>
+
+    <script src="{{asset('frontend/js/jquery.validate.min.js')}}"></script>
 </head>
 
 <body>
@@ -43,6 +98,7 @@
             <div class="top-header-main">
 
                 <div class="col-md-6 top-header-left">
+
                     <ul class="nav navbar-nav">
                         @if(Auth::check())
                         <li>
@@ -79,7 +135,6 @@
                         <li>
                             <a href="{{URL::to('/show-cart')}}"><span class="glyphicon glyphicon-shopping-cart"></span>Cart(0)</a>
                         </li>
-
 
                     </ul>
                 </div>
@@ -126,12 +181,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="grid"><a href="contact.html">Contact</a>
+                            {{-- <li class="grid"><a href="contact.html">Contact</a> --}}
                             </li>
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
-                </div>
+                {{-- </div>
                 <div class="col-md-3 header-right">
                     <form action="/search" class="navbar-form">
                         <div class="search-bar">
@@ -143,7 +198,7 @@
                         </div>
                     </form>
 
-                </div>
+                </div> --}}
                 <div class="clearfix"> </div>
             </div>
         </div>
@@ -225,14 +280,68 @@
     <!--information-end-->
     <!--footer-starts-->
     <div class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="col-md-6 footer-left">
-                    © 2021 Watch Shop. All Rights Reserved
+
+        <div class="row">
+            <!-- FOOTER CONTENT -->
+
+            <footer class="footer-distributed">
+
+                <div class="footer-left">
+
+                    <img src="{{URL::to('src/images/logo.png')}}" style="width: 200px; height:
+                    100px;"
+                         alt="">
+
+                    <p class="footer-links">
+                        <a href="{{ url('/home') }}">Home</a>
+                        ·
+                            <a href="{{ URL::to('/register') }}">Sign Up</a>
+                            ·
+                            <a href="{{ URL::to('/user-login') }}">Login</a>
+                            ·
+                        {{-- <a href="{{route('contactUs')}}">Contact</a> --}}
+                    </p>
+
+                    <p class="footer-company-name">Develop by Group 3 &copy; 2021</p>
                 </div>
-                <div class="col-md-6 footer-right">
-                    Design by <a href="http://w3layouts.com/"
-                            target="_blank">FPT Aptech</a>
+
+                <div class="footer-center">
+
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p><span>Cach Mang Thang 8</span> Ho Chi Minh, Viet Nam</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>+84 772 260 014</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p><a href="mailto:watch-shop@company.com">watchshopgr3@gmail.com</a></p>
+                    </div>
+
+                </div>
+
+                <div class="footer-right">
+
+                    <p class="footer-company-about">
+                        <span>About the company</span>
+                        We provide watches
+                    </p>
+
+                    <div class="footer-icons">
+
+                        <a target="_blank" href="https://www.linkedin.com/in/aleksandar-bu%C5%A1baher-430537137/"><i class="fa
+                        fa-linkedin"></i></a>
+                        <a target="_blank" href="https://github.com/ABusbaher/watch-shop-laravel"><i class="fa fa-github"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+
+                    </div>
+
+
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -268,6 +377,26 @@
 </script>
 
 <script>
+
+	if($(".frm-update-quantity .quantity-input").length > 0){
+		$(".frm-update-quantity .quantity-input").on('click', '.btn', function(event) {
+			event.preventDefault();
+			var _this = $(this),
+				_input = _this.siblings('input[name=product-quantity]'),
+				_current_value = _this.siblings('input[name=product-quantity]').val(),
+				_max_value = _this.siblings('input[name=product-quantity]').attr('data-max');
+			if(_this.hasClass('btn-reduce')){
+				if (parseInt(_current_value, 10) > 0) _input.val(parseInt(_current_value, 10) - 1);
+			}else {
+				if (parseInt(_current_value, 10) < parseInt(_max_value, 10)) _input.val(parseInt(_current_value, 10) + 1);
+			}
+			var form = $(_this.closest('form'));
+			form.submit();
+		});
+	}
+</script>
+
+
     var text = $("#product-quantity");
 	var form = $("#myform");
 	console.log(text);
@@ -276,5 +405,6 @@
 		$("#myform").submit();
 	});
 </script>
+
 
 </html>
